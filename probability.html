@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathSite — Теория вероятностей</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']]},svg:{fontCache:'global'}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header><div class="nav-wrap"><div class="brand">MathSite</div><nav>
+  <a href="index.html">Главная</a><a href="algebra.html">Алгебра</a><a href="calculus.html">Анализ</a><a href="geometry.html">Геометрия</a><a class="active" href="probability.html">Теорвер</a><a href="number-theory.html">Теория чисел</a>
+</nav></div></header>
+<main>
+  <h1>Теория вероятностей</h1>
+  <p>Раздел посвящён моделированию случайности: события, вероятностные пространства, распределения и предельные теоремы.</p>
+  <div class="grid">
+    <article class="card"><h3>Классическая вероятность</h3><p>Если все исходы равновозможны, то \(P(A)=\frac{|A|}{|\Omega|}\).</p></article>
+    <article class="card"><h3>Условная вероятность</h3><p>Формула: \(P(A\mid B)=\frac{P(A\cap B)}{P(B)}\), если \(P(B)>0\).</p></article>
+    <article class="card"><h3>Случайные величины</h3><p>Дискретные и непрерывные модели, функции распределения и плотности.</p></article>
+  </div>
+  <section class="section"><h2>Теоремы</h2><ul>
+    <li><a href="theorems/bayes.html">Формула Байеса</a></li>
+  </ul></section>
+</main>
+<footer>MathSite · Теория вероятностей.</footer>
+</body></html>

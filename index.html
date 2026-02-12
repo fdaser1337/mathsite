@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathSite — Главная</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    window.MathJax = {
+      tex: {inlineMath: [['\\(', '\\)'], ['$', '$']]},
+      svg: {fontCache: 'global'}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header>
+    <div class="nav-wrap">
+      <div class="brand">MathSite</div>
+      <nav>
+        <a class="active" href="index.html">Главная</a>
+        <a href="algebra.html">Алгебра</a>
+        <a href="calculus.html">Анализ</a>
+        <a href="geometry.html">Геометрия</a>
+        <a href="probability.html">Теорвер</a>
+        <a href="number-theory.html">Теория чисел</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="badge">Популярное сегодня</span>
+      <h1>Математика по разделам, а не одной длинной простынёй</h1>
+      <p>Это многостраничный сайт: на главной только самые востребованные материалы, а полное содержание вынесено в тематические разделы и отдельные страницы теорем.</p>
+      <div class="math-note">Пример корректного отображения формул: \(\lim_{x \to a} f(x) = L\), \(\int_a^b f(x)dx\), \(e^{i\pi}+1=0\).</div>
+    </section>
+
+    <section class="section">
+      <h2>Популярные темы</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Пределы и непрерывность</h3>
+          <p>Как доказывать пределы по определению Коши и понимать поведение функций возле точек разрыва.</p>
+          <a href="calculus.html">Перейти в раздел анализа →</a>
+        </article>
+        <article class="card">
+          <h3>Квадратичные формы</h3>
+          <p>Диагонализация, критерии положительной определённости и связь с геометрией поверхностей.</p>
+          <a href="algebra.html">Открыть алгебру →</a>
+        </article>
+        <article class="card">
+          <h3>Треугольники и окружности</h3>
+          <p>Классические факты Евклидовой геометрии с аккуратными формулировками и доказательствами.</p>
+          <a href="geometry.html">Смотреть геометрию →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Каталог разделов</h2>
+      <div class="grid">
+        <article class="card"><h3>Алгебра</h3><p>Системы линейных уравнений, собственные значения, группы и кольца.</p></article>
+        <article class="card"><h3>Математический анализ</h3><p>Пределы, производные, интегралы, ряды и сходимость.</p></article>
+        <article class="card"><h3>Геометрия</h3><p>Планиметрия, стереометрия и аналитическая геометрия.</p></article>
+        <article class="card"><h3>Теория вероятностей</h3><p>Случайные величины, распределения, математическое ожидание.</p></article>
+        <article class="card"><h3>Теория чисел</h3><p>Делимость, сравнения по модулю и диофантовы уравнения.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>MathSite · учебный проект с упором на структурированную подачу.</footer>
+</body>
+</html>

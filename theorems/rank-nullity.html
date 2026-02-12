@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ru"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Теорема о ранге и дефекте</title>
+<link rel="stylesheet" href="../styles.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']]},svg:{fontCache:'global'}};</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head><body>
+<main>
+<a class="back-link" href="../algebra.html">← Назад в Алгебру</a>
+<h1>Теорема о ранге и дефекте</h1>
+<p><strong>Формулировка.</strong> Для линейного отображения \(T:V\to W\) конечномерных пространств выполняется:
+\[\dim V = \operatorname{rank}(T) + \operatorname{nullity}(T).\]</p>
+<p><strong>Смысл.</strong> Размерность исходного пространства распадается на число «полезных» направлений (образ) и число направлений, которые сжимаются в ноль (ядро).</p>
+<p><strong>Идея доказательства.</strong> Выбираем базис ядра \(\{e_1,\dots,e_k\}\) и дополняем его до базиса \(V\): \(\{e_1,\dots,e_k,e_{k+1},\dots,e_n\}\). Тогда образы последних \(n-k\) векторов порождают образ отображения и линейно независимы в нём, значит \(\operatorname{rank}(T)=n-k\), где \(k=\operatorname{nullity}(T)\).</p>
+</main>
+</body></html>

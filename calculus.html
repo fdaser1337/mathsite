@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathSite — Математический анализ</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']]},svg:{fontCache:'global'}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header><div class="nav-wrap"><div class="brand">MathSite</div><nav>
+  <a href="index.html">Главная</a><a href="algebra.html">Алгебра</a><a class="active" href="calculus.html">Анализ</a><a href="geometry.html">Геометрия</a><a href="probability.html">Теорвер</a><a href="number-theory.html">Теория чисел</a>
+</nav></div></header>
+<main>
+  <h1>Математический анализ</h1>
+  <p>Здесь собраны пределы, непрерывность, дифференцирование и интегрирование. В этом разделе мы много используем определения через \(\varepsilon\) и \(\delta\).</p>
+  <div class="grid">
+    <article class="card"><h3>Предел функции</h3><p>Определение Коши: \(\forall\varepsilon>0\;\exists\delta>0\): \(0<|x-a|<\delta\Rightarrow |f(x)-L|<\varepsilon\).</p></article>
+    <article class="card"><h3>Производная</h3><p>Производная в точке: \(f'(a)=\lim_{h\to 0}\frac{f(a+h)-f(a)}{h}\).</p></article>
+    <article class="card"><h3>Интеграл Римана</h3><p>Переход от сумм Дарбу к площади под графиком функции на отрезке.</p></article>
+  </div>
+  <section class="section"><h2>Теоремы</h2><ul>
+    <li><a href="theorems/weierstrass.html">Теорема Вейерштрасса о достижении экстремумов</a></li>
+    <li><a href="theorems/newton-leibniz.html">Формула Ньютона—Лейбница</a></li>
+  </ul></section>
+</main>
+<footer>MathSite · Анализ.</footer>
+</body></html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MathSite — Алгебра</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)'],['$','$']]},svg:{fontCache:'global'}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<header><div class="nav-wrap"><div class="brand">MathSite</div><nav>
+  <a href="index.html">Главная</a><a class="active" href="algebra.html">Алгебра</a><a href="calculus.html">Анализ</a><a href="geometry.html">Геометрия</a><a href="probability.html">Теорвер</a><a href="number-theory.html">Теория чисел</a>
+</nav></div></header>
+<main>
+  <h1>Алгебра</h1>
+  <p>Раздел включает линейную алгебру и элементы абстрактной алгебры. Мы работаем с матрицами, векторными пространствами и структурами вида \((G,\ast)\).</p>
+  <div class="grid">
+    <article class="card"><h3>Линейные операторы</h3><p>Понятия ядра и образа, ранг и дефект, характеристический многочлен.</p></article>
+    <article class="card"><h3>Диагонализация</h3><p>Если у матрицы полный набор линейно независимых собственных векторов, то \(A=PDP^{-1}\).</p></article>
+    <article class="card"><h3>Алгебраические структуры</h3><p>Группы, подгруппы, нормальные подгруппы, фактор-группы и гомоморфизмы.</p></article>
+  </div>
+  <section class="section">
+    <h2>Теоремы</h2>
+    <ul>
+      <li><a href="theorems/rank-nullity.html">Теорема о ранге и дефекте</a></li>
+      <li><a href="theorems/cayley-hamilton.html">Теорема Кэли—Гамильтона</a></li>
+    </ul>
+  </section>
+</main>
+<footer>MathSite · Алгебра.</footer>
+</body></html>
