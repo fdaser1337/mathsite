@@ -30,8 +30,13 @@
 
   <main>
     <section class="hero">
+      <span class="badge">⚡ Новое на сайте</span>
       <h1>Математика для студентов</h1>
-      <p>Теоретические материалы по математики для студентов ВУЗов и колледжей</p>
+      <p>Теоретические материалы по математике для студентов ВУЗов и колледжей</p>
+      <div class="hero-actions">
+        <button id="fact-btn" class="fun-btn" type="button">🎲 Случайный математический факт</button>
+        <p id="fact-output" class="fun-output">Жми кнопку — будет рандомная мат-фишка.</p>
+      </div>
     </section>
 
     <section class="section">
@@ -55,6 +60,27 @@
       </div>
     </section>
 
+    <section class="section mini-games">
+      <h2>Мини-приколы по математике</h2>
+      <div class="grid">
+        <article class="card challenge-card">
+          <h3>🧠 Челлендж на сегодня</h3>
+          <p id="challenge-text">Загружаю задачу...</p>
+          <button id="next-challenge" class="fun-btn" type="button">Дай ещё задачу</button>
+        </article>
+
+        <article class="card calc-card">
+          <h3>🧮 Мини-калькулятор НОД</h3>
+          <label for="gcd-a">Первое число</label>
+          <input id="gcd-a" type="number" value="48">
+          <label for="gcd-b">Второе число</label>
+          <input id="gcd-b" type="number" value="18">
+          <button id="gcd-btn" class="fun-btn" type="button">Посчитать НОД</button>
+          <p id="gcd-output" class="fun-output">Ответ появится тут.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section">
       <h2>Каталог разделов</h2>
       <div class="grid">
@@ -68,5 +94,67 @@
   </main>
 
   <footer>MathSite · проект призванный помочь помочь студентам</footer>
+
+  <script>
+    const facts = [
+      'Сумма первых n нечётных чисел всегда равна n².',
+      'Число π можно найти даже методом «булавки Бюффона».',
+      '0! = 1 — это нужно, чтобы формулы комбинаторики не ломались.',
+      'Среди 6 людей почти всегда найдутся либо 3 знакомых, либо 3 незнакомых (теорема Рамсея R(3,3)=6).',
+      'Если a и b взаимно просты, то уравнение ax + by = 1 имеет целые решения.'
+    ];
+
+    const challenges = [
+      'Докажи, что сумма углов треугольника равна 180° (через параллельные прямые).',
+      'Найди остаток от 7¹⁰⁰ при делении на 13.',
+      'Проверь, сходится ли ряд Σ 1/n² и почему.',
+      'Сколько способов выбрать 3 студента из 10?',
+      'Реши в целых числах: 15x + 21y = 3.'
+    ];
+
+    const factBtn = document.getElementById('fact-btn');
+    const factOutput = document.getElementById('fact-output');
+    const challengeText = document.getElementById('challenge-text');
+    const nextChallenge = document.getElementById('next-challenge');
+    const gcdBtn = document.getElementById('gcd-btn');
+
+    function randomItem(items) {
+      return items[Math.floor(Math.random() * items.length)];
+    }
+
+    factBtn.addEventListener('click', () => {
+      factOutput.textContent = randomItem(facts);
+    });
+
+    nextChallenge.addEventListener('click', () => {
+      challengeText.textContent = randomItem(challenges);
+    });
+
+    function gcd(a, b) {
+      let x = Math.abs(a);
+      let y = Math.abs(b);
+      while (y !== 0) {
+        const temp = y;
+        y = x % y;
+        x = temp;
+      }
+      return x;
+    }
+
+    gcdBtn.addEventListener('click', () => {
+      const a = Number(document.getElementById('gcd-a').value);
+      const b = Number(document.getElementById('gcd-b').value);
+      const output = document.getElementById('gcd-output');
+
+      if (!Number.isFinite(a) || !Number.isFinite(b)) {
+        output.textContent = 'Нужны нормальные числа 😅';
+        return;
+      }
+
+      output.textContent = `НОД(${a}, ${b}) = ${gcd(a, b)}`;
+    });
+
+    challengeText.textContent = randomItem(challenges);
+  </script>
 </body>
 </html>

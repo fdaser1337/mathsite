@@ -149,3 +149,46 @@ footer {
   margin-bottom: 1rem;
   display: inline-block;
 }
+
+.hero-actions {
+  margin-top: 1rem;
+}
+
+.fun-btn {
+  background: linear-gradient(135deg, var(--accent-soft), var(--accent));
+  border: none;
+  color: #082f49;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 0.55rem 0.85rem;
+  cursor: pointer;
+}
+
+.fun-btn:hover {
+  filter: brightness(1.05);
+}
+
+.fun-output {
+  margin-top: 0.8rem;
+  color: #bae6fd;
+}
+
+.mini-games .card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.calc-card input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.45rem 0.6rem;
+  background: #0b1220;
+  color: var(--text);
+}
+
+.calc-card label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
