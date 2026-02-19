@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Линейная алгебра в MathLab: матрицы, определители и системы уравнений.">
+  <title>MathLab — Линейная алгебра</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner search-host">
+      <a class="brand" href="index.html">Math<span>Lab</span></a>
+      <nav class="nav-links" aria-label="Главная навигация">
+        <a href="index.html">Главная</a>
+        <a href="theorems.html">Теоремы</a>
+        <a href="integrals.html">Интегралы</a>
+        <a href="derivatives.html">Производные</a>
+        <a href="algebra.html" aria-current="page">Линейная алгебра</a>
+      </nav>
+      <div class="controls">
+        <div class="search-wrap">
+          <input type="search" placeholder="Поиск по темам" data-search-input>
+          <button type="button" data-search-btn>Найти</button>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+      </div>
+      <div class="search-results glass-card" data-search-results></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="tag">Линейная алгебра</span>
+      <h1>Матрицы, определители и системы</h1>
+      <p>Фундаментальные конструкции линейной алгебры с быстрым доступом к формулам и алгоритмам.</p>
+    </section>
+
+    <section class="section" id="matrices">
+      <h2>Матрицы</h2>
+      <article class="glass-card card">
+        <p>Матрица — прямоугольная таблица чисел. С матрицами выполняют сложение, умножение и транспонирование.</p>
+        <div class="math-box">\[A_{m\times n} = (a_{ij})\]</div>
+      </article>
+    </section>
+
+    <section class="section" id="determinants">
+      <h2>Определители</h2>
+      <article class="glass-card card">
+        <p>Определитель квадратной матрицы показывает, обратима ли матрица и как она масштабирует объём.</p>
+        <div class="math-box">\[\det\begin{pmatrix}a & b\\c & d\end{pmatrix}=ad-bc\]</div>
+      </article>
+    </section>
+
+    <section class="section" id="systems">
+      <h2>Системы линейных уравнений</h2>
+      <article class="glass-card card">
+        <p>Метод Гаусса последовательно преобразует расширенную матрицу системы к ступенчатому виду.</p>
+        <div class="math-box">\[\begin{cases}x + y = 3\\2x-y=0\end{cases}\Rightarrow x=1,\ y=2\]</div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container footer">© <span data-current-year></span> MathLab</footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

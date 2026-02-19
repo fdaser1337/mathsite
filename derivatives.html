@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Производные в MathLab: правила дифференцирования, таблица производных и примеры решения.">
+  <title>MathLab — Производные</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner search-host">
+      <a class="brand" href="index.html">Math<span>Lab</span></a>
+      <nav class="nav-links" aria-label="Главная навигация">
+        <a href="index.html">Главная</a>
+        <a href="theorems.html">Теоремы</a>
+        <a href="integrals.html">Интегралы</a>
+        <a href="derivatives.html" aria-current="page">Производные</a>
+        <a href="algebra.html">Линейная алгебра</a>
+      </nav>
+      <div class="controls">
+        <div class="search-wrap">
+          <input type="search" placeholder="Поиск по темам" data-search-input>
+          <button type="button" data-search-btn>Найти</button>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+      </div>
+      <div class="search-results glass-card" data-search-results></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="tag">Дифференциальное исчисление</span>
+      <h1>Производные: правила и таблицы</h1>
+      <p>Конспект ключевых правил дифференцирования и типовых вычислений.</p>
+    </section>
+
+    <section class="section" id="rules">
+      <h2>Правила дифференцирования</h2>
+      <div class="card-grid">
+        <article class="glass-card card"><h3>Линейность</h3><div class="math-box">\[(af+bg)' = af' + bg'\]</div></article>
+        <article class="glass-card card"><h3>Произведение</h3><div class="math-box">\[(fg)' = f'g + fg'\]</div></article>
+        <article class="glass-card card"><h3>Частное</h3><div class="math-box">\[\left(\frac{f}{g}\right)' = \frac{f'g-fg'}{g^2}\]</div></article>
+        <article class="glass-card card"><h3>Цепное правило</h3><div class="math-box">\[(f(g(x)))' = f'(g(x))\cdot g'(x)\]</div></article>
+      </div>
+    </section>
+
+    <section class="section" id="table">
+      <h2>Таблица производных</h2>
+      <div class="table-wrap glass-card card">
+        <table>
+          <thead><tr><th>Функция</th><th>Производная</th></tr></thead>
+          <tbody>
+            <tr><td>$x^n$</td><td>$nx^{n-1}$</td></tr>
+            <tr><td>$\sin x$</td><td>$\cos x$</td></tr>
+            <tr><td>$\cos x$</td><td>$-\sin x$</td></tr>
+            <tr><td>$e^x$</td><td>$e^x$</td></tr>
+            <tr><td>$\ln x$</td><td>$\frac{1}{x}$</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Пример решения</h2>
+      <article class="glass-card card">
+        <p>Найти производную функции $y=(3x^2+2x)\sin x$.</p>
+        <div class="math-box">\[y' = (6x+2)\sin x + (3x^2+2x)\cos x\]</div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container footer">© <span data-current-year></span> MathLab</footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

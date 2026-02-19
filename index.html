@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MathLab — бесплатный онлайн-справочник по математике: теоремы, интегралы, производные и линейная алгебра.">
+  <meta name="keywords" content="математика, теоремы, интегралы, производные, линейная алгебра, MathLab">
+  <meta name="author" content="MathLab">
+  <title>MathLab — Онлайн-справочник по математике</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner search-host">
+      <a class="brand" href="index.html">Math<span>Lab</span></a>
+      <nav class="nav-links" aria-label="Главная навигация">
+        <a href="index.html" aria-current="page">Главная</a>
+        <a href="theorems.html">Теоремы</a>
+        <a href="integrals.html">Интегралы</a>
+        <a href="derivatives.html">Производные</a>
+        <a href="algebra.html">Линейная алгебра</a>
+      </nav>
+      <div class="controls">
+        <div class="search-wrap">
+          <input type="search" placeholder="Поиск по темам" aria-label="Поиск по сайту" data-search-input>
+          <button type="button" data-search-btn>Найти</button>
+        </div>
+        <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+      </div>
+      <div class="search-results glass-card" data-search-results></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <span class="tag">Бесплатная образовательная платформа</span>
+      <h1>MathLab — современный онлайн-справочник для студентов</h1>
+      <p>Удобный и структурированный доступ к теории, формулам и примерам решений. Изучайте ключевые темы математики в ритме, который подходит именно вам.</p>
+      <a class="btn" href="theorems.html">Перейти к материалам</a>
+
+      <div class="hero-grid">
+        <article class="glass-card card">
+          <h3>Пошаговое обучение</h3>
+          <p>От базовых определений к понятным практическим задачам.</p>
+        </article>
+        <article class="glass-card card">
+          <h3>Формулы в MathJax</h3>
+          <p>Корректное отображение математических записей на любом устройстве.</p>
+        </article>
+        <article class="glass-card card">
+          <h3>Умный поиск</h3>
+          <p>Быстро находите темы по названиям и описаниям без backend.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <h2>О проекте</h2>
+      <p class="section-intro">MathLab создан как бесплатный справочник, который помогает повторять теорию и тренировать понимание математических идей.</p>
+      <div class="card-grid">
+        <article class="glass-card card">
+          <h3>Что внутри</h3>
+          <p>Теоремы, интегралы, производные и линейная алгебра с пояснениями и примерами решения задач.</p>
+        </article>
+        <article class="glass-card card">
+          <h3>Для кого</h3>
+          <p>Для студентов, старшеклассников и всех, кто хочет быстро освежить ключевые темы высшей математики.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="recommendations">
+      <h2>Рекомендации по использованию</h2>
+      <p class="section-intro">Чтобы учиться эффективнее, используйте следующий цикл:</p>
+      <div class="card-grid triple">
+        <article class="glass-card card"><h3>1. Теория</h3><p>Прочитайте краткое описание темы и базовые формулы.</p></article>
+        <article class="glass-card card"><h3>2. Разбор</h3><p>Просмотрите подробное объяснение и логику доказательств.</p></article>
+        <article class="glass-card card"><h3>3. Практика</h3><p>Решите примеры и сравните ход решения с эталоном.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="popular">
+      <h2>Популярные темы</h2>
+      <p class="section-intro">Самые часто просматриваемые материалы на платформе.</p>
+      <div class="card-grid">
+        <a class="glass-card card" href="theorems.html#pythagoras"><h3>Теорема Пифагора</h3><p>Базовая геометрия и применение в задачах.</p></a>
+        <a class="glass-card card" href="integrals.html#definite"><h3>Определённый интеграл</h3><p>Площадь, физический смысл и вычисление.</p></a>
+        <a class="glass-card card" href="derivatives.html#rules"><h3>Цепное правило</h3><p>Дифференцирование сложных функций.</p></a>
+        <a class="glass-card card" href="algebra.html#systems"><h3>Метод Гаусса</h3><p>Решение систем линейных уравнений.</p></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">© <span data-current-year></span> MathLab. Сделано для удобного изучения математики.</footer>
+  <script src="js/main.js" defer></script>
+</body>
+</html>
