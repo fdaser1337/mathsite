@@ -1,11 +1,14 @@
 const SEARCH_INDEX = [
   { title: 'Главная: MathLab', text: 'Онлайн-справочник по математике для студентов', url: 'index.html' },
-  { title: 'О проекте MathLab', text: 'Открытый образовательный проект студентов ЮФУ ИВТиПТ', url: 'about.html' },
+  { title: 'О проекте MathLab', text: 'Документация проекта и маршрут по курсам 1–4', url: 'about.html' },
 
   { title: 'Теоремы: обзор', text: 'Каталог теорем с переходом на отдельные страницы', url: 'theorems.html' },
-  { title: 'Теорема Пифагора', text: 'Полная формулировка, доказательство и применение', url: 'theorem-pythagoras.html' },
+  { title: 'Теорема Пифагора', text: 'Полная формулировка, доказательство и визуализация', url: 'theorem-pythagoras.html' },
   { title: 'Великая теорема Ферма', text: 'Формулировка, исторический контекст и следствия', url: 'theorem-fermat.html' },
   { title: 'Теорема Больцано–Вейерштрасса', text: 'Компактность и сходимость подпоследовательностей', url: 'theorem-bolzano-weierstrass.html' },
+  { title: 'Теорема Кэли–Гамильтона', text: 'Матрицы и характеристический многочлен', url: 'theorem-cayley-hamilton.html' },
+  { title: 'Теорема Лагранжа', text: 'Теорема о среднем значении', url: 'theorem-mean-value.html' },
+  { title: 'Теорема Гаусса–Остроградского', text: 'Поток через поверхность и дивергенция', url: 'theorem-gauss-divergence.html' },
 
   { title: 'Интегралы: обзор', text: 'Разделы и ссылки на подробную теорию', url: 'integrals.html' },
   { title: 'Неопределённые интегралы', text: 'Определение, свойства, примеры вычислений', url: 'integrals-indefinite.html' },
@@ -92,6 +95,46 @@ function initSearch() {
   });
 }
 
+function initTheoremPlots() {
+  if (typeof window.Plotly === 'undefined') return;
+
+  const pythagorasPlot = document.getElementById('pythagoras-plot');
+  if (pythagorasPlot) {
+    window.Plotly.newPlot(pythagorasPlot, [{ x: [0, 3], y: [0, 4], mode: 'lines+markers', name: 'катеты', line: { color: '#3b82f6' } }], { margin: { t: 20, r: 10, b: 35, l: 35 }, xaxis: { title: 'a' }, yaxis: { title: 'b' } }, { displayModeBar: false, responsive: true });
+  }
+
+  const fermatPlot = document.getElementById('fermat-plot');
+  if (fermatPlot) {
+    const x = [1, 2, 3, 4, 5];
+    window.Plotly.newPlot(fermatPlot, [{ x, y: x.map((v) => v ** 2), mode: 'lines', name: 'n=2' }, { x, y: x.map((v) => v ** 3), mode: 'lines', name: 'n=3' }], { margin: { t: 20, r: 10, b: 35, l: 45 }, xaxis: { title: 'x' }, yaxis: { title: 'x^n' } }, { displayModeBar: false, responsive: true });
+  }
+
+  const bolzanoPlot = document.getElementById('bolzano-plot');
+  if (bolzanoPlot) {
+    const pointsX = Array.from({ length: 35 }, (_, i) => i + 1);
+    const pointsY = pointsX.map((k) => Math.sin(k / 2) / (1 + k / 10));
+    window.Plotly.newPlot(bolzanoPlot, [{ x: pointsX, y: pointsY, mode: 'markers', marker: { color: '#8b5cf6' }, name: 'последовательность' }], { margin: { t: 20, r: 10, b: 35, l: 35 } }, { displayModeBar: false, responsive: true });
+  }
+
+  const cayleyPlot = document.getElementById('cayley-plot');
+  if (cayleyPlot) {
+    window.Plotly.newPlot(cayleyPlot, [{ z: [[2, 1], [1, 2]], type: 'heatmap', colorscale: 'Blues', showscale: false }], { margin: { t: 20, r: 10, b: 30, l: 30 } }, { displayModeBar: false, responsive: true });
+  }
+
+  const mvtPlot = document.getElementById('mvt-plot');
+  if (mvtPlot) {
+    const x = Array.from({ length: 60 }, (_, i) => i / 10);
+    const y = x.map((v) => 0.2 * v * v + 1);
+    window.Plotly.newPlot(mvtPlot, [{ x, y, mode: 'lines', name: 'f(x)' }, { x: [1, 5], y: [1.2, 6], mode: 'lines', name: 'секущая' }], { margin: { t: 20, r: 10, b: 35, l: 35 } }, { displayModeBar: false, responsive: true });
+  }
+
+  const gaussPlot = document.getElementById('gauss-plot');
+  if (gaussPlot) {
+    const t = Array.from({ length: 100 }, (_, i) => i * 0.1);
+    window.Plotly.newPlot(gaussPlot, [{ x: t.map((v) => Math.cos(v)), y: t.map((v) => Math.sin(v)), mode: 'markers', marker: { color: t, colorscale: 'Viridis', size: 7 }, name: 'поток' }], { margin: { t: 20, r: 10, b: 30, l: 30 } }, { displayModeBar: false, responsive: true });
+  }
+}
+
 if (toggleBtn) {
   toggleBtn.addEventListener('click', () => {
     const nextTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
@@ -103,3 +146,4 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
 
 initTheme();
 initSearch();
+initTheoremPlots();

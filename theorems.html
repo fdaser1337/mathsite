@@ -1,6 +1,6 @@
 <!doctype html><html lang="ru"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Каталог теорем MathLab с переходом на подробные страницы: формулировки, доказательства, применения.">
+<meta name="description" content="Каталог теорем MathLab с переходом на подробные страницы: формулировки, доказательства, применения и видео.">
 <title>MathLab — Теоремы</title><link rel="stylesheet" href="css/styles.css"></head>
 <body>
 <header class="site-header"><div class="container header-inner search-host">
@@ -11,16 +11,53 @@
 </div></header>
 
 <main class="container">
-<section class="hero"><span class="tag">Раздел теорем</span><h1>Теоремы с полным академическим изложением</h1><p>Каждая теорема вынесена на отдельную страницу, где представлены строгая формулировка, доказательство, пояснения и примеры применения.</p></section>
+<section class="hero"><span class="tag">Раздел теорем</span><h1>Теоремы с полным академическим изложением</h1><p>Каждая теорема вынесена на отдельную страницу: строгая формулировка, доказательство, примеры и ссылки на видеоразборы МФТИ Study.</p></section>
 <section class="section">
 <h2>Список теорем</h2>
-<div class="card-grid">
-<a class="glass-card card" href="theorem-pythagoras.html"><h3>Теорема Пифагора</h3><p>Прямоугольный треугольник, классическое доказательство и инженерные применения.</p></a>
-<a class="glass-card card" href="theorem-fermat.html"><h3>Великая теорема Ферма</h3><p>Полная формулировка, исторический контекст и современные идеи доказательства.</p></a>
-<a class="glass-card card" href="theorem-bolzano-weierstrass.html"><h3>Теорема Больцано–Вейерштрасса</h3><p>Ключевой результат анализа о существовании сходящихся подпоследовательностей.</p></a>
+<div class="card-grid triple">
+<a class="glass-card card" href="theorem-pythagoras.html"><h3>Теорема Пифагора</h3><p>Прямоугольный треугольник, классическое доказательство и визуальная геометрия.</p></a>
+<a class="glass-card card" href="theorem-fermat.html"><h3>Великая теорема Ферма</h3><p>Исторический контекст и современные идеи доказательства через эллиптические кривые.</p></a>
+<a class="glass-card card" href="theorem-bolzano-weierstrass.html"><h3>Теорема Больцано–Вейерштрасса</h3><p>Сходимость подпоследовательностей и компактность в анализе.</p></a>
+<a class="glass-card card" href="theorem-cayley-hamilton.html"><h3>Теорема Кэли–Гамильтона</h3><p>Любая квадратная матрица удовлетворяет своему характеристическому многочлену.</p></a>
+<a class="glass-card card" href="theorem-mean-value.html"><h3>Теорема Лагранжа (о среднем)</h3><p>Связь мгновенной и средней скорости изменения функции на отрезке.</p></a>
+<a class="glass-card card" href="theorem-gauss-divergence.html"><h3>Теорема Гаусса–Остроградского</h3><p>Поток векторного поля через поверхность и дивергенция в объёме.</p></a>
 </div>
 </section>
 </main>
-<footer class="container footer">© <span data-current-year></span> MathLab</footer>
+<footer class="container footer">
+  <div class="glass-card footer-panel">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
 <script src="js/main.js" defer></script>
 </body></html>
