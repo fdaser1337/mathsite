@@ -353,3 +353,78 @@ th {
   margin: 0.45rem 0 0;
   padding-left: 1.2rem;
 }
+
+.footer-panel {
+  padding: 1.1rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.footer-grid h3,
+.footer-grid h4 {
+  margin: 0 0 0.4rem;
+}
+
+.footer-grid p,
+.footer-grid li,
+.footer-copy {
+  color: var(--muted);
+}
+
+.footer-grid ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.footer-copy {
+  margin: 0.9rem 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.media-links {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.media-links a {
+  color: var(--primary-strong);
+}
+
+.theorem-visual {
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface-solid) 85%, transparent);
+}
+
+.plot {
+  margin-top: 0.8rem;
+  min-height: 250px;
+}
+
+.course-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.course-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.7rem;
+  background: color-mix(in srgb, var(--surface-solid) 85%, transparent);
+}
+
+@media (min-width: 860px) {
+  .footer-grid {
+    grid-template-columns: 1.4fr repeat(3, 1fr);
+  }
+
+  .course-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
