@@ -106,3 +106,81 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
 
 initTheme();
 initSearch();
+initTheoremCourseFilter();
+
+
+function applyCourseFilter(course) {
+  const theoremCards = document.querySelectorAll('[data-theorem-card]');
+  const filterButtons = document.querySelectorAll('[data-course-filter] [data-course]');
+  const filterStatus = document.querySelector('[data-filter-status]');
+
+  if (!theoremCards.length || !filterButtons.length) return;
+
+  let visibleCount = 0;
+
+  theoremCards.forEach((card) => {
+    const cardCourses = (card.getAttribute('data-courses') || '').split(',').map((item) => item.trim()).filter(Boolean);
+    const isVisible = course === 'all' || cardCourses.includes(course);
+    card.hidden = !isVisible;
+    if (isVisible) visibleCount += 1;
+  });
+
+  filterButtons.forEach((button) => {
+    const isActive = button.getAttribute('data-course') === course;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
+
+  if (filterStatus) {
+    if (course === 'all') {
+      filterStatus.textContent = `Показаны все теоремы: ${visibleCount}.`;
+    } else {
+      filterStatus.textContent = `Показаны теоремы для ${course} курса: ${visibleCount}.`;
+    }
+  }
+}
+
+function resolveCourseFromHash() {
+  const normalizedHash = window.location.hash.toLowerCase();
+  const match = normalizedHash.match(/#course-(all|[1-4])/);
+  return match ? match[1] : 'all';
+}
+
+function initTheoremCourseFilter() {
+  const filterRoot = document.querySelector('[data-course-filter]');
+  if (!filterRoot) return;
+
+  const filterButtons = filterRoot.querySelectorAll('[data-course]');
+  if (!filterButtons.length) return;
+
+  const setCourse = (course, shouldReplaceHash = false) => {
+    applyCourseFilter(course);
+    const nextHash = course === 'all' ? '' : `#course-${course}`;
+    if (shouldReplaceHash) {
+      history.replaceState(null, '', `${window.location.pathname}${window.location.search}${nextHash}`);
+    } else if (window.location.hash !== nextHash) {
+      window.location.hash = nextHash;
+    }
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const course = button.getAttribute('data-course') || 'all';
+      setCourse(course);
+    });
+  });
+
+  document.querySelectorAll('[data-hash-course]').forEach((tag) => {
+    tag.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const course = tag.getAttribute('data-hash-course') || 'all';
+      setCourse(course);
+    });
+  });
+
+  applyCourseFilter(resolveCourseFromHash());
+  window.addEventListener('hashchange', () => {
+    applyCourseFilter(resolveCourseFromHash());
+  });
+}
