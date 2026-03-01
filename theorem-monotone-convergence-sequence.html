@@ -1,21 +1,86 @@
-<html>
+<!doctype html>
+<html lang="ru">
 <head>
-  <title>Теорема о монотонной сходимости последовательности</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о монотонной сходимости последовательности — полная справочная запись с математическими формулами и строгими условиями применимости.">
+  <title>MathLab — Теорема о монотонной сходимости последовательности</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-  <h1>Теорема о монотонной сходимости последовательности</h1>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links" aria-label="Главная навигация">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
+        <button type="button" data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
 
-  <h2>Формулировка</h2>
-  Всякая монотонная и ограниченная числовая последовательность сходится.
+<main class="container theorem-page">
+  <section class="hero">
+    <span class="tag">Справочник</span>
+    <h1>Теорема о монотонной сходимости последовательности</h1>
+    <p>Ниже приведена цельная запись теоремы в академичном формате: условия, утверждение, идея доказательства и типичный пример применения.</p>
+  </section>
 
-  <h2>Условия</h2>
-  Последовательность x_n монотонна и ограничена.
+  <section class="section">
+    <article class="glass-card content-block">
+      <h2>Теорема</h2>
+      <p>Всякая монотонная и ограниченная числовая последовательность сходится.</p>
+      <p><strong>Условия применимости.</strong> Последовательность x_n монотонна и ограничена.</p>
+      <p><strong>Идея доказательства.</strong> Берётся точная грань множества значений и проверяется определение предела.</p>
+      <p><strong>Пример.</strong> x_n = 1 - 1/n возрастает и ограничена сверху 1, значит x_n -> 1.</p>
+      <p><strong>Видео:</strong> <a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">лекции и разборы на YouTube (МФТИ Study)</a>.</p>
+    </article>
+  </section>
+</main>
 
-  <h2>Идея доказательства</h2>
-  Берётся точная грань множества значений и проверяется определение предела.
-
-  <h2>Пример</h2>
-  x_n = 1 - 1/n возрастает и ограничена сверху 1, значит x_n -> 1.
-
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+<script src="js/main.js" defer></script>
 </body>
 </html>
