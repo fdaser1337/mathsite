@@ -31,6 +31,8 @@ const THEOREM_TAGS = [
   { title: 'Теорема Лагранжа (о среднем)', url: 'theorem-mean-value.html', section: 'производные', course: 2 },
   { title: 'Теорема Кэли–Гамильтона', url: 'theorem-cayley-hamilton.html', section: 'линейная алгебра', course: 3 },
   { title: 'Теорема Гаусса–Остроградского', url: 'theorem-gauss-divergence.html', section: 'интегралы', course: 3 },
+  { title: 'Теорема Коши о среднем', url: 'theorem-mean-value.html', section: 'анализ', course: 3 },
+  { title: 'Следствия теоремы Кэли–Гамильтона', url: 'theorem-cayley-hamilton.html', section: 'линейная алгебра', course: 3 },
   { title: 'Великая теорема Ферма', url: 'theorem-fermat.html', section: 'алгебра', course: 4 }
 ];
 
@@ -48,7 +50,7 @@ function renderCourseTheorems(course) {
     <a class="course-theorem-item" href="${item.url}">
       <h4>${item.title}</h4>
       <div class="hashtag-list">
-        <span class="hashtag">#${item.section.replace(' ', '')}</span>
+        <span class="hashtag">#${item.section.replace(/\s+/g, '')}</span>
         <span class="hashtag">#${item.course}курс</span>
       </div>
     </a>
@@ -70,6 +72,26 @@ function initCourseFilters() {
 
   buttons[0].classList.add('active');
   renderCourseTheorems(Number(buttons[0].dataset.courseFilter));
+}
+
+
+function initTheoremCatalogFilters() {
+  const buttons = Array.from(document.querySelectorAll('[data-theorem-filter]'));
+  const cards = Array.from(document.querySelectorAll('[data-theorem-catalog] .theorem-card'));
+  if (!buttons.length || !cards.length) return;
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const value = button.dataset.theoremFilter;
+      buttons.forEach((item) => item.classList.remove('active'));
+      button.classList.add('active');
+
+      cards.forEach((card) => {
+        const show = value === 'all' || card.dataset.course === value;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  });
 }
 
 const body = document.body;
@@ -155,3 +177,4 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
 initTheme();
 initSearch();
 initCourseFilters();
+initTheoremCatalogFilters();

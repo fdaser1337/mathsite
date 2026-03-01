@@ -470,3 +470,20 @@ th {
 .course-theorem-item h4 {
   margin: 0 0 0.2rem;
 }
+
+.course-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 0.9rem;
+}
+
+.theorem-filter-btn {
+  padding: 0.4rem 0.8rem;
+}
+
+.theorem-filter-btn.active {
+  background: var(--gradient);
+  color: #fff;
+  border-color: transparent;
+}

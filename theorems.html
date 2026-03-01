@@ -14,7 +14,14 @@
 <section class="hero"><span class="tag">Раздел теорем</span><h1>Теоремы с полным академическим изложением</h1><p>Каждая теорема вынесена на отдельную страницу: строгая формулировка, доказательство, примеры и ссылки на видеоразборы МФТИ Study.</p></section>
 <section class="section">
 <h2>Список теорем</h2>
-<div class="card-grid triple">
+<div class="course-filter-row">
+  <button class="theme-toggle theorem-filter-btn active" type="button" data-theorem-filter="all">Все курсы</button>
+  <button class="theme-toggle theorem-filter-btn" type="button" data-theorem-filter="1">1 курс</button>
+  <button class="theme-toggle theorem-filter-btn" type="button" data-theorem-filter="2">2 курс</button>
+  <button class="theme-toggle theorem-filter-btn" type="button" data-theorem-filter="3">3 курс</button>
+  <button class="theme-toggle theorem-filter-btn" type="button" data-theorem-filter="4">4 курс</button>
+</div>
+<div class="card-grid triple" data-theorem-catalog>
 <a class="glass-card card theorem-card" href="theorem-pythagoras.html" data-course="1" data-section="geometry"><h3>Теорема Пифагора</h3><p>Прямоугольный треугольник, классическое доказательство и геометрические следствия.</p><p class="hashtag-list"><span class="hashtag">#геометрия</span><span class="hashtag">#1курс</span></p></a>
 <a class="glass-card card theorem-card" href="theorem-fermat.html" data-course="4" data-section="algebra"><h3>Великая теорема Ферма</h3><p>Исторический контекст и современные идеи доказательства через эллиптические кривые.</p><p class="hashtag-list"><span class="hashtag">#алгебра</span><span class="hashtag">#4курс</span></p></a>
 <a class="glass-card card theorem-card" href="theorem-bolzano-weierstrass.html" data-course="2" data-section="analysis"><h3>Теорема Больцано–Вейерштрасса</h3><p>Сходимость подпоследовательностей и компактность в анализе.</p><p class="hashtag-list"><span class="hashtag">#анализ</span><span class="hashtag">#2курс</span></p></a>
