@@ -300,9 +300,11 @@ th {
 }
 
 .footer {
-  margin: 2.4rem 0 1rem;
-  padding: 1rem;
-  text-align: center;
+  margin-top: 2.4rem;
+  padding: 0.9rem 0 1.1rem;
+  width: 100%;
+  background: var(--surface-solid);
+  border-top: 1px solid var(--border);
   color: var(--muted);
 }
 
@@ -355,7 +357,7 @@ th {
 }
 
 .footer-panel {
-  padding: 1.1rem;
+  padding: 1.1rem 0;
 }
 
 .footer-grid {
@@ -395,17 +397,6 @@ th {
   color: var(--primary-strong);
 }
 
-.theorem-visual {
-  padding: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--surface-solid) 85%, transparent);
-}
-
-.plot {
-  margin-top: 0.8rem;
-  min-height: 250px;
-}
 
 .course-grid {
   display: grid;
