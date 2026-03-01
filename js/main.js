@@ -1,14 +1,8 @@
-const SEARCH_INDEX = [
+const BASE_SEARCH_INDEX = [
   { title: 'Главная: MathLab', text: 'Онлайн-справочник по математике для студентов', url: 'index.html' },
   { title: 'О проекте MathLab', text: 'Документация проекта и маршрут по курсам 1–4', url: 'about.html' },
 
-  { title: 'Теоремы: обзор', text: 'Каталог теорем с переходом на отдельные страницы', url: 'theorems.html' },
-  { title: 'Теорема Пифагора', text: 'Полная формулировка, доказательство и применение', url: 'theorem-pythagoras.html' },
-  { title: 'Великая теорема Ферма', text: 'Формулировка, исторический контекст и значение', url: 'theorem-fermat.html' },
-  { title: 'Теорема Больцано–Вейерштрасса', text: 'Компактность, предельные переходы и сходимость', url: 'theorem-bolzano-weierstrass.html' },
-  { title: 'Теорема Кэли–Гамильтона', text: 'Матрицы и характеристический многочлен', url: 'theorem-cayley-hamilton.html' },
-  { title: 'Теорема Лагранжа', text: 'Теорема о среднем значении', url: 'theorem-mean-value.html' },
-  { title: 'Теорема Гаусса–Остроградского', text: 'Поток через поверхность и дивергенция', url: 'theorem-gauss-divergence.html' },
+  { title: 'Теоремы: обзор', text: 'Каталог теорем с фильтрами, хэштегами и поиском', url: 'theorems.html' },
 
   { title: 'Интегралы: обзор', text: 'Разделы и ссылки на подробную теорию', url: 'integrals.html' },
   { title: 'Неопределённые интегралы', text: 'Определение, свойства, примеры вычислений', url: 'integrals-indefinite.html' },
@@ -23,6 +17,640 @@ const SEARCH_INDEX = [
   { title: 'Линейная алгебра', text: 'Матрицы, определители, системы уравнений', url: 'algebra.html' },
   { title: 'Геометрия в пространстве', text: 'Прямые и плоскости, параллельность и пересечение', url: 'geometry-space.html' }
 ];
+
+const THEOREM_CATALOG = [
+  {
+    "title": "Теорема Больцано-Коши о промежуточном значении",
+    "url": "theorem-bolzano-cauchy-intermediate.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Теорема Больцано-Коши о промежуточном значении"
+  },
+  {
+    "title": "Теорема Больцано–Вейерштрасса",
+    "url": "theorem-bolzano-weierstrass.html",
+    "course": "2",
+    "tags": [
+      "многомерный-анализ",
+      "матанализ"
+    ],
+    "description": "Фундаментальный результат: Теорема Больцано–Вейерштрасса"
+  },
+  {
+    "title": "Лемма Бореля—Кантелли",
+    "url": "theorem-borel-cantelli.html",
+    "course": "3",
+    "tags": [
+      "вероятность",
+      "почти-верная-сходимость"
+    ],
+    "description": "Фундаментальный результат: Лемма Бореля—Кантелли"
+  },
+  {
+    "title": "Критерий Коши для сходимости последовательности",
+    "url": "theorem-cauchy-criterion-sequence.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Критерий Коши для сходимости последовательности"
+  },
+  {
+    "title": "Интегральная формула Коши",
+    "url": "theorem-cauchy-integral-formula.html",
+    "course": "3",
+    "tags": [
+      "комплексный-анализ",
+      "голоморфные-функции"
+    ],
+    "description": "Фундаментальный результат: Интегральная формула Коши"
+  },
+  {
+    "title": "Теорема Кэли–Гамильтона",
+    "url": "theorem-cayley-hamilton.html",
+    "course": "3",
+    "tags": [
+      "линейная-алгебра",
+      "матрицы"
+    ],
+    "description": "Фундаментальный результат: Теорема Кэли–Гамильтона"
+  },
+  {
+    "title": "Центральная предельная теорема",
+    "url": "theorem-central-limit.html",
+    "course": "3",
+    "tags": [
+      "вероятность",
+      "предельные-теоремы"
+    ],
+    "description": "Фундаментальный результат: Центральная предельная теорема"
+  },
+  {
+    "title": "Теорема о замене переменных в кратном интеграле",
+    "url": "theorem-change-of-variables-multiple-integral.html",
+    "course": "2",
+    "tags": [
+      "кратные-интегралы",
+      "якобиан"
+    ],
+    "description": "Фундаментальный результат: Теорема о замене переменных в кратном интеграле"
+  },
+  {
+    "title": "Теорема Шевалле—Уорнинга",
+    "url": "theorem-chevalley-warning.html",
+    "course": "4",
+    "tags": [
+      "алгебра",
+      "конечные-поля"
+    ],
+    "description": "Фундаментальный результат: Теорема Шевалле—Уорнинга"
+  },
+  {
+    "title": "Китайская теорема об остатках",
+    "url": "theorem-chinese-remainder.html",
+    "course": "4",
+    "tags": [
+      "абстрактная-алгебра",
+      "кольца"
+    ],
+    "description": "Фундаментальный результат: Китайская теорема об остатках"
+  },
+  {
+    "title": "Компакт Хаусдорфа нормален",
+    "url": "theorem-compact-hausdorff-normal.html",
+    "course": "4",
+    "tags": [
+      "топология",
+      "компактность"
+    ],
+    "description": "Фундаментальный результат: Компакт Хаусдорфа нормален"
+  },
+  {
+    "title": "Теорема Дирихле о простых в арифметических прогрессиях",
+    "url": "theorem-dirichlet-arithmetic-progressions.html",
+    "course": "4",
+    "tags": [
+      "теория-чисел",
+      "простые-числа"
+    ],
+    "description": "Фундаментальный результат: Теорема Дирихле о простых в арифметических прогрессиях"
+  },
+  {
+    "title": "Теорема Лебега о мажорируемой сходимости",
+    "url": "theorem-dominated-convergence.html",
+    "course": "3",
+    "tags": [
+      "теория-меры",
+      "интеграл-лебега"
+    ],
+    "description": "Фундаментальный результат: Теорема Лебега о мажорируемой сходимости"
+  },
+  {
+    "title": "Критерий Эйлера",
+    "url": "theorem-euler-criterion.html",
+    "course": "4",
+    "tags": [
+      "теория-чисел",
+      "сравнения"
+    ],
+    "description": "Фундаментальный результат: Критерий Эйлера"
+  },
+  {
+    "title": "Теорема о линейной системе ОДУ",
+    "url": "theorem-existence-linear-ode-system.html",
+    "course": "2",
+    "tags": [
+      "диффуры",
+      "линейные-системы"
+    ],
+    "description": "Фундаментальный результат: Теорема о линейной системе ОДУ"
+  },
+  {
+    "title": "Лемма Фату",
+    "url": "theorem-fatou-lemma.html",
+    "course": "3",
+    "tags": [
+      "теория-меры",
+      "интеграл-лебега"
+    ],
+    "description": "Фундаментальный результат: Лемма Фату"
+  },
+  {
+    "title": "Великая теорема Ферма",
+    "url": "theorem-fermat.html",
+    "course": "4",
+    "tags": [
+      "теория-чисел",
+      "диофантовы-уравнения"
+    ],
+    "description": "Фундаментальный результат: Великая теорема Ферма"
+  },
+  {
+    "title": "Первая теорема об изоморфизме групп",
+    "url": "theorem-first-isomorphism-group.html",
+    "course": "4",
+    "tags": [
+      "абстрактная-алгебра",
+      "теория-групп"
+    ],
+    "description": "Фундаментальный результат: Первая теорема об изоморфизме групп"
+  },
+  {
+    "title": "Теорема Тонелли",
+    "url": "theorem-fubini-tonelli.html",
+    "course": "3",
+    "tags": [
+      "теория-меры",
+      "произведение-мер"
+    ],
+    "description": "Фундаментальный результат: Теорема Тонелли"
+  },
+  {
+    "title": "Теорема Фубини",
+    "url": "theorem-fubini.html",
+    "course": "2",
+    "tags": [
+      "кратные-интегралы",
+      "мера"
+    ],
+    "description": "Фундаментальный результат: Теорема Фубини"
+  },
+  {
+    "title": "Основная теорема теории Галуа",
+    "url": "theorem-fundamental-galois-theory.html",
+    "course": "4",
+    "tags": [
+      "теория-галуа",
+      "алгебра"
+    ],
+    "description": "Фундаментальный результат: Основная теорема теории Галуа"
+  },
+  {
+    "title": "Основная теорема теории пространственных кривых",
+    "url": "theorem-fundamental-theorem-space-curves.html",
+    "course": "4",
+    "tags": [
+      "диффгеометрия",
+      "кривые"
+    ],
+    "description": "Фундаментальный результат: Основная теорема теории пространственных кривых"
+  },
+  {
+    "title": "Критерий разрешимости в радикалах",
+    "url": "theorem-galois-solvability.html",
+    "course": "4",
+    "tags": [
+      "теория-галуа",
+      "группы"
+    ],
+    "description": "Фундаментальный результат: Критерий разрешимости в радикалах"
+  },
+  {
+    "title": "Теорема Гаусса—Бонне",
+    "url": "theorem-gauss-bonnet.html",
+    "course": "4",
+    "tags": [
+      "диффгеометрия",
+      "кривизна"
+    ],
+    "description": "Фундаментальный результат: Теорема Гаусса—Бонне"
+  },
+  {
+    "title": "Теорема Гаусса–Остроградского",
+    "url": "theorem-gauss-divergence.html",
+    "course": "2",
+    "tags": [
+      "векторный-анализ",
+      "интегралы"
+    ],
+    "description": "Фундаментальный результат: Теорема Гаусса–Остроградского"
+  },
+  {
+    "title": "Теорема Грина",
+    "url": "theorem-green.html",
+    "course": "2",
+    "tags": [
+      "векторный-анализ",
+      "интегралы"
+    ],
+    "description": "Фундаментальный результат: Теорема Грина"
+  },
+  {
+    "title": "Неравенство Гронуолла",
+    "url": "theorem-gronwall.html",
+    "course": "2",
+    "tags": [
+      "диффуры",
+      "оценки"
+    ],
+    "description": "Фундаментальный результат: Неравенство Гронуолла"
+  },
+  {
+    "title": "Теорема Хана—Банаха",
+    "url": "theorem-hahn-banach.html",
+    "course": "3",
+    "tags": [
+      "функциональный-анализ",
+      "банаховы-пространства"
+    ],
+    "description": "Фундаментальный результат: Теорема Хана—Банаха"
+  },
+  {
+    "title": "Теорема Гейне—Кантора",
+    "url": "theorem-heine-cantor.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Теорема Гейне—Кантора"
+  },
+  {
+    "title": "Теорема о проекции в гильбертовом пространстве",
+    "url": "theorem-hilbert-projection.html",
+    "course": "3",
+    "tags": [
+      "функциональный-анализ",
+      "гильбертовы-пространства"
+    ],
+    "description": "Фундаментальный результат: Теорема о проекции в гильбертовом пространстве"
+  },
+  {
+    "title": "Теорема Хопфа—Ринова",
+    "url": "theorem-hopf-rinow.html",
+    "course": "4",
+    "tags": [
+      "диффгеометрия",
+      "риманова-геометрия"
+    ],
+    "description": "Фундаментальный результат: Теорема Хопфа—Ринова"
+  },
+  {
+    "title": "Теорема о неявной функции",
+    "url": "theorem-implicit-function.html",
+    "course": "2",
+    "tags": [
+      "многомерный-анализ",
+      "матанализ"
+    ],
+    "description": "Фундаментальный результат: Теорема о неявной функции"
+  },
+  {
+    "title": "Теорема об обратной функции",
+    "url": "theorem-inverse-function.html",
+    "course": "2",
+    "tags": [
+      "многомерный-анализ",
+      "матанализ"
+    ],
+    "description": "Фундаментальный результат: Теорема об обратной функции"
+  },
+  {
+    "title": "Критерий обратимости матрицы",
+    "url": "theorem-invertible-matrix.html",
+    "course": "1",
+    "tags": [
+      "линейная-алгебра",
+      "матрицы"
+    ],
+    "description": "Фундаментальный результат: Критерий обратимости матрицы"
+  },
+  {
+    "title": "Теорема Жордана—Гёльдера",
+    "url": "theorem-jordan-holder.html",
+    "course": "4",
+    "tags": [
+      "абстрактная-алгебра",
+      "теория-групп"
+    ],
+    "description": "Фундаментальный результат: Теорема Жордана—Гёльдера"
+  },
+  {
+    "title": "Теорема Лагранжа (группы)",
+    "url": "theorem-lagrange-group.html",
+    "course": "4",
+    "tags": [
+      "абстрактная-алгебра",
+      "теория-групп"
+    ],
+    "description": "Фундаментальный результат: Теорема Лагранжа (группы)"
+  },
+  {
+    "title": "Закон больших чисел",
+    "url": "theorem-law-large-numbers.html",
+    "course": "3",
+    "tags": [
+      "вероятность",
+      "сходимость"
+    ],
+    "description": "Фундаментальный результат: Закон больших чисел"
+  },
+  {
+    "title": "Правило Лопиталя",
+    "url": "theorem-lhopital.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Правило Лопиталя"
+  },
+  {
+    "title": "Теорема Лиувилля",
+    "url": "theorem-liouville.html",
+    "course": "3",
+    "tags": [
+      "комплексный-анализ",
+      "голоморфные-функции"
+    ],
+    "description": "Фундаментальный результат: Теорема Лиувилля"
+  },
+  {
+    "title": "Принцип максимума модуля",
+    "url": "theorem-maximum-modulus.html",
+    "course": "3",
+    "tags": [
+      "комплексный-анализ",
+      "голоморфные-функции"
+    ],
+    "description": "Фундаментальный результат: Принцип максимума модуля"
+  },
+  {
+    "title": "Теорема Лагранжа о среднем",
+    "url": "theorem-mean-value.html",
+    "course": "2",
+    "tags": [
+      "многомерный-анализ",
+      "матанализ"
+    ],
+    "description": "Фундаментальный результат: Теорема Лагранжа о среднем"
+  },
+  {
+    "title": "Теорема Беппо Леви",
+    "url": "theorem-monotone-convergence-beppo-levi.html",
+    "course": "3",
+    "tags": [
+      "теория-меры",
+      "интеграл-лебега"
+    ],
+    "description": "Фундаментальный результат: Теорема Беппо Леви"
+  },
+  {
+    "title": "Теорема о монотонной сходимости последовательности",
+    "url": "theorem-monotone-convergence-sequence.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Теорема о монотонной сходимости последовательности"
+  },
+  {
+    "title": "Теорема об открытом отображении",
+    "url": "theorem-open-mapping.html",
+    "course": "3",
+    "tags": [
+      "функциональный-анализ",
+      "банаховы-пространства"
+    ],
+    "description": "Фундаментальный результат: Теорема об открытом отображении"
+  },
+  {
+    "title": "Теорема Пикара—Линделёфа",
+    "url": "theorem-picard-lindelof.html",
+    "course": "2",
+    "tags": [
+      "диффуры",
+      "задача-коши"
+    ],
+    "description": "Фундаментальный результат: Теорема Пикара—Линделёфа"
+  },
+  {
+    "title": "Критерий потенциальности поля",
+    "url": "theorem-potential-field-criterion.html",
+    "course": "2",
+    "tags": [
+      "многомерный-анализ",
+      "матанализ"
+    ],
+    "description": "Фундаментальный результат: Критерий потенциальности поля"
+  },
+  {
+    "title": "Теорема Пифагора",
+    "url": "theorem-pythagoras.html",
+    "course": "1",
+    "tags": [
+      "геометрия",
+      "евклидова-геометрия"
+    ],
+    "description": "Фундаментальный результат: Теорема Пифагора"
+  },
+  {
+    "title": "Закон квадратичной взаимности",
+    "url": "theorem-quadratic-reciprocity.html",
+    "course": "4",
+    "tags": [
+      "теория-чисел",
+      "квадратичные-вычеты"
+    ],
+    "description": "Фундаментальный результат: Закон квадратичной взаимности"
+  },
+  {
+    "title": "Теорема Радона—Никодима",
+    "url": "theorem-radon-nikodym.html",
+    "course": "3",
+    "tags": [
+      "теория-меры",
+      "радон-никодим"
+    ],
+    "description": "Фундаментальный результат: Теорема Радона—Никодима"
+  },
+  {
+    "title": "Теорема о ранге и дефекте",
+    "url": "theorem-rank-nullity.html",
+    "course": "1",
+    "tags": [
+      "линейная-алгебра",
+      "матрицы"
+    ],
+    "description": "Фундаментальный результат: Теорема о ранге и дефекте"
+  },
+  {
+    "title": "Теорема о вычетах",
+    "url": "theorem-residue.html",
+    "course": "3",
+    "tags": [
+      "комплексный-анализ",
+      "вычеты"
+    ],
+    "description": "Фундаментальный результат: Теорема о вычетах"
+  },
+  {
+    "title": "Критерий интегрируемости Римана",
+    "url": "theorem-riemann-criterion-integrability.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Критерий интегрируемости Римана"
+  },
+  {
+    "title": "Спектральная теорема для симметрических матриц",
+    "url": "theorem-spectral-symmetric-matrix.html",
+    "course": "1",
+    "tags": [
+      "линейная-алгебра",
+      "спектральная-теория"
+    ],
+    "description": "Фундаментальный результат: Спектральная теорема для симметрических матриц"
+  },
+  {
+    "title": "Теорема Стокса",
+    "url": "theorem-stokes.html",
+    "course": "2",
+    "tags": [
+      "векторный-анализ",
+      "дифференциальные-формы"
+    ],
+    "description": "Фундаментальный результат: Теорема Стокса"
+  },
+  {
+    "title": "Теоремы Силова",
+    "url": "theorem-sylow.html",
+    "course": "4",
+    "tags": [
+      "абстрактная-алгебра",
+      "теория-групп"
+    ],
+    "description": "Фундаментальный результат: Теоремы Силова"
+  },
+  {
+    "title": "Формула Тейлора с остатком Лагранжа",
+    "url": "theorem-taylor-with-remainder-lagrange.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Формула Тейлора с остатком Лагранжа"
+  },
+  {
+    "title": "Теорема Тихонова",
+    "url": "theorem-tychonoff.html",
+    "course": "4",
+    "tags": [
+      "топология",
+      "компактность"
+    ],
+    "description": "Фундаментальный результат: Теорема Тихонова"
+  },
+  {
+    "title": "Единственность разложения в PID",
+    "url": "theorem-uft-pid.html",
+    "course": "4",
+    "tags": [
+      "абстрактная-алгебра",
+      "кольца"
+    ],
+    "description": "Фундаментальный результат: Единственность разложения в PID"
+  },
+  {
+    "title": "Принцип равномерной ограниченности",
+    "url": "theorem-uniform-boundedness.html",
+    "course": "3",
+    "tags": [
+      "функциональный-анализ",
+      "банаховы-пространства"
+    ],
+    "description": "Фундаментальный результат: Принцип равномерной ограниченности"
+  },
+  {
+    "title": "Лемма Урысона",
+    "url": "theorem-urysohn-lemma.html",
+    "course": "4",
+    "tags": [
+      "топология",
+      "нормальность"
+    ],
+    "description": "Фундаментальный результат: Лемма Урысона"
+  },
+  {
+    "title": "Теорема Вейерштрасса о достижении экстремумов",
+    "url": "theorem-weierstrass-extreme-value.html",
+    "course": "1",
+    "tags": [
+      "матанализ",
+      "последовательности"
+    ],
+    "description": "Фундаментальный результат: Теорема Вейерштрасса о достижении экстремумов"
+  }
+];
+
+const SEARCH_INDEX = [
+  ...BASE_SEARCH_INDEX,
+  ...THEOREM_CATALOG.map((item) => ({
+    title: item.title,
+    text: `Курс ${item.course} · ${item.tags.map((tag) => `#${tag}`).join(' ')}`,
+    url: item.url
+  }))
+];
+
+
+function renderTheoremCatalog() {
+  const grid = document.querySelector('[data-theorem-grid]');
+  if (!grid) return;
+
+  const sorted = [...THEOREM_CATALOG].sort((a, b) => Number(a.course) - Number(b.course) || a.title.localeCompare(b.title, 'ru'));
+  grid.innerHTML = sorted.map((item) => {
+    const tags = item.tags.map((tag) => `<span class="hash-tag">#${tag}</span>`).join('');
+    return `<a class="glass-card card theorem-card" data-theorem-card data-courses="${item.course}" href="${item.url}"><h3>${item.title}</h3><p>${item.description}</p><div class="theorem-tags">${tags}<span class="hash-tag hash-tag-course" data-hash-course="${item.course}">#курс-${item.course}</span></div></a>`;
+  }).join('');
+}
 
 const body = document.body;
 const toggleBtn = document.querySelector('[data-theme-toggle]');
@@ -106,6 +734,7 @@ if (currentYear) currentYear.textContent = new Date().getFullYear();
 
 initTheme();
 initSearch();
+renderTheoremCatalog();
 initTheoremCourseFilter();
 
 
