@@ -69,18 +69,23 @@
     <h2>Маршрут по курсам: 1 → 4</h2>
     <p class="section-intro">Готовый план, какие разделы MathLab проходить на каждом курсе.</p>
     <div class="card-grid triple">
-      <article class="glass-card card"><h3>1 курс</h3><p>База анализа: таблица производных, правила дифференцирования, первые задачи по интегралам.</p></article>
-      <article class="glass-card card"><h3>2 курс</h3><p>Углублённый матан: определённые интегралы, сходимость последовательностей и теоремы анализа.</p></article>
-      <article class="glass-card card"><h3>3 курс</h3><p>Линейная алгебра и геометрия в пространстве: матрицы, операторы, прямые и плоскости.</p></article>
-      <article class="glass-card card"><h3>4 курс</h3><p>Продвинутые темы: теория чисел, строгие доказательства и междисциплинарные применения.</p></article>
+      <button class="glass-card card course-filter-btn" type="button" data-course-filter="1"><h3>1 курс</h3><p>База анализа: таблица производных, правила дифференцирования, первые задачи по интегралам.</p></button>
+      <button class="glass-card card course-filter-btn" type="button" data-course-filter="2"><h3>2 курс</h3><p>Углублённый матан: определённые интегралы, сходимость последовательностей и теоремы анализа.</p></button>
+      <button class="glass-card card course-filter-btn" type="button" data-course-filter="3"><h3>3 курс</h3><p>Линейная алгебра и геометрия в пространстве: матрицы, операторы, прямые и плоскости.</p></button>
+      <button class="glass-card card course-filter-btn" type="button" data-course-filter="4"><h3>4 курс</h3><p>Продвинутые темы: теория чисел, строгие доказательства и междисциплинарные применения.</p></button>
       <a class="glass-card card" href="theorems.html"><h3>Банк теорем</h3><p>Полные формулировки, доказательства и видео-ориентиры с канала МФТИ Study.</p></a>
       <a class="glass-card card" href="about.html#docs"><h3>Документация проекта</h3><p>Описание структуры MathLab, стандартов контента и плана расширения материалов.</p></a>
     </div>
+    <article class="glass-card content-block course-results" data-course-results>
+      <h3>Теоремы по выбранному курсу</h3>
+      <p class="section-intro">Нажми на кнопку курса выше — список теорем отфильтруется по хештегам.</p>
+      <div class="course-theorem-list" data-course-list></div>
+    </article>
   </section>
 </main>
 
-<footer class="container footer">
-  <div class="glass-card footer-panel">
+<footer class="footer">
+  <div class="footer-panel container">
     <div class="footer-grid">
       <div>
         <h3>MathLab</h3>

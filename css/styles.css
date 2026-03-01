@@ -300,9 +300,11 @@ th {
 }
 
 .footer {
-  margin: 2.4rem 0 1rem;
-  padding: 1rem;
-  text-align: center;
+  margin-top: 2.4rem;
+  padding: 0.9rem 0 1.1rem;
+  width: 100%;
+  background: var(--surface-solid);
+  border-top: 1px solid var(--border);
   color: var(--muted);
 }
 
@@ -355,7 +357,7 @@ th {
 }
 
 .footer-panel {
-  padding: 1.1rem;
+  padding: 1.1rem 0;
 }
 
 .footer-grid {
@@ -395,17 +397,6 @@ th {
   color: var(--primary-strong);
 }
 
-.theorem-visual {
-  padding: 0.8rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: color-mix(in srgb, var(--surface-solid) 85%, transparent);
-}
-
-.plot {
-  margin-top: 0.8rem;
-  min-height: 250px;
-}
 
 .course-grid {
   display: grid;
@@ -427,4 +418,55 @@ th {
   .course-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+.course-filter-btn {
+  width: 100%;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+}
+
+.course-filter-btn.active {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-soft);
+}
+
+.hashtag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.8rem;
+}
+
+.hashtag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--primary) 12%, transparent);
+  color: var(--primary-strong);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.course-results {
+  margin-top: 1rem;
+}
+
+.course-theorem-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.course-theorem-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem;
+  background: color-mix(in srgb, var(--surface-solid) 88%, transparent);
+}
+
+.course-theorem-item h4 {
+  margin: 0 0 0.2rem;
 }
