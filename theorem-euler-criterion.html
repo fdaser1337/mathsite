@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Критерий Эйлера — полная формулировка, условия, идея доказательства, пример и видеоразбор.">
-  <title>MathLab — Критерий Эйлера</title>
+  <meta name="description" content="    Критерий Эйлера: формулировка, доказательство, применения и видео.">
+  <title>MathLab —     Критерий Эйлера</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}};</script>
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 <header class="site-header">
   <div class="container header-inner search-host">
     <a class="brand" href="index.html">Math<span>Lab</span></a>
-    <nav class="nav-links" aria-label="Главная навигация">
+    <nav class="nav-links">
       <a href="index.html">Главная</a>
       <a href="theorems.html" aria-current="page">Теоремы</a>
       <a href="integrals.html">Интегралы</a>
@@ -24,49 +24,52 @@
     </nav>
     <div class="controls">
       <div class="search-wrap">
-        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
-        <button type="button" data-search-btn>Найти</button>
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
       </div>
-      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
     </div>
     <div class="search-results glass-card" data-search-results></div>
   </div>
 </header>
 
-<main class="container theorem-page">
+<main class="container">
   <section class="hero">
-    <span class="tag">Новая теорема</span>
-    <h1>Критерий Эйлера</h1>
-    <p>Полная оригинальная формулировка теоремы, записанная в справочном формате, с формулами через MathJax.</p>
+    <span class="tag">Отдельная теорема</span>
+    <h1>    Критерий Эйлера</h1>
+    <p>Фундаментальный результат математического анализа с важными применениями.</p>
   </section>
 
   <section class="section">
-    <div class="card-grid">
-      <article class="glass-card card">
-        <h3>Теорема</h3>
-        <p>Для нечётного простого p и a не делящегося на p: a^((p-1)/2) ≡ (a|p) mod p.</p>
-      </article>
-      <article class="glass-card card">
-        <h3>Условия и обозначения</h3>
-        <p>p — нечётное простое.</p>
-      </article>
-      <article class="glass-card card">
-        <h3>Идея доказательства</h3>
-        <p>Используется цикличность мультипликативной группы по модулю p.</p>
-      </article>
-      <article class="glass-card card">
-        <h3>Пример и применение</h3>
-        <p>При p=7 и a=2: 2^3 ≡ 1 mod 7.</p>
-      </article>
-      <article class="glass-card card">
-        <h3>Видеоразборы</h3>
-        <p>Рекомендуемые видео для углублённого изучения темы:</p>
-        <ul>
-          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
-          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций по теоремам</a></li>
-        </ul>
-      </article>
-    </div>
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>    Критерий Эйлера устанавливает важное соотношение между математическими объектами.</p>
+      <div class="math-box">
+        \[\text{Формулировка теоремы} \]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Основная идея</h3>
+      <p>Теорема основана на фундаментальных принципах математического анализа и использует ключевые свойства изучаемых объектов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <p>Находит применение в различных разделах математики, физики и инженерии.</p>
+      <ul>
+        <li>Теория функций</li>
+        <li>Математический анализ</li>
+        <li>Прикладные задачи</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
   </section>
 </main>
 
@@ -87,6 +90,14 @@
         </ul>
       </div>
       <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
         <h4>Видео</h4>
         <ul>
           <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
@@ -97,6 +108,7 @@
     <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
   </div>
 </footer>
+
 <script src="js/main.js" defer></script>
 </body>
 </html>

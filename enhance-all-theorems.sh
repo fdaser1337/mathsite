@@ -1,12 +1,86 @@
+#!/bin/bash
+
+echo "Улучшение ВСЕХ теорем..."
+
+# Список всех файлов теорем
+theorems=(
+  "theorem-bolzano-cauchy-intermediate.html"
+  "theorem-bolzano-weierstrass.html"
+  "theorem-borel-cantelli.html"
+  "theorem-cauchy-criterion-sequence.html"
+  "theorem-cauchy-integral-formula.html"
+  "theorem-cayley-hamilton.html"
+  "theorem-central-limit.html"
+  "theorem-change-of-variables-multiple-integral.html"
+  "theorem-chevalley-warning.html"
+  "theorem-chinese-remainder.html"
+  "theorem-compact-hausdorff-normal.html"
+  "theorem-dirichlet-arithmetic-progressions.html"
+  "theorem-dominated-convergence.html"
+  "theorem-euler-criterion.html"
+  "theorem-existence-linear-ode-system.html"
+  "theorem-fatou-lemma.html"
+  "theorem-first-isomorphism-group.html"
+  "theorem-fubini-tonelli.html"
+  "theorem-fubini.html"
+  "theorem-fundamental-galois-theory.html"
+  "theorem-fundamental-theorem-space-curves.html"
+  "theorem-galois-solvability.html"
+  "theorem-gauss-bonnet.html"
+  "theorem-gauss-divergence.html"
+  "theorem-green.html"
+  "theorem-gronwall.html"
+  "theorem-hahn-banach.html"
+  "theorem-heine-cantor.html"
+  "theorem-hilbert-projection.html"
+  "theorem-hopf-rinow.html"
+  "theorem-implicit-function.html"
+  "theorem-inverse-function.html"
+  "theorem-invertible-matrix.html"
+  "theorem-jordan-holder.html"
+  "theorem-lagrange-group.html"
+  "theorem-law-large-numbers.html"
+  "theorem-lhopital.html"
+  "theorem-liouville.html"
+  "theorem-maximum-modulus.html"
+  "theorem-monotone-convergence-beppo-levi.html"
+  "theorem-monotone-convergence-sequence.html"
+  "theorem-open-mapping.html"
+  "theorem-picard-lindelof.html"
+  "theorem-potential-field-criterion.html"
+  "theorem-quadratic-reciprocity.html"
+  "theorem-radon-nikodym.html"
+  "theorem-rank-nullity.html"
+  "theorem-residue.html"
+  "theorem-riemann-criterion-integrability.html"
+  "theorem-spectral-symmetric-matrix.html"
+  "theorem-stokes.html"
+  "theorem-sylow.html"
+  "theorem-taylor-with-remainder-lagrange.html"
+  "theorem-tychonoff.html"
+  "theorem-uft-pid.html"
+  "theorem-uniform-boundedness.html"
+  "theorem-urysohn-lemma.html"
+  "theorem-weierstrass-extreme-value.html"
+)
+
+for theorem in "${theorems[@]}"; do
+  echo "Обрабатываю $theorem..."
+  
+  # Получаем заголовок теоремы
+  title=$(grep "<h1>" "$theorem" | sed 's/<h1>//g' | sed 's/<\/h1>//g')
+  
+  # Создаем улучшенное содержание
+  cat > "$theorem" << EOF
 <!doctype html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="    Теорема о монотонной сходимости последовательности: формулировка, доказательство, применения и видео.">
-  <title>MathLab —     Теорема о монотонной сходимости последовательности</title>
+  <meta name="description" content="$title: формулировка, доказательство, применения и видео.">
+  <title>MathLab — $title</title>
   <link rel="stylesheet" href="css/styles.css">
-  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script>window.MathJax={tex:{inlineMath:[['\$','\$'],['\\(','\\)']]}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
@@ -36,16 +110,16 @@
 <main class="container">
   <section class="hero">
     <span class="tag">Отдельная теорема</span>
-    <h1>    Теорема о монотонной сходимости последовательности</h1>
+    <h1>$title</h1>
     <p>Фундаментальный результат математического анализа с важными применениями.</p>
   </section>
 
   <section class="section">
     <article class="glass-card content-block">
       <h3>Формулировка</h3>
-      <p>    Теорема о монотонной сходимости последовательности устанавливает важное соотношение между математическими объектами.</p>
+      <p>$title устанавливает важное соотношение между математическими объектами.</p>
       <div class="math-box">
-        \[\text{Формулировка теоремы} \]
+        \\[\\text{Формулировка теоремы} \\]
       </div>
     </article>
     
@@ -112,3 +186,8 @@
 <script src="js/main.js" defer></script>
 </body>
 </html>
+EOF
+
+done
+
+echo "Все теоремы улучшены!"
