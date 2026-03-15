@@ -698,18 +698,25 @@ function renderResults(results, query) {
   searchResults.innerHTML = `<ul>${list}</ul>`;
 }
 
+let searchTimeout;
+
 function performSearch() {
   if (!searchInput) return;
   const query = searchInput.value.trim().toLowerCase();
-  const results = SEARCH_INDEX.filter((item) => `${item.title} ${item.text}`.toLowerCase().includes(query)).slice(0, 10);
+  const results = SEARCH_INDEX.filter((item) => `${item.title} ${item.text}`.toLowerCase().includes(query)).slice(0, 5);
   renderResults(results, query);
+}
+
+function debouncedSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(performSearch, 300);
 }
 
 function initSearch() {
   if (!searchInput || !searchBtn) return;
 
   searchBtn.addEventListener('click', performSearch);
-  searchInput.addEventListener('input', performSearch);
+  searchInput.addEventListener('input', debouncedSearch);
   searchInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
