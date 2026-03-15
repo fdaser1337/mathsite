@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости байесовских оценок: состоятельность, асимптотическая нормальность, байесовская центральная предельная теорема.">
+  <title>MathLab — Теорема о сходимости байесовских оценок</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Байесовская статистика</span>
+    <h1>Теорема о сходимости байесовских оценок</h1>
+    <p>Состоятельность и асимптотическая нормальность апостериорного распределения и байесовских оценок.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная постановка</h3>
+      <p>Пусть X₁, X₂, ..., Xₙ - независимые одинаково распределённые случайные величины с плотностью p(x|θ), где θ ∈ Θ ⊂ ℝ^k.</p>
+      
+      <h4>Априорное распределение</h4>
+      <div class="math-box">
+        \[\pi(\theta)\]
+      </div>
+      
+      <h4>Апостериорное распределение</h4>
+      <div class="math-box">
+        \[\pi_n(\theta|X_1, ..., X_n) = \frac{\pi(\theta)\prod_{i=1}^{n} p(X_i|\theta)}{\int_{\Theta} \pi(\theta')\prod_{i=1}^{n} p(X_i|\theta')d\theta'}\]
+      </div>
+      
+      <h4>Байесовские оценки</h4>
+      <ul>
+        <li><strong>Апостериорное среднее:</strong> E[θ|X₁,...,Xₙ]</li>
+        <li><strong>MAP-оценка:</strong> argmax π_n(θ|X₁,...,Xₙ)</li>
+        <li><strong>Апостериорная медиана:</strong> median(π_n)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема Бернстайна-фон Мизеса</h3>
+      <h4>Формулировка</h4>
+      <p>При определённых условиях регулярности и при n → ∞:</p>
+      <div class="math-box">
+        \[\pi_n(\theta|X_1, ..., X_n) \approx \mathcal{N}\left(\hat{\theta}_n, \frac{1}{n}I^{-1}(\hat{\theta}_n)\right)\]
+      </div>
+      
+      <p>где \hat{θ}_n - оценка максимального правдоподобия, I(θ) - информационная матрица Фишера.</p>
+      
+      <h4>Следствия</h4>
+      <ul>
+        <li>Апостериорное распределение асимптотически нормально</li>
+        <li>Байесовские оценки асимптотически эквивалентны ММП-оценкам</li>
+        <li>Байесовские доверительные интервалы асимптотически совпадают с частотными</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Условия регулярности</h3>
+      <p>Для сходимости байесовских оценок требуются:</p>
+      <ol>
+        <li><strong>Идентифицируемость модели:</strong> θ₁ ≠ θ₂ ⇒ p(x|θ₁) ≠ p(x|θ₂)</li>
+        <li><strong>Регулярность апостериорного:</strong> π(θ) > 0 в окрестности истинного θ₀</li>
+        <li><strong>Дифференцируемость:</strong> log p(x|θ) дважды дифференцируема</li>
+        <li><strong>Неособенность:</strong> I(θ₀) положительно определена</li>
+        <li><strong>Интегрируемость:</strong> E[|log p(X|θ)|] < ∞</li>
+      </ol>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема состоятельности</h3>
+      <h4>Формулировка</h4>
+      <p>При выполнении условий регулярности:</p>
+      <div class="math-box">
+        \[\pi_n(\cdot|X_1, ..., X_n) \xrightarrow{P} \delta_{\theta_0}\]
+      </div>
+      
+      <p>где δ_{θ₀} - вырожденное распределение в точке θ₀.</p>
+      
+      <h4>Интерпретация</h4>
+      <p>Апостериорное распределение сходится к вырожденному в истинном значении параметра.</p>
+      
+      <h4>Доказательство</h4>
+      <p>Используется теорема о сходимости ММП-оценок и локальная аппроксимация апостериорного.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Байесовская центральная предельная теорема</h3>
+      <h4>Формулировка</h4>
+      <p>При n → ∞:</p>
+      <div class="math-box">
+        \[\sqrt{n}(\theta - \hat{\theta}_n) | X_1, ..., X_n \xrightarrow{d} \mathcal{N}(0, I^{-1}(\theta_0))\]
+      </div>
+      
+      <p>Это означает, что апостериорное распределение центрировано и масштабировано сходится к стандартному нормальному.</p>
+      
+      <h4>Следствие для байесовских оценок</h4>
+      <div class="math-box">
+        \[\sqrt{n}(E[\theta|X] - \theta_0) \xrightarrow{d} \mathcal{N}(0, I^{-1}(\theta_0))\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Нормальное распределение с известной дисперсией</h4>
+      <p>X₁, ..., Xₙ ~ N(μ, σ²), σ² известна.</p>
+      <p>Априорное: μ ~ N(μ₀, τ²).</p>
+      <p>Апостериорное: μ|X ~ N(μ_n, σ_n²), где:</p>
+      <div class="math-box">
+        \[\mu_n = \frac{\frac{1}{\tau^2}\mu_0 + \frac{n}{\sigma^2}\bar{X}}{\frac{1}{\tau^2} + \frac{n}{\sigma^2}}, \quad \sigma_n^2 = \frac{1}{\frac{1}{\tau^2} + \frac{n}{\sigma^2}}\]
+      </div>
+      
+      <h4>Пример 2: Биномиальное распределение</h4>
+      <p>X ~ Binomial(n, p), априорное: p ~ Beta(α, β).</p>
+      <p>Апостериорное: p|X ~ Beta(α + X, β + n - X).</p>
+      
+      <h4>Пример 3: Распределение Пуассона</h4>
+      <p>X₁, ..., Xₙ ~ Poisson(λ), априорное: λ ~ Gamma(α, β).</p>
+      <p>Апостериорное: λ|X ~ Gamma(α + ∑Xᵢ, β + n).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Асимптотическая эквивалентность</h3>
+      <h4>Сравнение с ММП-оценками</h4>
+      <div class="math-box">
+        \[E[\theta|X] = \hat{\theta}_n + O_p(n^{-1})\]
+      </div>
+      
+      <h4>Байесовские vs частотные интервалы</h4>
+      <p>Апостериорные доверительные интервалы асимптотически совпадают с доверительными интервалами, основанными на ММП.</p>
+      
+      <h4>Преимущества байесовского подхода</h4>
+      <ul>
+        <li>Естественный способ учёта априорной информации</li>
+        <li>Корректная обработка малых выборок</li>
+        <li>Единая теория для оценивания и проверки гипотез</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Неправильные априорные распределения</h3>
+      <h4>Определение</h4>
+      <p>Априорное распределение π(θ) называется неправильным, если ∫π(θ)dθ = ∞.</p>
+      
+      <h4>Примеры</h4>
+      <ul>
+        <li>π(μ) ∝ 1 для μ ∈ ℝ (равномерное на ℝ)</li>
+        <li>π(σ) ∝ 1/σ для σ > 0 (Джеффрис)</li>
+      </ul>
+      
+      <h4>Свойства</h4>
+      <p>При определённых условиях апостериорное распределение остаётся правильным и теоремы сходимости сохраняются.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Вычислительные аспекты</h3>
+      <h4>Методы вычисления апостериорного</h4>
+      <ul>
+        <li><strong>Аналитические методы:</strong> сопряжённые априорные распределения</li>
+        <li><strong>Численные методы:</strong> квадратуры, аппроксимация</li>
+        <li><strong>Методы Монте-Карло:</strong> MCMC, выборка по значимости</li>
+      </ul>
+      
+      <h4>MCMC методы</h4>
+      <ul>
+        <li>Алгоритм Метрополиса-Хастингса</li>
+        <li>Сэмплирование по Гиббсу</li>
+        <li>Гамильтонов Монте-Карло</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Модель выбора</h3>
+      <h4>Проблема</h4>
+      <p>Как выбрать между различными моделями M₁, M₂, ...?</p>
+      
+      <h4>Байесовский фактор</h4>
+      <div class="math-box">
+        \[BF_{12} = \frac{P(X|M_1)}{P(X|M_2)} = \frac{\int \pi_1(\theta_1)p(X|\theta_1, M_1)d\theta_1}{\int \pi_2(\theta_2)p(X|\theta_2, M_2)d\theta_2}\]
+      </div>
+      
+      <h4>Асимптотические свойства</h4>
+      <p>При n → ∞ байесовский фактор выбирает истинную модель с вероятностью 1.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема о сходимости ММП</h4>
+      <p>Используется для доказательства сходимости байесовских оценок.</p>
+      
+      <h4>Центральная предельная теорема</h4>
+      <p>Основана для асимптотической нормальности.</p>
+      
+      <h4>Теорема об асимптотической эффективности</h4>
+      <p>Байесовские оценки асимптотически эффективны.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические применения</h3>
+      <h4>1. Машинное обучение</h4>
+      <p>Байесовские нейронные сети, Gaussian Processes.</p>
+      
+      <h4>2. Эконометрика</h4>
+      <p>Векторные авторегрессии, модели панельных данных.</p>
+      
+      <h4>3. Биостатистика</h4>
+      <p>Клинические испытания, эпидемиология.</p>
+      
+      <h4>4. Инженерия</h4>
+      <p>Контроль качества, надёжность.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Теорема Бернстейна-фон Мизеса предложена в 1940-х годах.</p>
+      <p>Современная теория развита в работах Лекама, Шварца, Берксона.</p>
+      <p>Вычислительные методы (MCMC) сделали байесовский подход практически применимым.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
