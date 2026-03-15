@@ -271,10 +271,25 @@ th {
   background: color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
+.search-host {
+  position: relative;
+}
+
 .search-results {
-  margin-top: 0.7rem;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
   padding: 0.6rem;
   display: none;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 .search-results.active { display: block; }
