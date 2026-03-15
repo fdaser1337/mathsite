@@ -3,6 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема Стокса: связь поверхностного интеграла с криволинейным, формула, применение.">
+  <title>MathLab — Теорема Стокса</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Векторный анализ</span>
+    <h1>Теорема Стокса</h1>
+    <p>Обобщает теорему Грина на трёхмерное пространство, связывая поверхностный и криволинейный интегралы.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть S - ориентированная поверхность в ℝ³ с гладкой границей ∂S, P, Q, R - функции с непрерывными частными производными. Тогда:</p>
+      <div class="math-box">
+        \[\oint_{\partial S} P \, dx + Q \, dy + R \, dz = \iint_S \left(\frac{\partial R}{\partial y} - \frac{\partial Q}{\partial z}\right) dy \, dz + \left(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\right) dz \, dx + \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dx \, dy\]
+      </div>
+      <p>В векторной форме:</p>
+      <div class="math-box">
+        \[\oint_{\partial S} \vec{F} \cdot d\vec{r} = \iint_S (\nabla \times \vec{F}) \cdot d\vec{S}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Физическая интерпретация</h3>
+      <p>Циркуляция векторного поля вдоль границы поверхности равна потоку ротора поля через эту поверхность.</p>
+      <p><strong>Аналогия:</strong> Если поле - это течение воды, то циркуляция показывает «закрученность» течения вдоль контура, а ротор - локальную «вихревость».</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Грина (n=2)</h4>
+      <p>Теорема Стокса - трёхмерное обобщение теоремы Грина.</p>
+      
+      <h4>Формула Остроградского-Гаусса</h4>
+      <p>Связывает поток поля через замкнутую поверхность с объёмным интегралом дивергенции.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Электродинамика</h4>
+      <p>Уравнения Максвелла: \[\nabla \times \vec{E} = -\frac{\partial \vec{B}}{\partial t}\]</p>
+      
+      <h4>2. Гидродинамика</h4>
+      <p>Расчёт циркуляции скорости жидкости, вихревые движения.</p>
+      
+      <h4>3. Механика</h4>
+      <p>Работа силовых полей, консервативные силы.</p>
+      
+      <h4>4. Компьютерная графика</h4>
+      <p>Расчёт освещения, теней, текстурирование.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Пример вычисления</h3>
+      <p>Вычислить \[\oint_C \vec{F} \cdot d\vec{r}\] для \[\vec{F} = (-y, x, 0)\] по окружности C: x² + y² = 1, z = 0.</p>
+      <p>Ротор поля:</p>
+      <div class="math-box">
+        \[\nabla \times \vec{F} = \begin{vmatrix}
+          \vec{i} & \vec{j} & \vec{k} \\
+          \frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z} \\
+          -y & x & 0
+        \end{vmatrix} = (0, 0, 2)\]
+      </div>
+      <p>По теореме Стокса:</p>
+      <div class="math-box">
+        \[\oint_C \vec{F} \cdot d\vec{r} = \iint_S (0, 0, 2) \cdot (0, 0, 1) \, dS = \iint_S 2 \, dS = 2 \cdot \pi \cdot 1^2 = 2\pi\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
   <meta name="description" content="    Теорема Стокса: формулировка, доказательство, применения и видео.">
   <title>MathLab —     Теорема Стокса</title>
   <link rel="stylesheet" href="css/styles.css">
