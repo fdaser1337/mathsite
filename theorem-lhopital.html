@@ -3,6 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Правило Лопиталя: раскрытие неопределённостей 0/0 и ∞/∞, примеры, применение.">
+  <title>MathLab — Правило Лопиталя</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Математический анализ</span>
+    <h1>Правило Лопиталя</h1>
+    <p>Метод раскрытия неопределённостей вида 0/0 и ∞/∞ через дифференцирование числителя и знаменателя.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть функции f(x) и g(x) дифференцируемы в окрестности точки a (кроме, возможно, самой точки a) и g'(x) ≠ 0. Если:</p>
+      <div class="math-box">
+        \[\lim_{x \to a} f(x) = 0 \quad \text{и} \quad \lim_{x \to a} g(x) = 0\]
+      </div>
+      <p>или</p>
+      <div class="math-box">
+        \[\lim_{x \to a} |f(x)| = \lim_{x \to a} |g(x)| = \infty\]
+      </div>
+      <p>и существует предел отношения производных, то:</p>
+      <div class="math-box">
+        \[\lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Условия применимости</h3>
+      <h4>1. Неопределённость</h4>
+      <p>Предел должен иметь вид 0/0 или ∞/∞.</p>
+      
+      <h4>2. Дифференцируемость</h4>
+      <p>Обе функции должны быть дифференцируемы в окрестности точки.</p>
+      
+      <h4>3. Знаменатель производной</h4>
+      <p>Производная знаменателя не должна обращаться в ноль.</p>
+      
+      <h4>4. Существование предела</h4>
+      <p>Предел отношения производных должен существовать (конечный или бесконечный).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Типы неопределённостей</h3>
+      <h4>Прямые применения</h4>
+      <p>0/0 и ∞/∞ раскрываются непосредственно по правилу Лопиталя.</p>
+      
+      <h4>Косвенные применения</h4>
+      <p>Другие неопределённости преобразуются к 0/0 или ∞/∞:</p>
+      <ul>
+        <li>0 · ∞ = 0/(1/∞) или ∞/(1/0)</li>
+        <li>∞ - ∞ = ln(∞) - ln(∞) = ln(∞/∞)</li>
+        <li>0^0 = e^(0·ln0) = e^(0·(-∞))</li>
+        <li>1^∞ = e^(∞·ln1) = e^(∞·0)</li>
+        <li>∞^0 = e^(0·ln∞) = e^(0·∞)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры вычислений</h3>
+      <h4>Пример 1: Неопределённость 0/0</h4>
+      <p>Вычислить \[\lim_{x \to 0} \frac{\sin x}{x}\]</p>
+      <div class="math-box">
+        \[\lim_{x \to 0} \frac{\sin x}{x} = \lim_{x \to 0} \frac{(\sin x)'}{(x)'} = \lim_{x \to 0} \frac{\cos x}{1} = \cos 0 = 1\]
+      </div>
+      
+      <h4>Пример 2: Неопределённость ∞/∞</h4>
+      <p>Вычислить \[\lim_{x \to \infty} \frac{\ln x}{x}\]</p>
+      <div class="math-box">
+        \[\lim_{x \to \infty} \frac{\ln x}{x} = \lim_{x \to \infty} \frac{(\ln x)'}{(x)'} = \lim_{x \to \infty} \frac{1/x}{1} = 0\]
+      </div>
+      
+      <h4>Пример 3: Многократное применение</h4>
+      <p>Вычислить \[\lim_{x \to 0} \frac{e^x - 1 - x}{x^2}\]</p>
+      <div class="math-box">
+        \[\lim_{x \to 0} \frac{e^x - 1 - x}{x^2} = \lim_{x \to 0} \frac{e^x - 1}{2x} = \lim_{x \to 0} \frac{e^x}{2} = \frac{1}{2}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Распространённые ошибки</h3>
+      <h4>1. Непроверка условий</h4>
+      <p>Нельзя применять правило, если нет неопределённости 0/0 или ∞/∞.</p>
+      
+      <h4>2. Забывание дифференцировать</h4>
+      <p>Нужно дифференцировать числитель и знаменатель отдельно.</p>
+      
+      <h4>3. Неправильное преобразование</h4>
+      <p>При преобразовании других неопределённостей можно допустить алгебраическую ошибку.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Анализ пределов</h4>
+      <p>Вычисление сложных пределов в математическом анализе.</p>
+      
+      <h4>2. Теория вероятностей</h4>
+      <p>Асимптотическое поведение распределений.</p>
+      
+      <h4>3. Физика</h4>
+      <p>Предельные переходы в термодинамике, квантовой механике.</p>
+      
+      <h4>4. Экономика</h4>
+      <p>Анализ предельной полезности, эластичности.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
   <meta name="description" content="    Правило Лопиталя: формулировка, доказательство, применения и видео.">
   <title>MathLab —     Правило Лопиталя</title>
   <link rel="stylesheet" href="css/styles.css">
