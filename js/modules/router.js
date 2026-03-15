@@ -1,12 +1,15 @@
 import { CONFIG } from '../config.js';
 import { appState } from '../state.js';
-import { lazyLoader } from './lazy-loader.js';
+
+// Lazy loader будет инициализирован позже
+let lazyLoader = null;
 
 export class Router {
   constructor() {
     this.routes = new Map();
     this.currentRoute = null;
     this.contentContainer = null;
+    this.pageCache = new Map();
     this.init();
   }
 
@@ -249,62 +252,62 @@ export class Router {
   }
 
   async loadTheoremsPage() {
-    const content = await this.loadPageContent('theorems');
+    const content = await this.generateTheoremsPage();
     this.renderContent(content);
   }
 
   async loadIntegralsPage() {
-    const content = await this.loadPageContent('integrals');
+    const content = await this.generateContentPage('integrals');
     this.renderContent(content);
   }
 
   async loadDerivativesPage() {
-    const content = await this.loadPageContent('derivatives');
+    const content = await this.generateContentPage('derivatives');
     this.renderContent(content);
   }
 
   async loadAlgebraPage() {
-    const content = await this.loadPageContent('algebra');
+    const content = await this.generateContentPage('algebra');
     this.renderContent(content);
   }
 
   async loadGeometryPage() {
-    const content = await this.loadPageContent('geometry');
+    const content = await this.generateContentPage('geometry');
     this.renderContent(content);
   }
 
   async loadProbabilityPage() {
-    const content = await this.loadPageContent('probability-theory');
+    const content = await this.generateContentPage('probability-theory');
     this.renderContent(content);
   }
 
   async loadStatisticsPage() {
-    const content = await this.loadPageContent('statistics');
+    const content = await this.generateContentPage('statistics');
     this.renderContent(content);
   }
 
   async loadDifferentialEquationsPage() {
-    const content = await this.loadPageContent('differential-equations');
+    const content = await this.generateContentPage('differential-equations');
     this.renderContent(content);
   }
 
   async loadNumericalMethodsPage() {
-    const content = await this.loadPageContent('numerical-methods');
+    const content = await this.generateContentPage('numerical-methods');
     this.renderContent(content);
   }
 
   async loadComplexAnalysisPage() {
-    const content = await this.loadPageContent('complex-analysis');
+    const content = await this.generateContentPage('complex-analysis');
     this.renderContent(content);
   }
 
   async loadDiscreteMathematicsPage() {
-    const content = await this.loadPageContent('discrete-mathematics');
+    const content = await this.generateContentPage('discrete-mathematics');
     this.renderContent(content);
   }
 
   async loadTheoremPage(theoremId) {
-    const content = await this.loadPageContent('theorem', { theoremId });
+    const content = await this.generateTheoremPage(theoremId);
     this.renderContent(content);
   }
 
@@ -441,8 +444,35 @@ export class Router {
   }
 
   async generateTheoremsPage() {
-    // Загружаем теоремы из JSON
-    const theoremsData = await lazyLoader.fetchWithCache('/data/theorems.json');
+    try {
+      // Загружаем теоремы из JSON
+      let theoremsData;
+      try {
+        const response = await fetch('/data/theorems.json');
+        if (response.ok) {
+          theoremsData = await response.json();
+        } else {
+          throw new Error('Failed to load theorems');
+        }
+      } catch (error) {
+      console.warn('Using fallback theorems data:', error);
+      // Используем базовые данные если загрузка не удалась
+      theoremsData = {
+        theorems: [
+          {
+            id: "pythagoras",
+            title: "Теорема Пифагора",
+            url: "theorem-pythagoras.html",
+            course: "1",
+            difficulty: "basic",
+            category: "geometry",
+            tags: ["геометрия", "евклидова-геометрия", "треугольники"],
+            description: "Фундаментальный результат евклидовой геометрии, связывающий стороны прямоугольного треугольника."
+          }
+        ]
+      };
+    }
+    }
     
     let content = `
       <section class="hero">
@@ -489,7 +519,7 @@ export class Router {
   }
 
   async generateTheoremPage(theoremId) {
-    const theoremsData = await lazyLoader.fetchWithCache('/data/theorems.json');
+    const theoremsData = await this.loadTheoremsData();
     const theorem = theoremsData.theorems.find(t => t.id === theoremId);
     
     if (!theorem) {
@@ -505,7 +535,7 @@ export class Router {
     `;
 
     // Формулировка
-    if (theorem.sections.statement) {
+    if (theorem.sections && theorem.sections.statement) {
       content += `
         <section class="section">
           <article class="glass-card content-block">
@@ -519,7 +549,7 @@ export class Router {
     }
 
     // Доказательство
-    if (theorem.sections.proof) {
+    if (theorem.sections && theorem.sections.proof) {
       content += `
         <section class="section">
           <article class="glass-card content-block">
@@ -533,7 +563,7 @@ export class Router {
     }
 
     // Примеры
-    if (theorem.sections.examples) {
+    if (theorem.sections && theorem.sections.examples) {
       content += `
         <section class="section">
           <h2>Примеры</h2>
@@ -549,6 +579,33 @@ export class Router {
     }
 
     return content;
+  }
+
+  async loadTheoremsData() {
+    try {
+      const response = await fetch('/data/theorems.json');
+      if (response.ok) {
+        return await response.json();
+      } else {
+        throw new Error('Failed to load theorems');
+      }
+    } catch (error) {
+      console.warn('Using fallback theorems data:', error);
+      return {
+        theorems: [
+          {
+            id: "pythagoras",
+            title: "Теорема Пифагора",
+            url: "theorem-pythagoras.html",
+            course: "1",
+            difficulty: "basic",
+            category: "geometry",
+            tags: ["геометрия", "евклидова-геометрия", "треугольники"],
+            description: "Фундаментальный результат евклидовой геометрии, связывающий стороны прямоугольного треугольника."
+          }
+        ]
+      };
+    }
   }
 
   async generateContentPage(pageType) {

@@ -9,7 +9,7 @@ import { NavigationManager } from './modules/navigation.js';
 import { ExerciseManager } from './modules/exercises.js';
 import { VisualizationManager } from './modules/visualization.js';
 import { LazyLoader } from './modules/lazy-loader.js';
-import { router } from './modules/router.js';
+import { router } from './modules/router-simple.js';
 
 // Глобальные переменные для совместимости
 const BASE_SEARCH_INDEX = [
