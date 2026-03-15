@@ -3,6 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема Хана-Банаха: продолжение линейных функционалов, функциональный анализ.">
+  <title>MathLab — Теорема Хана-Банаха</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Функциональный анализ</span>
+    <h1>Теорема Хана-Банаха</h1>
+    <p>Любой линейный функционал можно продолжить с сохранением нормы на всё пространство.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть X - нормированное пространство, Y ⊂ X - подпространство, f: Y → ℝ - непрерывный линейный функционал. Тогда существует непрерывный линейный функционал F: X → ℝ такой, что:</p>
+      <ol>
+        <li>F(y) = f(y) для всех y ∈ Y (продолжение)</li>
+        <li>‖F‖ = ‖f‖ (сохранение нормы)</li>
+      </ol>
+      <p>где ‖f‖ = sup{|f(y)| : y ∈ Y, ‖y‖ ≤ 1} - норма функционала.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Геометрическая интерпретация</h3>
+      <p>Теорема позволяет «растянуть» линейный функционал с подпространства на всё пространство без увеличения его «наклона».</p>
+      <p><strong>Аналогия:</strong> Если у вас есть линейная функция, определённая на прямой, вы можете продолжить её на всю плоскость так, чтобы она оставалась линейной и не стала «круче».</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Важные следствия</h3>
+      <h4>1. Существование достаточного числа функционалов</h4>
+      <p>Для любого ненулевого x ∈ X существует функционал f ∈ X* такой, что f(x) = ‖x‖ и ‖f‖ = 1.</p>
+      
+      <h4>2. Разделяющие семейства</h4>
+      <p>Пространство функционалов X* разделяет точки X: если x₁ ≠ x₂, то существует f ∈ X* с f(x₁) ≠ f(x₂).</p>
+      
+      <h4>3. Теорема об отделимости</h4>
+      <p>Любые непересекающиеся выпуклые множества в банаховом пространстве можно разделить гиперплоскостью.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: ℝ²</h4>
+      <p>Пусть X = ℝ², Y = {(x,0) : x ∈ ℝ}, f(x,0) = 2x.</p>
+      <p>Продолжение: F(x,y) = 2x (норма сохраняется).</p>
+      
+      <h4>Пример 2: Пространство C[0,1]</h4>
+      <p>Пусть X = C[0,1] с нормой ‖f‖ = max|f(t)|, Y = {константные функции}, g(c) = c.</p>
+      <p>Продолжение: F(f) = f(0) (оценка в точке).</p>
+      
+      <h4>Пример 3: L²[0,1]</h4>
+      <p>Пусть Y - подпространство функций, равных нулю на [0,1/2], f(y) = ∫₀¹ y(t)dt.</p>
+      <p>Продолжение: F(x) = ∫₀¹ x(t)dt (сохранение нормы).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство (основная идея)</h3>
+      <p>Используется лемма Цорна о максимальных элементах:</p>
+      <ol>
+        <li>Рассматриваем все возможные продолжения f на большие подпространства</li>
+        <li>Упорядочиваем их по включению областей определения</li>
+        <li>По лемме Цорна существует максимальное продолжение</li>
+        <li>Показываем, что максимальное продолжение определено на всём X</li>
+      </ol>
+      <p>Ключевая техническая лемма: если функционал можно продолжить на одномерное расширение, то можно продолжить с сохранением нормы.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Функциональный анализ</h4>
+      <p>Двойственность, теория операторов, спектральная теория.</p>
+      
+      <h4>2. Теория оптимизации</h4>
+      <p>Условия оптимальности, теорема Куна-Таккера.</p>
+      
+      <h4>3. Экономика</h4>
+      <p>Теория цен, равновесие, благосостояние.</p>
+      
+      <h4>4. Квантовая механика</h4>
+      <p>Теорема о представлении, измеримые наблюдаемые.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения</h3>
+      <h4>Комплексный случай</h4>
+      <p>Теорема верна и для комплексных пространств с соответствующими модификациями.</p>
+      
+      <h4>Локально-выпуклые пространства</h4>
+      <p>Обобщение на более общие классы топологических векторных пространств.</p>
+      
+      <h4>Вектор-значные функционалы</h4>
+      <p>Продолжение операторов в банаховы пространства.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Банаха-Штейнгауза</h4>
+      <p>О равномерной ограниченности семейства операторов.</p>
+      
+      <h4>Теорема об открытом отображении</h4>
+      <p>О непрерывных линейных отображениях между банаховыми пространствами.</p>
+      
+      <h4>Теорема о замкнутом графике</h4>
+      <p>Критерий непрерывности линейного оператора.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Теорема доказана независимо Хансом Ханом (1927) и Стефаном Банахом (1929). Является одной из фундаментальных теорем функционального анализа.</p>
+      <p>Имеет многочисленные применения в различных разделах математики и её приложениях.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
   <meta name="description" content="    Теорема Хана—Банаха: формулировка, доказательство, применения и видео.">
   <title>MathLab —     Теорема Хана—Банаха</title>
   <link rel="stylesheet" href="css/styles.css">
