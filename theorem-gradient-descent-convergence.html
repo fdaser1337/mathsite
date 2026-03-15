@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости метода градиентного спуска: условия сходимости, скорость сходимости.">
+  <title>MathLab — Теорема о сходимости метода градиентного спуска</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Оптимизация</span>
+    <h1>Теорема о сходимости метода градиентного спуска</h1>
+    <p>Условия сходимости и скорость сходимости градиентного спуска для выпуклых функций.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть f: ℝⁿ → ℝ - выпуклая дифференцируемая функция с константой Липшица L для градиента:</p>
+      <div class="math-box">
+        \[\|\nabla f(x) - \nabla f(y)\| \leq L\|x - y\|\]
+      </div>
+      <p>Предположим также, что f имеет минимум (существует x* такой, что ∇f(x*) = 0). Тогда для градиентного спуска с шагом 0 < α ≤ 1/L:</p>
+      <div class="math-box">
+        \[x_{k+1} = x_k - \alpha \nabla f(x_k)\]
+      </div>
+      <p>последовательность {xₖ} сходится к точке минимума x*.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Скорость сходимости</h3>
+      <h4>Линейная сходимость для сильно выпуклых функций</h4>
+      <p>Если f сильно выпукла с константой μ > 0:</p>
+      <div class="math-box">
+        \[f(y) \geq f(x) + \langle \nabla f(x), y-x\rangle + \frac{\mu}{2}\|y-x\|^2\]
+      </div>
+      <p>то скорость сходимости линейная:</p>
+      <div class="math-box">
+        \[\|x_{k+1} - x^*\| \leq \left(1 - \alpha\mu\right)\|x_k - x^*\|\]
+      </div>
+      
+      <h4>Сублинейная сходимость для выпуклых функций</h4>
+      <p>Для просто выпуклых функций сходимость сублинейная:</p>
+      <div class="math-box">
+        \[f(x_k) - f(x^*) \leq \frac{\|x_0 - x^*\|^2}{2\alpha k}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Оптимальный выбор шага</h3>
+      <h4>Фиксированный шаг</h4>
+      <p>Оптимальный фиксированный шаг: α = 1/L.</p>
+      
+      <h4>Адаптивный шаг</h4>
+      <p>Метод наискорейшего спуска:</p>
+      <div class="math-box">
+        \[\alpha_k = \arg\min_{\alpha \geq 0} f(x_k - \alpha \nabla f(x_k))\]
+      </div>
+      
+      <h4>Условие Вольфа</h4>
+      <p>Шаг выбирается из условий:</p>
+      <div class="math-box">
+        \[f(x_k - \alpha_k \nabla f(x_k)) \leq f(x_k) - c_1\alpha_k\|\nabla f(x_k)\|^2\]
+        \[|\langle \nabla f(x_k - \alpha_k \nabla f(x_k)), \nabla f(x_k)\rangle| \leq c_2\|\nabla f(x_k)\|^2\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство сходимости</h3>
+      <h4>Свойство убывания функции</h4>
+      <p>Используем разложение Тейлора:</p>
+      <div class="math-box">
+        \[f(x_{k+1}) \leq f(x_k) + \langle \nabla f(x_k), x_{k+1} - x_k\rangle + \frac{L}{2}\|x_{k+1} - x_k\|^2\]
+      </div>
+      <p>Подставляя x_{k+1} = x_k - α∇f(x_k), получаем:</p>
+      <div class="math-box">
+        \[f(x_{k+1}) \leq f(x_k) - \alpha\|\nabla f(x_k)\|^2 + \frac{L\alpha^2}{2}\|\nabla f(x_k)\|^2\]
+      </div>
+      
+      <h4>Оптимальный выбор α</h4>
+      <p>Правая часть минимизируется при α = 1/L, что даёт:</p>
+      <div class="math-box">
+        \[f(x_{k+1}) \leq f(x_k) - \frac{1}{2L}\|\nabla f(x_k)\|^2\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Квадратичная функция</h4>
+      <p>f(x) = ½xᵀAx + bᵀx + c, где A - положительно определённая матрица.</p>
+      <p>Градиентный спуск с оптимальным шагом сходится линейно.</p>
+      
+      <h4>Пример 2: Логистическая регрессия</h4>
+      <p>f(w) = -∑[yᵢlog(σ(wᵀxᵢ)) + (1-yᵢ)log(1-σ(wᵀxᵢ))]</p>
+      <p>Градиентный спуск сходится сублинейно.</p>
+      
+      <h4>Пример 3: Невыпуклая функция</h4>
+      <p>Для f(x) = x⁴ - x² градиентный спуск может застрять в локальном минимуме.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Модификации метода</h3>
+      <h4>Метод тяжёлого шара</h4>
+      <div class="math-box">
+        \[x_{k+1} = x_k - \alpha\nabla f(x_k) + \beta(x_k - x_{k-1})\]
+      </div>
+      
+      <h4>Метод Нестерова</h4>
+      <div class="math-box">
+        \[y_{k+1} = x_k - \alpha\nabla f(x_k)\]
+        \[x_{k+1} = y_{k+1} + \frac{k-1}{k+2}(y_{k+1} - y_k)\]
+      </div>
+      
+      <h4>Стохастический градиентный спуск</h4>
+      <div class="math-box">
+        \[x_{k+1} = x_k - \alpha_k \nabla f_{i_k}(x_k)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Сравнение с другими методами</h3>
+      <h4>Сравнение скоростей</h4>
+      <ul>
+        <li>Градиентный спуск: O(1/k) для выпуклых функций</li>
+        <li>Метод Нестерова: O(1/k²) для выпуклых функций</li>
+        <li>Метод Ньютона: квадратичная сходимость</li>
+        <li>Квази-ньютоновские методы: сверхлинейная сходимость</li>
+      </ul>
+      
+      <h4>Вычислительные затраты</h4>
+      <ul>
+        <li>Градиентный спуск: O(n) на итерацию</li>
+        <li>Метод Ньютона: O(n³) на итерацию</li>
+        <li>Сопряжённые градиенты: O(n²) на итерацию</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Критерии остановки</h4>
+      <ul>
+        <li>‖∇f(xₖ)‖ < ε</li>
+        <li>|f(xₖ) - f(x_{k-1})| < ε</li>
+        <li>‖xₖ - x_{k-1}‖ < ε</li>
+        <li>Максимальное число итераций</li>
+      </ul>
+      
+      <h4>Проблемы</h4>
+      <ul>
+        <li>Выбор шага</li>
+        <li>Условия остановки оврагов</li>
+        <li>Численная устойчивость</li>
+        <li>Локальные минимумы для невыпуклых функций</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Условия Липшица</h3>
+      <h4>Проверка условия Липшица</h4>
+      <p>Для дважды дифференцируемых функций:</p>
+      <div class="math-box">
+        \[L \geq \max_{x} \lambda_{\max}(\nabla^2 f(x))\]
+      </div>
+      <p>где λ_{\max} - максимальное собственное значение матрицы Гессе.</p>
+      
+      <h4>Оценка константы Липшица</h4>
+      <p>На практике константу L можно оценить:</p>
+      <ul>
+        <li>Теоретически через вторые производные</li>
+        <li>Эмпирически в процессе оптимизации</li>
+        <li>Используя backtracking line search</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Машинное обучение</h4>
+      <p>Обучение нейронных сетей, линейная регрессия, SVM.</p>
+      
+      <h4>2. Обработка сигналов</h4>
+      <p>Сжатие, фильтрация, восстановление сигналов.</p>
+      
+      <h4>3. Оптимальное управление</h4>
+      <p>Решение задач оптимального управления.</p>
+      
+      <h4>4. Финансы</h4>
+      <p>Оптимизация портфелей, оценка рисков.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Метод предложен Огюстеном Коши в 1847 году.</p>
+      <p>Современная теория сходимости развита в XX веке.</p>
+      <p>Метод Нестерова (1983) значительно улучшил скорость сходимости.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

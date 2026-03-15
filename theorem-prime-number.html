@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о простых числах: распределение простых чисел, асимптотический закон.">
+  <title>MathLab — Теорема о простых числах</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория чисел</span>
+    <h1>Теорема о простых числах</h1>
+    <p>Асимптотический закон распределения простых чисел: π(x) ~ x/ln x.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть π(x) - количество простых чисел, не превышающих x. Тогда:</p>
+      <div class="math-box">
+        \[\lim_{x \to \infty} \frac{\pi(x)}{x/\ln x} = 1\]
+      </div>
+      <p>Это означает, что π(x) асимптотически равно x/ln x.</p>
+      <p>Более точная формулировка:</p>
+      <div class="math-box">
+        \[\pi(x) = \frac{x}{\ln x} + O\left(\frac{x}{\ln^2 x}\right)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Исторический контекст</h3>
+      <p>Теорема была независимо сформулирована Гауссом (1792) и Лежандром (1798) на основе наблюдений за таблицами простых чисел.</p>
+      <p>Гаусс заметил, что плотность простых чисел около x примерно равна 1/ln x.</p>
+      <p>Доказана независимо Жаком Адамаром и Шарлем де ля Валле Пуссеном в 1896 году.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Интегральный логарифм</h3>
+      <p>Более точная аппроксимация использует интегральный логарифм:</p>
+      <div class="math-box">
+        \[\text{li}(x) = \int_2^x \frac{dt}{\ln t}\]
+      </div>
+      <p>Тогда:</p>
+      <div class="math-box">
+        \[\pi(x) = \text{li}(x) + O\left(x e^{-c\sqrt{\ln x}}\right)\]
+      </div>
+      <p>где c > 0 - константа. Это гораздо более точная аппроксимация.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с дзета-функцией Римана</h3>
+      <p>Теорема о простых числах эквивалентна утверждению, что дзета-функция Римана ζ(s) не имеет нулей на прямой Re(s) = 1.</p>
+      <div class="math-box">
+        \[\zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p \text{ простое}} \frac{1}{1-p^{-s}}\]
+      </div>
+      <p>Это показывает глубокую связь между распределением простых чисел и аналитическими свойствами ζ(s).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Числовые данные</h3>
+      <h4>Примеры значений π(x):</h4>
+      <ul>
+        <li>π(10) = 4, 10/ln 10 ≈ 4.34</li>
+        <li>π(100) = 25, 100/ln 100 ≈ 21.71</li>
+        <li>π(1000) = 168, 1000/ln 1000 ≈ 144.76</li>
+        <li>π(10⁶) = 78498, 10⁶/ln 10⁶ ≈ 72382.41</li>
+        <li>π(10⁹) = 50847534, 10⁹/ln 10⁹ ≈ 50847334.53</li>
+      </ul>
+      <p>Относительная погрешность уменьшается с ростом x.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Следствия и приложения</h3>
+      <h4>1. n-е простое число</h4>
+      <p>Если pₙ - n-е простое число, то:</p>
+      <div class="math-box">
+        \[p_n \sim n \ln n\]
+      </div>
+      
+      <h4>2. Промежутки между простыми</h4>
+      <p>Средний промежуток между простыми числами около x равен ln x.</p>
+      
+      <h4>3. Вероятностная интерпретация</h4>
+      <p>Вероятность того, что случайное число n ≤ x простое, примерно равна 1/ln x.</p>
+      
+      <h4>4. Алгоритмическая сложность</h4>
+      <p>Оценка сложности алгоритмов факторизации и тестирования простоты.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Методы доказательства</h3>
+      <h4>Аналитический метод</h4>
+      <p>Основан на комплексном анализе дзета-функции Римана.</p>
+      <p>Ключевые шаги:</p>
+      <ol>
+        <li>Доказательство отсутствия нулей ζ(s) на Re(s) = 1</li>
+        <li>Использование формул для π(x) через интегралы от ζ(s)</li>
+        <li>Оценка остаточных членов</li>
+      </ol>
+      
+      <h4>Элементарные методы</h4>
+      <p>Сельберг (1948) и Эрдёш (1949) дали элементарные доказательства без использования комплексного анализа.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения и гипотезы</h3>
+      <h4>Гипотеза Римана</h4>
+      <p>Все нетривиальные нули ζ(s) лежат на прямой Re(s) = 1/2.</p>
+      <p>Это дало бы гораздо более точные оценки для π(x).</p>
+      
+      <h4>Распределение простых в прогрессиях</h4>
+      <p>Обобщение на простые числа в арифметических прогрессиях.</p>
+      
+      <h4>Простые близнецы</h4>
+      <p>Гипотеза о бесконечности пар простых чисел, отличающихся на 2.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Дирихле о простых в прогрессиях</h4>
+      <p>В любой арифметической прогрессии an + b с (a,b) = 1 бесконечно много простых.</p>
+      
+      <h4>Теорема Чебышёва</h4>
+      <p>Существуют константы c₁, c₂ такие, что c₁x/ln x ≤ π(x) ≤ c₂x/ln x.</p>
+      
+      <h4>Теорема Грина-Тао</h4>
+      <p>Существуют произвольно длинные арифметические прогрессии простых чисел.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические применения</h3>
+      <h4>1. Криптография</h4>
+      <p>Оценка размера простых чисел для RSA и других криптосистем.</p>
+      
+      <h4>2. Компьютерные алгоритмы</h4>
+      <p>Тесты простоты, алгоритмы факторизации.</p>
+      
+      <h4>3. Статистика</h4>
+      <p>Моделирование распределения простых чисел.</p>
+      
+      <h4>4. Образование</h4>
+      <p>Понимание распределения простых чисел в обучении.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

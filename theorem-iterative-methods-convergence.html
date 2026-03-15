@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости итерационных методов: Якоби, Гаусса-Зейделя, метод сопряжённых градиентов.">
+  <title>MathLab — Теорема о сходимости итерационных методов</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Численные методы</span>
+    <h1>Теорема о сходимости итерационных методов</h1>
+    <p>Условия сходимости итерационных методов решения систем линейных алгебраических уравнений.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Общая формулировка</h3>
+      <p>Рассмотрим систему Ax = b, где A - невырожденная n×n матрица. Итерационный метод имеет вид:</p>
+      <div class="math-box">
+        \[x^{(k+1)} = Tx^{(k)} + c\]
+      </div>
+      <p>где T - матрица перехода, c - вектор. Метод сходится к решению x* = A⁻¹b тогда и только тогда, когда:</p>
+      <div class="math-box">
+        \[\rho(T) < 1\]
+      </div>
+      <p>где ρ(T) - спектральный радиус матрицы T (максимальное по модулю собственное значение).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Метод Якоби</h3>
+      <h4>Формула</h4>
+      <p>Разложение A = D + L + U, где D - диагональная, L - нижнетреугольная, U - верхнетреугольная части.</p>
+      <div class="math-box">
+        \[x^{(k+1)} = D^{-1}(b - (L+U)x^{(k)})\]
+      </div>
+      
+      <h4>Матрица перехода</h4>
+      <div class="math-box">
+        \[T_J = -D^{-1}(L+U)\]
+      </div>
+      
+      <h4>Условие сходимости</h4>
+      <p>Метод Якоби сходится, если A строго или неприводимо диагонально доминирует:</p>
+      <div class="math-box">
+        \[|a_{ii}| > \sum_{j \neq i} |a_{ij}| \quad \text{для всех } i\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Метод Гаусса-Зейделя</h3>
+      <h4>Формула</h4>
+      <div class="math-box">
+        \[x^{(k+1)} = (D+L)^{-1}(b - Ux^{(k)})\]
+      </div>
+      
+      <h4>Матрица перехода</h4>
+      <div class="math-box">
+        \[T_{GS} = -(D+L)^{-1}U\]
+      </div>
+      
+      <h4>Условие сходимости</h4>
+      <p>Если A симметрическая положительно определённая, метод Гаусса-Зейделя всегда сходится.</p>
+      <p>Если A строго диагонально доминирует, метод сходится.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Метод сопряжённых градиентов</h3>
+      <h4>Формула</h4>
+      <p>Для симметрической положительно определённой матрицы A:</p>
+      <div class="math-box">
+        \[r^{(k)} = b - Ax^{(k)}\]
+        \[\alpha_k = \frac{(r^{(k)})^T r^{(k)}}{(r^{(k)})^T A r^{(k)}}\]
+        \[x^{(k+1)} = x^{(k)} + \alpha_k r^{(k)}\]
+        \[\beta_k = \frac{(r^{(k+1)})^T r^{(k+1)}}{(r^{(k)})^T r^{(k)}}\]
+        \[r^{(k+1)} = r^{(k)} - \alpha_k A r^{(k)} + \beta_k r^{(k)}\]
+      </div>
+      
+      <h4>Сходимость</h4>
+      <p>Метод сходится не более чем за n итераций (в точной арифметике).</p>
+      <div class="math-box">
+        \[\|x^{(k)} - x^*\|_A \leq 2\left(\frac{\sqrt{\kappa} - 1}{\sqrt{\kappa} + 1}\right)^k \|x^{(0)} - x^*\|_A\]
+      </div>
+      <p>где κ = cond₂(A) - число обусловленности.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство сходимости</h3>
+      <h4>Необходимое условие</h4>
+      <p>Если метод сходится для любого начального приближения, то ρ(T) < 1.</p>
+      <p>Доказательство: если x* - решение, то x* = Tx* + c.</p>
+      <p>Тогда e^{(k)} = x^{(k)} - x* удовлетворяет e^{(k+1)} = Te^{(k)}.</p>
+      <p>Следовательно, e^{(k)} = T^k e^{(0)} → 0 для любого e^{(0)} только если ρ(T) < 1.</p>
+      
+      <h4>Достаточное условие</h4>
+      <p>Если ρ(T) < 1, то метод сходится для любого начального приближения.</p>
+      <p>Используем норму, индуцированную спектральным радиусом.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Скорость сходимости</h3>
+      <h4>Асимптотическая скорость</h4>
+      <div class="math-box">
+        \[R = -\ln \rho(T)\]
+      </div>
+      
+      <h4>Сравнение методов</h4>
+      <ul>
+        <li>Якоби: медленная сходимость для плохо обусловленных матриц</li>
+        <li>Гаусса-Зейделя: обычно быстрее Якоби</li>
+        <li>Сопряжённые градиенты: оптимальный для SPD матриц</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Диагонально доминирующая матрица</h4>
+      <p>A = [[4,1,1],[1,4,1],[1,1,4]], b = [6,6,6]ᵀ</p>
+      <p>Все три метода сходятся, метод Гаусса-Зейделя - быстрее всего.</p>
+      
+      <h4>Пример 2: Симметрическая положительно определённая матрица</h4>
+      <p>A = [[2,-1,0],[-1,2,-1],[0,-1,2]]</p>
+      <p>Метод Гаусса-Зейделя и сопряжённых градиентов сходятся.</p>
+      
+      <h4>Пример 3: Расходящийся случай</h4>
+      <p>A = [[1,2],[2,1]] - не диагонально доминирует, метод Якоби расходится.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Предобуславливание</h3>
+      <h4>Идея</h4>
+      <p>Решаем M⁻¹Ax = M⁻¹b, где M ≈ A, но M⁻¹ легко вычисляется.</p>
+      
+      <h4>Методы предобуславливания</h4>
+      <ul>
+        <li>Якоби: M = diag(A)</li>
+        <li>Гаусса-Зейдель: M = D+L</li>
+        <li>SSOR: M = (D+ωL)D⁻¹(D+ωU)/ω(2-ω)</li>
+        <li>Неполное разложение Холецкого</li>
+      </ul>
+      
+      <h4>Эффект</h4>
+      <p>Хорошее предобуславливание уменьшает число обусловленности и ускоряет сходимость.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Критерии остановки</h4>
+      <ul>
+        <li>‖b - Ax^{(k)}‖ < ε (невязка)</li>
+        <li>‖x^{(k)} - x^{(k-1)}‖ < ε (изменение решения)</li>
+        <li>Относительная невязка < ε</li>
+        <li>Максимальное число итераций</li>
+      </ul>
+      
+      <h4>Выбор метода</h4>
+      <ul>
+        <li>Разреженные матрицы: итерационные методы предпочтительнее</li>
+        <li>Плотные матрицы: прямые методы (LU-разложение)</li>
+        <li>SPD матрицы: метод сопряжённых градиентов</li>
+        <li>Общие матрицы: GMRES, BiCGSTAB</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения</h3>
+      <h4>Нестационарные методы</h4>
+      <p>GMRES, BiCGSTAB, QMR - меняют матрицу перехода на каждой итерации.</p>
+      
+      <h4>Многосеточные методы</h4>
+      <p>Использование иерархии сеток для ускорения сходимости.</p>
+      
+      <h4>Доменно-декомпозиционные методы</h4>
+      <p>Разделение области на подобласти с параллельной обработкой.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Перрона-Фробениуса</h4>
+      <p>Используется для анализа сходимости итерационных методов.</p>
+      
+      <h4>Теорема Гершгорина</h4>
+      <p>Оценка собственных значений матрицы перехода.</p>
+      
+      <h4>Теорема об обусловленности</h4>
+      <p>Связь между обусловленностью и скоростью сходимости.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Метод Якоби предложен Карлом Якоби в 1845 году.</p>
+      <p>Метод Гаусса-Зейделя разработан Людвигом Зейделем в 1874 году.</p>
+      <p>Метод сопряжённых градиентов предложен Хестенсом и Штифелем в 1952 году.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
