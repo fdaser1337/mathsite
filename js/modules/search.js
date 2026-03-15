@@ -61,27 +61,37 @@ export class SearchManager {
 
   renderResults(results, query) {
     if (!this.searchResults) return;
-
-    if (!results.length) {
-      this.searchResults.classList.add('active');
-      this.searchResults.innerHTML = '<p>Ничего не найдено. Попробуйте другой термин.</p>';
+    
+    if (results.length === 0) {
+      this.searchResults.innerHTML = `
+        <div class="search-empty">
+          <p>Ничего не найдено по запросу «${query}»</p>
+        </div>
+      `;
+      this.showResults();
       return;
     }
 
-    const list = results.map((result) => `
-      <li>
-        <a href="${result.url}">
-          <strong>${this.highlightQuery(result.title, query)}</strong><br>
-          <small>${this.highlightQuery(result.text, query)}</small>
-        </a>
-      </li>
-    `).join('');
+    const resultsHtml = results.map(result => {
+      const highlightedTitle = this.highlightText(result.title, query);
+      const highlightedText = this.highlightText(result.text, query);
+      
+      return `
+        <li>
+          <a href="${result.url}" onclick="window.location.hash='!${result.url}'; return false;">
+            <strong>${highlightedTitle}</strong>
+            <br>
+            <small>${highlightedText}</small>
+          </a>
+        </li>
+      `;
+    }).join('');
 
-    this.searchResults.classList.add('active');
-    this.searchResults.innerHTML = `<ul>${list}</ul>`;
+    this.searchResults.innerHTML = `<ul>${resultsHtml}</ul>`;
+    this.showResults();
   }
 
-  highlightQuery(text, query) {
+  highlightText(text, query) {
     if (!query) return text;
     const regex = new RegExp(`(${query})`, 'gi');
     return text.replace(regex, '<mark>$1</mark>');
@@ -101,34 +111,46 @@ export class SearchManager {
   }
 
   bindEvents() {
-    if (this.searchBtn) {
-      this.searchBtn.addEventListener('click', () => this.performSearch());
+    if (!this.searchInput || !this.searchBtn) {
+      console.warn('Search elements not found');
+      return;
     }
 
-    if (this.searchInput) {
-      // Debounced search
-      let debounceTimer;
-      this.searchInput.addEventListener('input', () => {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => this.performSearch(), CONFIG.UI.DEBOUNCE_DELAY);
-      });
-
-      this.searchInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          event.preventDefault();
-          this.performSearch();
-        }
-        if (event.key === 'Escape') {
-          this.hideResults();
-        }
-      });
-    }
-
-    // Закрытие результатов при клике вне
-    document.addEventListener('click', (event) => {
-      if (!this.searchResults) return;
-      if (!event.target.closest('.search-host')) {
+    // Поиск при вводе с дебаунс
+    let searchTimeout;
+    this.searchInput.addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      const query = e.target.value.trim();
+      
+      if (query.length >= 2) {
+        searchTimeout = setTimeout(() => {
+          this.performSearch(query);
+        }, CONFIG.SEARCH_DEBOUNCE_DELAY);
+      } else {
         this.hideResults();
+      }
+    });
+
+    // Поиск по клику на кнопку
+    this.searchBtn.addEventListener('click', () => {
+      const query = this.searchInput.value.trim();
+      if (query) {
+        this.performSearch(query);
+      }
+    });
+
+    // Закрытие результатов при клике вне поля
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.search-host')) {
+        this.hideResults();
+      }
+    });
+
+    // Навигация с клавиатуры
+    this.searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        this.hideResults();
+        this.searchInput.blur();
       }
     });
   }

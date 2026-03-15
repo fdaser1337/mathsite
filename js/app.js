@@ -81,21 +81,38 @@ class MathLabApp {
     
     // Инициализация в правильном порядке
     this.modules.theme = new ThemeManager();
+    console.log('✅ ThemeManager инициализирован');
+    
     this.modules.search = new SearchManager();
+    console.log('✅ SearchManager инициализирован');
+    
     this.modules.navigation = new NavigationManager();
+    console.log('✅ NavigationManager инициализирован');
+    
     this.modules.bookmarks = new BookmarkManager();
+    console.log('✅ BookmarkManager инициализирован');
+    
     this.modules.exercises = new ExerciseManager();
+    console.log('✅ ExerciseManager инициализирован');
+    
     this.modules.visualization = new VisualizationManager();
+    console.log('✅ VisualizationManager инициализирован');
+    
     this.modules.lazyLoader = new LazyLoader();
+    console.log('✅ LazyLoader инициализирован');
     
     // Роутер инициализируем последним
     this.modules.router = router;
+    console.log('✅ Router инициализирован');
     
-    console.log('✅ Все модулы инициализированы');
+    console.log('✅ Все модули инициализированы');
   }
 
   setupAdvancedFeatures() {
     console.log('⚙️ Настройка продвинутых функций...');
+    
+    // Инициализация темы
+    this.initializeTheme();
     
     // Прогресс-бар чтения
     this.setupReadingProgress();
@@ -113,6 +130,18 @@ class MathLabApp {
     this.setupAutoSave();
     
     console.log('✅ Продвинутые функции настроены');
+  }
+
+  initializeTheme() {
+    // Загружаем сохранённую тему
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    // Обновляем кнопку темы
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    if (themeToggle) {
+      themeToggle.textContent = savedTheme === 'dark' ? '🌙 Тёмная' : '☀️ Светлая';
+    }
   }
 
   showLoadingScreen() {
@@ -452,6 +481,18 @@ class MathLabApp {
         this.closeAllModals();
       }
     });
+
+    // Прямое управление темой
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        themeToggle.textContent = newTheme === 'dark' ? '🌙 Тёмная' : '☀️ Светлая';
+      });
+    }
   }
 
   setupPageTransitions() {
