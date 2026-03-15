@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости фильтра Калмана: оптимальная фильтрация, рекуррентные оценки, сходимость фильтра.">
+  <title>MathLab — Теорема о сходимости фильтра Калмана</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория управления</span>
+    <h1>Теорема о сходимости фильтра Калмана</h1>
+    <p>Оптимальная линейная фильтрация и сходимость рекуррентных оценок.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная модель фильтра Калмана</h3>
+      <h4>Линейная стохастическая система</h4>
+      <div class="math-box">
+        \[x_{k+1} = A_k x_k + B_k u_k + w_k\]
+        \[z_k = H_k x_k + v_k\]
+      </div>
+      
+      <p>где:</p>
+      <ul>
+        <li>x_k ∈ ℝ^n - вектор состояния</li>
+        <li>z_k ∈ ℝ^m - вектор наблюдений</li>
+        <li>u_k ∈ ℝ^p - вектор управления</li>
+        <li>w_k ~ N(0, Q_k) - шум процесса</li>
+        <li>v_k ~ N(0, R_k) - шум наблюдений</li>
+      </ul>
+      
+      <h4>Предположения</h4>
+      <ul>
+        <li>w_k и v_k - независимые гауссовские шумы</li>
+        <li>Начальное состояние x₀ ~ N(μ₀, P₀)</li>
+        <li>Все матрицы известны</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Алгоритм фильтра Калмана</h3>
+      <h4>Шаг предсказания</h4>
+      <div class="math-box">
+        \[\hat{x}_{k|k-1} = A_k \hat{x}_{k-1|k-1} + B_k u_k\]
+        \[P_{k|k-1} = A_k P_{k-1|k-1} A_k^T + Q_k\]
+      </div>
+      
+      <p>где \hat{x}_{k|k-1} - предсказанное состояние, P_{k|k-1} - ковариация ошибки предсказания.</p>
+      
+      <h4>Шаг коррекции</h4>
+      <div class="math-box">
+        \[K_k = P_{k|k-1} H_k^T (H_k P_{k|k-1} H_k^T + R_k)^{-1}\]
+        \[\hat{x}_{k|k} = \hat{x}_{k|k-1} + K_k (z_k - H_k \hat{x}_{k|k-1})\]
+        \[P_{k|k} = (I - K_k H_k) P_{k|k-1}\]
+      </div>
+      
+      <p>где K_k - матрица усиления Калмана.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема об оптимальности фильтра Калмана</h3>
+      <h4>Формулировка</h4>
+      <p>Фильтр Калмана даёт оптимальную в среднеквадратичном смысле оценку состояния линейной гауссовой системы.</p>
+      
+      <h4>Свойства оптимальности</h4>
+      <ul>
+        <li>Несмещённость: E[x_k - \hat{x}_{k|k}] = 0</li>
+        <li>Минимальная дисперсия: tr(P_{k|k}) минимальна</li>
+        <li>Линейность: оценка - линейная функция наблюдений</li>
+      </ul>
+      
+      <h4>Доказательство</h4>
+      <p>Основано на ортогональности инноваций и проекции на подпространство наблюдений.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости стационарного фильтра</h3>
+      <h4>Формулировка</h4>
+      <p>Для стационарной системы (A, H, Q, R постоянны) и при выполнении условий управляемости и наблюдаемости:</p>
+      <div class="math-box">
+        \[\lim_{k \to \infty} P_{k|k} = P_{\infty}\]
+      </div>
+      
+      <p>где P_{\infty} - решение алгебраического уравнения Риккати.</p>
+      
+      <h4>Алгебраическое уравнение Риккати</h4>
+      <div class="math-box">
+        \[P_{\infty} = A P_{\infty} A^T - A P_{\infty} H^T (H P_{\infty} H^T + R)^{-1} H P_{\infty} A^T + Q\]
+      </div>
+      
+      <h4>Условия сходимости</h4>
+      <ul>
+        <li>Пара (A, Q^{1/2}) управляема</li>
+        <li>Пара (A, H) наблюдаема</li>
+        <li>Собственные значения A лежат внутри единичной окружности</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема об устойчивости фильтра</h3>
+      <h4>Формулировка</h4>
+      <p>Матрица усиления Калмана K_{\infty} обеспечивает асимптотическую устойчивость фильтра:</p>
+      <div class="math-box">
+        \[A_{\infty} = A - K_{\infty} H\]
+      </div>
+      
+      <p>имеет собственные значения внутри единичной окружности.</p>
+      
+      <h4>Следствие</h4>
+      <div class="math-box">
+        \[\lim_{k \to \infty} (x_k - \hat{x}_{k|k}) = 0\]
+      </div>
+      
+      <p>в среднеквадратичном смысле.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Скорость сходимости</h3>
+      <h4>Экспоненциальная сходимость</h4>
+      <div class="math-box">
+        \[\|P_{k|k} - P_{\infty}\| \leq C \lambda^k\]
+      </div>
+      
+      <p>где 0 < λ < 1 зависит от собственных значений A_{\infty}.</p>
+      
+      <h4>Факторы, влияющие на сходимость</h4>
+      <ul>
+        <li>Отношение сигнал/шум</li>
+        <li>Управляемость и наблюдаемость системы</li>
+        <li>Начальные условия P₀</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Расширенный фильтр Калмана (EKF)</h3>
+      <h4>Линеаризация</h4>
+      <p>Для нелинейной системы:</p>
+      <div class="math-box">
+        \[x_{k+1} = f(x_k, u_k) + w_k\]
+        \[z_k = h(x_k) + v_k\]
+      </div>
+      
+      <p>Линеаризуем вокруг текущей оценки:</p>
+      <div class="math-box">
+        \[A_k = \frac{\partial f}{\partial x}\Big|_{\hat{x}_{k|k}}, \quad H_k = \frac{\partial h}{\partial x}\Big|_{\hat{x}_{k|k-1}}\]
+      </div>
+      
+      <h4>Сходимость EKF</h4>
+      <p>Локальная сходимость гарантируется при малых ошибках линеаризации.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Фильтр Калмана-Бьюси</h3>
+      <h4>Сглаживание</h4>
+      <p>Оценка состояния x_k по всем наблюдениям до времени t > k:</p>
+      <div class="math-box">
+        \[\hat{x}_{k|t} = \hat{x}_{k|k} + C_k (\hat{x}_{k+1|t} - \hat{x}_{k+1|k})\]
+      </div>
+      
+      <h4>Матрица сглаживания</h4>
+      <div class="math-box">
+        \[C_k = P_{k|k} A_{k+1}^T P_{k+1|k}^{-1}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о декомпозиции фильтра</h3>
+      <h4>UD-декомпозиция</h4>
+      <p>Численно устойчивая реализация:</p>
+      <div class="math-box">
+        \[P_{k|k-1} = U D U^T\]
+      </div>
+      
+      <p>где U - унитриангулярная, D - диагональная матрицы.</p>
+      
+      <h4>Преимущества</h4>
+      <ul>
+        <li>Гарантирует положительную определённость P</li>
+        <li>Улучшенная численная устойчивость</li>
+        <li>Снижение вычислительных затрат</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Адаптивный фильтр Калмана</h3>
+      <h4>Оценка ковариаций</h4>
+      <p>Адаптивная оценка Q_k и R_k по инновациям:</p>
+      <div class="math-box">
+        \[r_k = z_k - H_k \hat{x}_{k|k-1}\]
+      </div>
+      
+      <h4>Методы адаптации</h4>
+      <ul>
+        <li>Метод максимального правдоподобия</li>
+        <li>Байесовские методы</li>
+        <li>Методы инновационного анализа</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема разделения</h4>
+      <p>Для линейных систем оптимальное управление и оптимальная фильтрация разделяются.</p>
+      
+      <h4>Теорема дуальности</h4>
+      <p>Фильтрация и управление дуальны друг другу.</p>
+      
+      <h4>Теорема Гамильтона-Якоби-Беллмана</h4>
+      <p>Фильтр Калмана - частный случай для линейных систем.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Численные проблемы</h4>
+      <ul>
+        <li>Численная неустойчивость при плохой обусловленности</li>
+        <li>Дивергенция при неверных моделях</li>
+        <li>Выбор начальных условий</li>
+      </ul>
+      
+      <h4>Вычислительная сложность</h4>
+      <ul>
+        <li>Стандартный фильтр: O(n³ + n²m + nm²)</li>
+        <li>Разреженные матрицы: O(n²)</li>
+        <li>UD-фильтр: O(n²)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Расширения и обобщения</h3>
+      <h4>Несимметричный фильтр Калмана</h4>
+      <p>Обобщение на несимметричные распределения.</p>
+      
+      <h4>Фильтр частиц</h4>
+      <p>Нелинейный негауссовский аналог.</p>
+      
+      <h4>Информационный фильтр</h4>
+      <p>Работа с информационной матрицей вместо ковариационной.</p>
+      
+      <h4>Сетевой фильтр Калмана</h4>
+      <p>Распределённая фильтрация в сетях датчиков.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Навигация и геолокация</h4>
+      <p>GPS, инерциальные навигационные системы.</p>
+      
+      <h4>2. Экономика и финансы</h4>
+      <p>Анализ временных рядов, оценка моделей.</p>
+      
+      <h4>3. Обработка сигналов</h4>
+      <p>Фильтрация шума, отслеживание траекторий.</p>
+      
+      <h4>4. Робототехника</h4>
+      <p>Локализация, SLAM, управление.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Фильтр разработан Рудольфом Калманом в 1960 году.</p>
+      <p>Ричард Бьюси независимо разработал непрерывную версию.</p>
+      <p>Первое применение - навигация космических аппаратов Apollo.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости HMM: скрытые марковские модели, алгоритм Баума-Велша, EM-сходимость.">
+  <title>MathLab — Теорема о сходимости HMM</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория вероятностей</span>
+    <h1>Теорема о сходимости HMM</h1>
+    <p>Сходимость скрытых марковских моделей и алгоритма Баума-Велша.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная модель HMM</h3>
+      <p>Скрытая марковская модель определяется параметрами λ = (A, B, π):</p>
+      
+      <h4>Компоненты модели</h4>
+      <ul>
+        <li><strong>Скрытые состояния:</strong> S = {s₁, ..., s_N}</li>
+        <li><strong>Наблюдения:</strong> O = {o₁, ..., o_M}</li>
+        <li><strong>Матрица переходов:</strong> A = [a_{ij}], где a_{ij} = P(q_{t+1} = s_j|q_t = s_i)</li>
+        <li><strong>Матрица эмиссий:</strong> B = [b_j(k)], где b_j(k) = P(o_t = o_k|q_t = s_j)</li>
+        <li><strong>Начальное распределение:</strong> π = [π_i], где π_i = P(q₁ = s_i)</li>
+      </ul>
+      
+      <h4>Условия</h4>
+      <ul>
+        <li>∑_j a_{ij} = 1 для всех i</li>
+        <li>∑_k b_j(k) = 1 для всех j</li>
+        <li>∑_i π_i = 1</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Основные задачи HMM</h3>
+      <h4>Задача 1: Оценка вероятности</h4>
+      <p>Дана последовательность наблюдений O = o₁, ..., o_T и модель λ. Найти P(O|λ).</p>
+      
+      <h4>Задача 2: Декодирование</h4>
+      <p>Даны O и λ. Найти наиболее вероятную последовательность состояний Q = q₁, ..., q_T.</p>
+      
+      <h4>Задача 3: Обучение</h4>
+      <p>Даны O. Найти параметры λ, максимизирующие P(O|λ).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Прямой и обратный алгоритмы</h3>
+      <h4>Прямая переменная</h4>
+      <div class="math-box">
+        \[\alpha_t(i) = P(o_1, ..., o_t, q_t = s_i|\lambda)\]
+      </div>
+      
+      <h4>Инициализация</h4>
+      <div class="math-box">
+        \[\alpha_1(i) = \pi_i b_i(o_1)\]
+      </div>
+      
+      <h4>Рекурсия</h4>
+      <div class="math-box">
+        \[\alpha_{t+1}(j) = \left[\sum_{i=1}^{N} \alpha_t(i) a_{ij}\right] b_j(o_{t+1})\]
+      </div>
+      
+      <h4>Завершение</h4>
+      <div class="math-box">
+        \[P(O|\lambda) = \sum_{i=1}^{N} \alpha_T(i)\]
+      </div>
+      
+      <h4>Обратная переменная</h4>
+      <div class="math-box">
+        \[\beta_t(i) = P(o_{t+1}, ..., o_T|q_t = s_i, \lambda)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Алгоритм Баума-Велша (EM для HMM)</h3>
+      <h4>E-шаг: вычисление ожиданий</h4>
+      <div class="math-box">
+        \[\gamma_t(i) = P(q_t = s_i|O, \lambda) = \frac{\alpha_t(i)\beta_t(i)}{\sum_{j=1}^{N} \alpha_t(j)\beta_t(j)}\]
+      </div>
+      
+      <div class="math-box">
+        \[\xi_t(i,j) = P(q_t = s_i, q_{t+1} = s_j|O, \lambda) = \frac{\alpha_t(i) a_{ij} b_j(o_{t+1}) \beta_{t+1}(j)}{\sum_{k,l=1}^{N} \alpha_t(k) a_{kl} b_l(o_{t+1}) \beta_{t+1}(l)}\]
+      </div>
+      
+      <h4>M-шаг: обновление параметров</h4>
+      <div class="math-box">
+        \[\bar{\pi}_i = \gamma_1(i)\]
+      </div>
+      
+      <div class="math-box">
+        \[\bar{a}_{ij} = \frac{\sum_{t=1}^{T-1} \xi_t(i,j)}{\sum_{t=1}^{T-1} \gamma_t(i)}\]
+      </div>
+      
+      <div class="math-box">
+        \[\bar{b}_j(k) = \frac{\sum_{t=1, o_t = o_k}^{T} \gamma_t(j)}{\sum_{t=1}^{T} \gamma_t(j)}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости алгоритма Баума-Велша</h3>
+      <h4>Формулировка</h4>
+      <p>Алгоритм Баума-Велша монотонно увеличивает правдоподобие P(O|λ) и сходится к локальному максимуму.</p>
+      
+      <h4>Свойства сходимости</h4>
+      <ul>
+        <li>P(O|λ^{(t+1)}) ≥ P(O|λ^{(t)}) (монотонность)</li>
+        <li>Сходимость к стационарной точке правдоподобия</li>
+        <li>Локальная, а не глобальная оптимальность</li>
+      </ul>
+      
+      <h4>Условия сходимости</h4>
+      <ul>
+        <li>Наблюдения достаточно информативны</li>
+        <li>Модель идентифицируема</li>
+        <li>Начальные параметры не вырождены</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема об идентифицируемости HMM</h3>
+      <h4>Формулировка</h4>
+      <p>HMM идентифицируема (с точностью до переименования состояний) если:</p>
+      <ol>
+        <li>Матрицы A и B неразложимы</li>
+        <li>Наблюдения достаточно длинные и разнообразные</li>
+        <li>Начальное распределение π имеет все положительные компоненты</li>
+      </ol>
+      
+      <h4>Неоднозначность</h4>
+      <ul>
+        <li>Перенумерация состояний не меняет модель</li>
+        <li>Возможны эквивалентные представления</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о состоятельности оценок</h3>
+      <h4>Формулировка</h4>
+      <p>При T → ∞ оценки параметров HMM сходятся к истинным значениям с вероятностью 1.</p>
+      
+      <h4>Скорость сходимости</h4>
+      <div class="math-box">
+        \[\|\hat{\lambda}_T - \lambda_0\| = O_p\left(\frac{1}{\sqrt{T}}\right)\]
+      </div>
+      
+      <h4>Условия</h4>
+      <ul>
+        <li>Эргодичность марковской цепи</li>
+        <li>Идентифицируемость модели</li>
+        <li>Регулярность матриц переходов и эмиссий</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Алгоритм Витерби</h3>
+      <h4>Задача декодирования</h4>
+      <p>Нахождение наиболее вероятной последовательности состояний:</p>
+      <div class="math-box">
+        \[Q^* = \arg\max_Q P(Q|O, \lambda)\]
+      </div>
+      
+      <h4>Динамическое программирование</h4>
+      <div class="math-box">
+        \[\delta_t(i) = \max_{q_1, ..., q_{t-1}} P(q_1, ..., q_{t-1}, q_t = s_i, o_1, ..., o_t|\lambda)\]
+      </div>
+      
+      <h4>Рекурсия</h4>
+      <div class="math-box">
+        \[\delta_{t+1}(j) = \max_i [\delta_t(i) a_{ij}] b_j(o_{t+1})\]
+      </div>
+      
+      <h4>Восстановление пути</h4>
+      <div class="math-box">
+        \[\psi_t(j) = \arg\max_i [\delta_{t-1}(i) a_{ij}]\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сложности HMM</h3>
+      <h4>Вычислительная сложность</h4>
+      <ul>
+        <li>Прямой/обратный алгоритм: O(N²T)</li>
+        <li>Алгоритм Баума-Велша: O(N²T) на итерацию</li>
+        <li>Алгоритм Витерби: O(N²T)</li>
+      </ul>
+      
+      <h4>Память</h4>
+      <ul>
+        <li>Прямой алгоритм: O(NT)</li>
+        <li>Обратный алгоритм: O(NT)</li>
+        <li>Витерби: O(NT)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Расширения HMM</h3>
+      <h4>HMM с непрерывными наблюдениями</h4>
+      <p>Использование гауссовых смесей для эмиссионных вероятностей.</p>
+      
+      <h4>Скрытые полумарковские модели (HSMM)</h4>
+      <p>Учёт длительности пребывания в состояниях.</p>
+      
+      <h4>Иерархические HMM</h4>
+      <p>Многоуровневые модели с иерархией состояний.</p>
+      
+      <h4>Факторные HMM</h4>
+      <p>Независимые цепи с общими наблюдениями.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Проблемы</h4>
+      <ul>
+        <li>Локальные оптимумы в обучении</li>
+        <li>Численная нестабильность (underflow)</li>
+        <li>Выбор числа состояний</li>
+      </ul>
+      
+      <h4>Решения</h4>
+      <ul>
+        <li>Множественные инициализации</li>
+        <li>Логарифмическая шкала вычислений</li>
+        <li>Критерии AIC/BIC для выбора модели</li>
+      </ul>
+      
+      <h4>Регуляризация</h4>
+      <ul>
+        <li>Сглаживание оценок (аддитивное сглаживание)</li>
+        <li>Байесовские HMM с априорными распределениями</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими методами</h3>
+      <h4>Марковские цепи</h4>
+      <p>HMM - обобщение марковских цепей с неполными наблюдениями.</p>
+      
+      <h4>EM-алгоритм</h4>
+      <p>Баум-Велш - частный случай EM для дискретных скрытых переменных.</p>
+      
+      <h4>Фильтр Калмана</h4>
+      <p>Линейный гауссовский аналог HMM.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Распознавание речи</h4>
+      <p>Моделирование фонем и слов.</p>
+      
+      <h4>2. Биоинформатика</h4>
+      <p>Анализ последовательностей ДНК, поиск генов.</p>
+      
+      <h4>3. Финансы</h4>
+      <p>Моделирование рыночных режимов.</p>
+      
+      <h4>4. Обработка сигналов</h4>
+      <p>Анализ временных рядов, детекция аномалий.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>HMM предложены Леонардом Баумом и коллегами в 1960-х годах.</p>
+      <p>Алгоритм Баума-Велша разработан в 1970-х годах.</p>
+      <p>Широкое применение началось с 1980-х годов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>

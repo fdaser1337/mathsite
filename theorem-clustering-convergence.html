@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости кластеризации: k-means, EM-алгоритм, сходимость итерационных методов кластеризации.">
+  <title>MathLab — Теорема о сходимости кластеризации</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theores.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Машинное обучение</span>
+    <h1>Теорема о сходимости кластеризации</h1>
+    <p>Сходимость алгоритмов кластеризации и свойства оптимальных разбиений.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>k-means алгоритм</h3>
+      <h4>Целевая функция</h4>
+      <p>Минимизация внутрикластерной дисперсии:</p>
+      <div class="math-box">
+        \[J(C, \mu) = \sum_{k=1}^{K}\sum_{x_i \in C_k} \|x_i - \mu_k\|^2\]
+      </div>
+      
+      <p>где C_k - кластер k, μ_k - центр кластера k.</p>
+      
+      <h4>Итерационный алгоритм</h4>
+      <ol>
+        <li>Шаг назначения: x_i ∈ C_{argmin_k}‖x_i - μ_k‖</li>
+        <li>Шаг обновления: μ_k = (1/|C_k|)∑_{x_i∈C_k} x_i</li>
+      </ol>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости k-means</h3>
+      <h4>Формулировка</h4>
+      <p>Алгоритм k-means всегда сходится за конечное число итераций к локальному минимуму.</p>
+      
+      <h4>Доказательство</h4>
+      <ul>
+        <li>Каждая итерация не увеличивает целевую функцию J</li>
+        <li>Существует конечное число возможных разбиений (n^K)</li>
+        <li>Алгоритм не может циклироваться без уменьшения J</li>
+        <li>Следовательно, достигается локальный минимум за конечное число шагов</li>
+      </ul>
+      
+      <h4>Следствия</h4>
+      <ul>
+        <li>Сходимость гарантирована, но не к глобальному оптимуму</li>
+        <li>Результат зависит от начальной инициализации</li>
+        <li>Множественные запуски улучшают качество решения</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>EM-алгоритм для гауссовых смесей</h3>
+      <h4>Модель</h4>
+      <p>Смесь гауссовских распределений:</p>
+      <div class="math-box">
+        \[p(x) = \sum_{k=1}^{K} \pi_k \mathcal{N}(x|\mu_k, \Sigma_k)\]
+      </div>
+      
+      <h4>E-шаг</h4>
+      <div class="math-box">
+        \[\gamma_{ik}^{(t)} = \frac{\pi_k^{(t)} \mathcal{N}(x_i|\mu_k^{(t)}, \Sigma_k^{(t)})}{\sum_{j=1}^{K} \pi_j^{(t)} \mathcal{N}(x_i|\mu_j^{(t)}, \Sigma_j^{(t)})}\]
+      </div>
+      
+      <h4>M-шаг</h4>
+      <div class="math-box">
+        \[\pi_k^{(t+1)} = \frac{1}{n}\sum_{i=1}^{n} \gamma_{ik}^{(t)}\]
+        \[\mu_k^{(t+1)} = \frac{\sum_{i=1}^{n} \gamma_{ik}^{(t)} x_i}{\sum_{i=1}^{n} \gamma_{ik}^{(t)}}\]
+        \[\Sigma_k^{(t+1)} = \frac{\sum_{i=1}^{n} \gamma_{ik}^{(t)}(x_i - \mu_k^{(t+1)})(x_i - \mu_k^{(t+1)})^T}{\sum_{i=1}^{n} \gamma_{ik}^{(t)}}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости EM-алгоритма</h3>
+      <h4>Формулировка</h4>
+      <p>EM-алгоритм монотонно увеличивает правдоподобие и сходится к стационарной точке.</p>
+      
+      <h4>Свойства сходимости</h4>
+      <ul>
+        <li>ℓ(θ^{(t+1)}) ≥ ℓ(θ^{(t)}) (монотонность правдоподобия)</li>
+        <li>Сходимость к локальному максимуму правдоподобия</li>
+        <li>Линейная скорость сходимости вблизи оптимума</li>
+      </ul>
+      
+      <h4>Условия сходимости</h4>
+      <ul>
+        <li>Правдоподобие ограничено сверху</li>
+        <li>Полная вероятность положительна</li>
+        <li>Регулярность модели</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о консистентности</h3>
+      <h4>Формулировка</h4>
+      <p>При n → ∞ оценки параметров смеси сходятся к истинным значениям.</p>
+      
+      <h4>Условия</h4>
+      <ul>
+        <li>Идентифицируемость компонентов смеси</li>
+        <li>Разделённость компонентов</li>
+        <li>Правильное число кластеров K</li>
+      </ul>
+      
+      <h4>Скорость сходимости</h4>
+      <div class="math-box">
+        \[\|\hat{\theta}_n - \theta_0\| = O_p(n^{-1/2})\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Иерархическая кластеризация</h3>
+      <h4>Агломеративный подход</h4>
+      <p>Последовательное объединение ближайших кластеров.</p>
+      
+      <h4>Критерии связывания</h4>
+      <ul>
+        <li><strong>Single linkage:</strong> min_{x∈C_i, y∈C_j} d(x,y)</li>
+        <li><strong>Complete linkage:</strong> max_{x∈C_i, y∈C_j} d(x,y)</li>
+        <li><strong>Average linkage:</strong> (1/|C_i||C_j|)∑_{x∈C_i, y∈C_j} d(x,y)</li>
+        <li><strong>Ward's method:</strong> минимизация прироста дисперсии</li>
+      </ul>
+      
+      <h4>Свойства</h4>
+      <ul>
+        <li>Детерминированный алгоритм</li>
+        <li>Дендрограмма представления иерархии</li>
+        <li>Различные свойства связывания</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема об устойчивости кластеризации</h3>
+      <h4>Определение устойчивости</h4>
+      <p>Кластеризация устойчива, если малые изменения данных не меняют структуру кластеров.</p>
+      
+      <h4>Теорема</h4>
+      <p>Для хорошо разделённых кластеров с минимальным расстоянием δ:</p>
+      <div class="math-box">
+        \[P(\text{изменение кластеризации}) \leq \exp\left(-\frac{n\delta^2}{8\sigma^2}\right)\]
+      </div>
+      
+      <p>где σ² - максимальная дисперсия внутри кластеров.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Спектральная кластеризация</h3>
+      <h4>Идея</h4>
+      <p>Использование собственных векторов матрицы сходства для кластеризации.</p>
+      
+      <h4>Алгоритм</h4>
+      <ol>
+        <li>Построение матрицы сходства W</li>
+        <li>Вычисление нормализованной лапласиана L = D^{-1/2}WD^{-1/2}</li>
+        <li>Нахождение K первых собственных векторов</li>
+        <li>k-means в пространстве собственных векторов</li>
+      </ol>
+      
+      <h4>Теорема о сходимости</h4>
+      <p>При определённых условиях спектральная кластеризация сходится к оптимальному разбиению.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Оценка качества кластеризации</h3>
+      <h4>Silhouette коэффициент</h4>
+      <div class="math-box">
+        \[s(i) = \frac{b(i) - a(i)}{\max\{a(i), b(i)\}}\]
+      </div>
+      
+      <p>где a(i) - среднее расстояние до точек того же кластера, b(i) - минимальное среднее расстояние до точек других кластеров.</p>
+      
+      <h4>Индекс Данна</h4>
+      <div class="math-box">
+        \[DB = \frac{1}{K}\sum_{k=1}^{K} \max_{j \neq k} \frac{S_k + S_j}{d(C_k, C_j)}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о числе кластеров</h3>
+      <h4>Метод локтя</h4>
+      <p>Выбор K по точке изгиба графика J(K).</p>
+      
+      <h4>Информационные критерии</h4>
+      <div class="math-box">
+        \[AIC = -2\log L + 2p\]
+        \[BIC = -2\log L + p\log n\]
+      </div>
+      
+      <p>где p - число параметров, L - правдоподобие.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Выбор алгоритма</h4>
+      <ul>
+        <li><strong>k-means:</strong> сферические кластеры, большие данные</li>
+        <li><strong>EM-алгоритм:</strong> гауссовы смеси, вероятностная кластеризация</li>
+        <li><strong>Иерархическая:</strong>探索ная структура данных</li>
+        <li><strong>Спектральная:</strong> сложные формы кластеров</li>
+      </ul>
+      
+      <h4>Масштабирование</h4>
+      <ul>
+        <li>k-means: O(nKI) - линейно по числу точек</li>
+        <li>EM: O(nKI) - линейно по числу точек</li>
+        <li>Иерархическая: O(n² log n) - квадратично</li>
+        <li>Спектральная: O(n³) - кубично</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Закон больших чисел</h4>
+      <p>Используется для доказательства состоятельности оценок.</p>
+      
+      <h4>Центральная предельная теорема</h4>
+      <p>Определяет асимптотическое распределение оценок.</p>
+      
+      <h4>Теорема о сходимости оптимизации</h4>
+      <p>Основана для итерационных алгоритмов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Сегментация изображений</h4>
+      <p>Разделение изображения на однородные области.</p>
+      
+      <h4>2. Анализ генов</h4>
+      <p>Кластеризация генов по экспрессии.</p>
+      
+      <h4>3. Сегментация клиентов</h4>
+      <p>Разделение клиентов на группы по поведению.</p>
+      
+      <h4>4. Обработка текстов</h4>
+      <p>Кластеризация документов по темам.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>k-means разработан в 1950-х годах.</p>
+      <p>EM-алгоритм предложен в 1977 году.</p>
+      <p>Современная теория кластеризации активно развивается.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theores.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
