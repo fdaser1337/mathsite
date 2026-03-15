@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теория вероятностей: случайные события, вероятность, распределения, предельные теоремы.">
+  <title>MathLab — Теория вероятностей</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links" aria-label="Главная навигация">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="probability-theory.html" aria-current="page">Теория вероятностей</a>
+      <a href="statistics.html">Статистика</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
+        <button type="button" data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория вероятностей</span>
+    <h1>Теория вероятностей и случайные события</h1>
+    <p>Фундаментальные концепции теории вероятностей: от классического определения до предельных теорем и случайных процессов.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid triple">
+      <a class="glass-card card" href="#basic-concepts">
+        <h3>Основные понятия</h3>
+        <p>События, вероятность, пространство элементарных исходов, алгебра событий.</p>
+      </a>
+      <a class="glass-card card" href="#distributions">
+        <h3>Распределения</h3>
+        <p>Дискретные и непрерывные распределения, их свойства и характеристики.</p>
+      </a>
+      <a class="glass-card card" href="#limit-theorems">
+        <h3>Предельные теоремы</h3>
+        <p>Закон больших чисел, центральная предельная теорема и их приложения.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="basic-concepts">
+    <h2>Основные понятия теории вероятностей</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Классическое определение вероятности</h3>
+      <p>Вероятность события $A$ определяется как отношение числа благоприятных исходов к общему числу равновозможных исходов:</p>
+      <div class="math-box">
+        \[P(A) = \frac{m}{n}\]
+        где $m$ - число благоприятных исходов, $n$ - общее число исходов.
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Аксиомы Колмогорова</h3>
+      <p>Современная теория вероятностей основана на трёх аксиомах:</p>
+      <div class="math-box">
+        \[\begin{aligned}
+        &1. \quad P(A) \geq 0 \text{ для любого события } A \\
+        &2. \quad P(\Omega) = 1 \text{ для достоверного события } \Omega \\
+        &3. \quad P(A \cup B) = P(A) + P(B) \text{ для несовместных событий } A, B
+        \end{aligned}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Условная вероятность</h3>
+      <p>Условная вероятность события $A$ при условии, что событие $B$ произошло:</p>
+      <div class="math-box">
+        \[P(A|B) = \frac{P(A \cap B)}{P(B)}\]
+      </div>
+      <p>Формула полной вероятности:</p>
+      <div class="math-box">
+        \[P(A) = \sum_{i=1}^{n} P(A|H_i) \cdot P(H_i)\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="distributions">
+    <h2>Основные распределения</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Биномиальное распределение</h3>
+      <p>Вероятность $k$ успехов в $n$ независимых испытаниях:</p>
+      <div class="math-box">
+        \[P(X = k) = C_n^k \cdot p^k \cdot (1-p)^{n-k}\]
+      </div>
+      <p>Математическое ожидание: $M[X] = np$, Дисперсия: $D[X] = np(1-p)$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Нормальное распределение</h3>
+      <p>Плотность вероятности нормального распределения:</p>
+      <div class="math-box">
+        \[f(x) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
+      </div>
+      <p>где $\mu$ - математическое ожидание, $\sigma$ - среднеквадратичное отклонение.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Пуассоновское распределение</h3>
+      <p>Вероятность $k$ событий в интервале времени:</p>
+      <div class="math-box">
+        \[P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}\]
+      </div>
+      <p>где $\lambda$ - интенсивность потока событий.</p>
+    </article>
+  </section>
+
+  <section class="section" id="limit-theorems">
+    <h2>Предельные теоремы</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Закон больших чисел</h3>
+      <p>Пусть $X_1, X_2, \ldots, X_n$ - независимые одинаково распределённые случайные величины с $M[X_i] = \mu$. Тогда:</p>
+      <div class="math-box">
+        \[\lim_{n \to \infty} P\left(\left|\frac{1}{n}\sum_{i=1}^{n} X_i - \mu\right| < \varepsilon\right) = 1\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Центральная предельная теорема</h3>
+      <p>Сумма большого количества независимых случайных величин имеет приближённо нормальное распределение:</p>
+      <div class="math-box">
+        \[\frac{\sum_{i=1}^{n} X_i - n\mu}{\sigma\sqrt{n}} \xrightarrow{d} N(0,1)\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Связанные теоремы</h2>
+    <div class="card-grid triple">
+      <a class="glass-card card" href="theorem-law-large-numbers.html">
+        <h3>Закон больших чисел</h3>
+        <p>Фундаментальная теорема о сходимости средних значений.</p>
+      </a>
+      <a class="glass-card card" href="theorem-central-limit.html">
+        <h3>Центральная предельная теорема</h3>
+        <p>Ключевая теорема о распределении сумм случайных величин.</p>
+      </a>
+      <a class="glass-card card" href="theorem-borel-cantelli.html">
+        <h3>Лемма Бореля-Кантелли</h3>
+        <p>Теорема о частоте наступления событий в бесконечной последовательности.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

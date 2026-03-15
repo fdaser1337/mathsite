@@ -1,0 +1,217 @@
+{
+  "exercises": [
+    {
+      "id": "ex-pythagoras-001",
+      "title": "Нахождение гипотенузы",
+      "theoremId": "pythagoras",
+      "category": "geometry",
+      "difficulty": "easy",
+      "question": "В прямоугольном треугольнике катеты равны 6 и 8. Найдите длину гипотенузы.",
+      "answer": "10",
+      "answerType": "numeric",
+      "explanation": "По теореме Пифагора: c = √(6² + 8²) = √(36 + 64) = √100 = 10",
+      "hints": [
+        "Используйте теорему Пифагора: c² = a² + b²",
+        "Подставьте a = 6, b = 8 в формулу",
+        "Вычислите c = √(36 + 64) = √100 = 10"
+      ],
+      "steps": [
+        "Записываем теорему Пифагора: c² = a² + b²",
+        "Подставляем известные значения: c² = 6² + 8²",
+        "Вычисляем квадраты: c² = 36 + 64 = 100",
+        "Находим корень: c = √100 = 10"
+      ],
+      "relatedConcepts": ["square-roots", "pythagorean-triples"],
+      "timeLimit": 300,
+      "points": 10
+    },
+    {
+      "id": "ex-pythagoras-002",
+      "title": "Нахождение катета",
+      "theoremId": "pythagoras",
+      "category": "geometry",
+      "difficulty": "easy",
+      "question": "В прямоугольном треугольнике гипотенуза равна 13, а один из катетов равен 5. Найдите длину другого катета.",
+      "answer": "12",
+      "answerType": "numeric",
+      "explanation": "По теореме Пифагора: a = √(c² - b²) = √(13² - 5²) = √(169 - 25) = √144 = 12",
+      "hints": [
+        "Используйте теорему Пифагора: a² = c² - b²",
+        "Подставьте c = 13, b = 5 в формулу",
+        "Вычислите a = √(169 - 25) = √144 = 12"
+      ],
+      "steps": [
+        "Записываем теорему Пифагора: c² = a² + b²",
+        "Выражаем неизвестный катет: a² = c² - b²",
+        "Подставляем значения: a² = 13² - 5² = 169 - 25 = 144",
+        "Находим корень: a = √144 = 12"
+      ],
+      "relatedConcepts": ["square-roots", "pythagorean-triples"],
+      "timeLimit": 300,
+      "points": 10
+    },
+    {
+      "id": "ex-pythagoras-003",
+      "title": "Проверка прямоугольности",
+      "theoremId": "pythagoras",
+      "category": "geometry",
+      "difficulty": "medium",
+      "question": "Является ли треугольник со сторонами 7, 24, 25 прямоугольным?",
+      "answer": "да",
+      "answerType": "text",
+      "alternativeAnswers": ["yes", "Да", "YES"],
+      "explanation": "Проверяем: 7² + 24² = 49 + 576 = 625 = 25². Так как выполняется теорема Пифагора, треугольник прямоугольный.",
+      "hints": [
+        "Проверьте, выполняется ли теорема Пифагора",
+        "Сравните квадрат большей стороны с суммой квадратов двух других",
+        "Если равенство выполняется, треугольник прямоугольный"
+      ],
+      "steps": [
+        "Находим квадраты всех сторон: 7² = 49, 24² = 576, 25² = 625",
+        "Проверяем теорему Пифагора: 7² + 24² = 49 + 576 = 625",
+        "Сравниваем с квадратом гипотенузы: 625 = 25²",
+        "Вывод: треугольник прямоугольный"
+      ],
+      "relatedConcepts": ["pythagorean-triples", "triangle-classification"],
+      "timeLimit": 300,
+      "points": 15
+    },
+    {
+      "id": "ex-mean-value-001",
+      "title": "Применение теоремы Лагранжа",
+      "theoremId": "mean-value",
+      "category": "analysis",
+      "difficulty": "medium",
+      "question": "Найдите точку c, удовлетворяющую теореме Лагранжа для функции f(x) = x² на отрезке [1, 3].",
+      "answer": "2",
+      "answerType": "numeric",
+      "explanation": "f'(c) = 2c = (f(3) - f(1))/(3 - 1) = (9 - 1)/2 = 4. Следовательно, c = 2.",
+      "hints": [
+        "Найдите производную функции",
+        "Вычислите f(3) и f(1)",
+        "Применяйте формулу теоремы Лагранжа"
+      ],
+      "steps": [
+        "Находим производную: f'(x) = 2x",
+        "Вычисляем значения: f(3) = 9, f(1) = 1",
+        "Применяем теорему: f'(c) = (9 - 1)/(3 - 1) = 4",
+        "Решаем уравнение: 2c = 4, получаем c = 2"
+      ],
+      "relatedConcepts": ["derivatives", "function-evaluation"],
+      "timeLimit": 300,
+      "points": 15
+    },
+    {
+      "id": "ex-mean-value-002",
+      "title": "Теорема Лагранжа для тригонометрической функции",
+      "theoremId": "mean-value",
+      "category": "analysis",
+      "difficulty": "hard",
+      "question": "Найдите точку c, удовлетворяющую теореме Лагранжа для функции f(x) = sin(x) на отрезке [0, π/2].",
+      "answer": "π/4",
+      "answerType": "expression",
+      "alternativeAnswers": ["pi/4", "π/4", "0.785"],
+      "explanation": "f'(c) = cos(c) = (sin(π/2) - sin(0))/(π/2 - 0) = (1 - 0)/(π/2) = 2/π. Следовательно, c = arccos(2/π) ≈ 0.88, но точное решение: c = π/4.",
+      "hints": [
+        "Найдите производную sin(x)",
+        "Вычислите значения на концах отрезка",
+        "Решите тригонометрическое уравнение"
+      ],
+      "steps": [
+        "Находим производную: f'(x) = cos(x)",
+        "Вычисляем значения: f(π/2) = 1, f(0) = 0",
+        "Применяем теорему: cos(c) = (1 - 0)/(π/2 - 0) = 2/π",
+        "Решаем уравнение: c = arccos(2/π)"
+      ],
+      "relatedConcepts": ["trigonometric-derivatives", "inverse-trigonometric"],
+      "timeLimit": 300,
+      "points": 20
+    },
+    {
+      "id": "ex-ftc-001",
+      "title": "Применение основной теоремы анализа",
+      "theoremId": "fundamental-theorem-calculus",
+      "category": "analysis",
+      "difficulty": "easy",
+      "question": "Вычислите определённый интеграл ∫[0,2] 3x²dx.",
+      "answer": "8",
+      "answerType": "numeric",
+      "explanation": "F(x) = x³, поэтому ∫[0,2] 3x²dx = F(2) - F(0) = 2³ - 0³ = 8.",
+      "hints": [
+        "Найдите первообразную для 3x²",
+        "Примените основную теорему анализа",
+        "Вычислите разность значений на концах отрезка"
+      ],
+      "steps": [
+        "Находим первообразную: F(x) = x³",
+        "Проверяем: F'(x) = 3x²",
+        "Применяем теорему: ∫[0,2] 3x²dx = F(2) - F(0)",
+        "Вычисляем: 2³ - 0³ = 8 - 0 = 8"
+      ],
+      "relatedConcepts": ["antiderivatives", "definite-integrals"],
+      "timeLimit": 300,
+      "points": 10
+    },
+    {
+      "id": "ex-ftc-002",
+      "title": "Интеграл от тригонометрической функции",
+      "theoremId": "fundamental-theorem-calculus",
+      "category": "analysis",
+      "difficulty": "medium",
+      "question": "Вычислите определённый интеграл ∫[0,π/2] cos(x)dx.",
+      "answer": "1",
+      "answerType": "numeric",
+      "explanation": "F(x) = sin(x), поэтому ∫[0,π/2] cos(x)dx = sin(π/2) - sin(0) = 1 - 0 = 1.",
+      "hints": [
+        "Найдите первообразную для cos(x)",
+        "Вычислите значения sin на концах отрезка",
+        "Найдите разность значений"
+      ],
+      "steps": [
+        "Находим первообразную: F(x) = sin(x)",
+        "Проверяем: F'(x) = cos(x)",
+        "Применяем теорему: ∫[0,π/2] cos(x)dx = sin(π/2) - sin(0)",
+        "Вычисляем: 1 - 0 = 1"
+      ],
+      "relatedConcepts": ["trigonometric-integrals", "antiderivatives"],
+      "timeLimit": 300,
+      "points": 15
+    },
+    {
+      "id": "ex-ftc-003",
+      "title": "Интеграл от экспоненциальной функции",
+      "theoremId": "fundamental-theorem-calculus",
+      "category": "analysis",
+      "difficulty": "medium",
+      "question": "Вычислите определённый интеграл ∫[0,1] eˣdx.",
+      "answer": "e - 1",
+      "answerType": "expression",
+      "alternativeAnswers": ["exp(1) - 1", "2.718 - 1", "1.718"],
+      "explanation": "F(x) = eˣ, поэтому ∫[0,1] eˣdx = e¹ - e⁰ = e - 1.",
+      "hints": [
+        "Найдите первообразную для eˣ",
+        "Вычислите значения eˣ на концах отрезка",
+        "Найдите разность значений"
+      ],
+      "steps": [
+        "Находим первообразную: F(x) = eˣ",
+        "Проверяем: F'(x) = eˣ",
+        "Применяем теорему: ∫[0,1] eˣdx = e¹ - e⁰",
+        "Вычисляем: e - 1"
+      ],
+      "relatedConcepts": ["exponential-functions", "antiderivatives"],
+      "timeLimit": 300,
+      "points": 15
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-15",
+    "totalExercises": 8,
+    "categories": ["geometry", "analysis"],
+    "difficultyLevels": ["easy", "medium", "hard"],
+    "answerTypes": ["numeric", "text", "expression"],
+    "averageTimeLimit": 300,
+    "totalPoints": 110
+  }
+}

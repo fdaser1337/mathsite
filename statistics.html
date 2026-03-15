@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Математическая статистика: выборки, оценки параметров, проверка гипотез, регрессионный анализ.">
+  <title>MathLab — Математическая статистика</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links" aria-label="Главная навигация">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="probability-theory.html">Теория вероятностей</a>
+      <a href="statistics.html" aria-current="page">Статистика</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
+        <button type="button" data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Математическая статистика</span>
+    <h1>Математическая статистика и анализ данных</h1>
+    <p>Методы статистического анализа: от описательной статистики до регрессионного анализа и проверки гипотез.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid triple">
+      <a class="glass-card card" href="#descriptive">
+        <h3>Описательная статистика</h3>
+        <p>Средние значения, меры разброса, квантили, описательные характеристики выборки.</p>
+      </a>
+      <a class="glass-card card" href="#estimation">
+        <h3>Оценка параметров</h3>
+        <p>Точечные и интервальные оценки, метод максимального правдоподобия, байесовские оценки.</p>
+      </a>
+      <a class="glass-card card" href="#hypothesis">
+        <h3>Проверка гипотез</h3>
+        <p>Статистические критерии, ошибки первого и второго рода, мощность критерия.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="descriptive">
+    <h2>Описательная статистика</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Меры центральной тенденции</h3>
+      <p><strong>Среднее арифметическое:</strong></p>
+      <div class="math-box">
+        \[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\]
+      </div>
+      <p><strong>Медиана:</strong> - середина упорядоченной выборки</p>
+      <p><strong>Мода:</strong> - наиболее часто встречающееся значение</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Меры разброса</h3>
+      <p><strong>Дисперсия выборки:</strong></p>
+      <div class="math-box">
+        \[s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2\]
+      </div>
+      <p><strong>Стандартное отклонение:</strong> $s = \sqrt{s^2}$</p>
+      <p><strong>Коэффициент вариации:</strong> $CV = \frac{s}{\bar{x}} \times 100\%$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Квантили и процентили</h3>
+      <p><strong>Квартили:</strong> делят упорядоченную выборку на 4 равные части</p>
+      <p><strong>Процентили:</strong> делят выборку на 100 равных частей</p>
+      <p><strong>Межквартильный размах:</strong> $IQR = Q_3 - Q_1$</p>
+    </article>
+  </section>
+
+  <section class="section" id="estimation">
+    <h2>Оценка параметров</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Точечные оценки</h3>
+      <p><strong>Несмещённая оценка:</strong> $M[\hat{\theta}] = \theta$</p>
+      <p><strong>Состоятельная оценка:</strong> $\hat{\theta}_n \xrightarrow{P} \theta$ при $n \to \infty$</p>
+      <p><strong>Эффективная оценка:</strong> имеет минимальную дисперсию среди всех несмещённых оценок</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Метод максимального правдоподобия</h3>
+      <p>Функция правдоподобия:</p>
+      <div class="math-box">
+        \[L(\theta; x_1, \ldots, x_n) = \prod_{i=1}^{n} f(x_i; \theta)\]
+      </div>
+      <p>Оценка максимального правдоподобия:</p>
+      <div class="math-box">
+        \[\hat{\theta}_{ML} = \arg\max_{\theta} L(\theta; x_1, \ldots, x_n)\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Доверительные интервалы</h3>
+      <p><strong>Доверительный интервал для среднего при известной дисперсии:</strong></p>
+      <div class="math-box">
+        \[\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\]
+      </div>
+      <p><strong>Доверительный интервал для среднего при неизвестной дисперсии:</strong></p>
+      <div class="math-box">
+        \[\bar{x} \pm t_{\alpha/2, n-1} \cdot \frac{s}{\sqrt{n}}\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="hypothesis">
+    <h2>Проверка статистических гипотез</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Основные понятия</h3>
+      <p><strong>Нулевая гипотеза:</strong> $H_0$ - проверяемое предположение</p>
+      <p><strong>Альтернативная гипотеза:</strong> $H_1$ - конкурирующее предположение</p>
+      <p><strong>Ошибка первого рода:</strong> $\alpha = P(\text{отвергнуть } H_0 | H_0 \text{ верна})$</p>
+      <p><strong>Ошибка второго рода:</strong> $\beta = P(\text{принять } H_0 | H_1 \text{ верна})$</p>
+      <p><strong>Мощность критерия:</strong> $1 - \beta$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>t-критерий Стьюдента</h3>
+      <p>Проверка гипотезы о среднем значении:</p>
+      <div class="math-box">
+        \[t = \frac{\bar{x} - \mu_0}{s/\sqrt{n}}\]
+      </div>
+      <p>Сравниваем с критическим значением $t_{\alpha/2, n-1}$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Критерий хи-квадрат</h3>
+      <p>Проверка гипотезы о дисперсии:</p>
+      <div class="math-box">
+        \[\chi^2 = \frac{(n-1)s^2}{\sigma_0^2}\]
+      </div>
+      <p>Проверка независимости признаков в таблице сопряжённости</p>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Регрессионный анализ</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Линейная регрессия</h3>
+      <p>Модель линейной регрессии:</p>
+      <div class="math-box">
+        \[Y = \beta_0 + \beta_1 X + \varepsilon\]
+      </div>
+      <p>Оценки коэффициентов по методу наименьших квадратов:</p>
+      <div class="math-box">
+        \[\hat{\beta}_1 = \frac{\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^{n}(x_i - \bar{x})^2}\]
+        \[\hat{\beta}_0 = \bar{y} - \hat{\beta}_1 \bar{x}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Коэффициент детерминации</h3>
+      <div class="math-box">
+        \[R^2 = 1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}\]
+      </div>
+      <p>Показывает долю дисперсии зависимой переменной, объяснённую моделью</p>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Практические применения</h2>
+    <div class="card-grid">
+      <article class="glass-card card">
+        <h3>Контроль качества</h3>
+        <p>Статистические методы контроля качества продукции, контрольные карты Шухарта.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Медицинская статистика</h3>
+        <p>Анализ эффективности лечения, эпидемиологические исследования, биостатистика.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Финансовый анализ</h3>
+        <p>Анализ рисков, оценка портфелей, временные ряды в экономике.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Машинное обучение</h3>
+        <p>Статистические методы классификации, кластеризации, прогнозирования.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

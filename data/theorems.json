@@ -1,0 +1,154 @@
+{
+  "theorems": [
+    {
+      "id": "pythagoras",
+      "title": "Теорема Пифагора",
+      "url": "theorem-pythagoras.html",
+      "course": "1",
+      "difficulty": "basic",
+      "category": "geometry",
+      "prerequisites": ["basic-geometry", "right-triangles"],
+      "applications": ["physics", "engineering", "computer-graphics"],
+      "relatedTheorems": ["cosine-rule", "euclidean-distance", "vector-norm"],
+      "tags": ["геометрия", "евклидова-геометрия", "треугольники"],
+      "description": "Фундаментальный результат евклидовой геометрии, связывающий стороны прямоугольного треугольника.",
+      "sections": {
+        "statement": {
+          "title": "Формулировка",
+          "content": "В любом прямоугольном треугольнике квадрат длины гипотенузы равен сумме квадратов длин катетов.",
+          "formula": "c^2 = a^2 + b^2",
+          "variables": {
+            "c": "длина гипотенузы",
+            "a": "длина катета",
+            "b": "длина катета"
+          }
+        },
+        "proof": {
+          "title": "Доказательство",
+          "content": "Классическое доказательство через построение квадратов на сторонах треугольника.",
+          "steps": [
+            "Построим квадраты на каждой стороне треугольника",
+            "Площадь квадрата на гипотенузе равна сумме площадей квадратов на катетах",
+            "Следовательно, c² = a² + b²"
+          ]
+        },
+        "examples": [
+          {
+            "title": "Пример 1",
+            "content": "Для треугольника с катетами 3 и 4, гипотенуза равна √(3² + 4²) = 5",
+            "solution": "c = √(9 + 16) = √25 = 5"
+          },
+          {
+            "title": "Пример 2",
+            "content": "Найти катет треугольника, если гипотенуза = 13, другой катет = 5",
+            "solution": "a = √(13² - 5²) = √(169 - 25) = √144 = 12"
+          }
+        ],
+        "exercises": ["ex-pythagoras-001", "ex-pythagoras-002", "ex-pythagoras-003"]
+      }
+    },
+    {
+      "id": "mean-value",
+      "title": "Теорема Лагранжа о среднем",
+      "url": "theorem-mean-value.html",
+      "course": "2",
+      "difficulty": "intermediate",
+      "category": "analysis",
+      "prerequisites": ["continuity", "derivatives", "fermat-theorem"],
+      "applications": ["optimization", "physics", "economics"],
+      "relatedTheorems": ["rolle-theorem", "cauchy-mean-value", "taylors-theorem"],
+      "tags": ["матанализ", "дифференциальное-исчисление", "производные"],
+      "description": "Фундаментальная связь между производной в точке и средним изменением функции на отрезке.",
+      "sections": {
+        "statement": {
+          "title": "Формулировка",
+          "content": "Если функция f непрерывна на [a,b] и дифференцируема на (a,b), то существует точка c ∈ (a,b) такая, что f'(c) = (f(b) - f(a))/(b - a).",
+          "formula": "f'(c) = \\frac{f(b) - f(a)}{b - a}",
+          "conditions": [
+            "f непрерывна на [a,b]",
+            "f дифференцируема на (a,b)"
+          ]
+        },
+        "proof": {
+          "title": "Доказательство",
+          "content": "Доказательство основано на теореме Ферма и построении вспомогательной функции.",
+          "steps": [
+            "Введём вспомогательную функцию g(x) = f(x) - f(a) - (f(b) - f(a))(x - a)/(b - a)",
+            "g(a) = g(b) = 0",
+            "По теореме Ролля существует точка c где g'(c) = 0",
+            "Отсюда получаем f'(c) = (f(b) - f(a))/(b - a)"
+          ]
+        },
+        "examples": [
+          {
+            "title": "Пример 1",
+            "content": "Для функции f(x) = x² на отрезке [0,2]",
+            "solution": "f'(c) = 2c = (4 - 0)/2 = 2, следовательно c = 1"
+          },
+          {
+            "title": "Пример 2",
+            "content": "Для функции f(x) = sin(x) на отрезке [0,π]",
+            "solution": "cos(c) = (0 - 0)/π = 0, следовательно c = π/2"
+          }
+        ],
+        "exercises": ["ex-mean-value-001", "ex-mean-value-002"]
+      }
+    },
+    {
+      "id": "fundamental-theorem-calculus",
+      "title": "Основная теорема анализа",
+      "url": "theorem-fundamental-calculus.html",
+      "course": "2",
+      "difficulty": "intermediate",
+      "category": "analysis",
+      "prerequisites": ["integrals", "derivatives", "continuity"],
+      "applications": ["physics", "engineering", "probability"],
+      "relatedTheorems": ["integration-by-parts", "substitution-rule"],
+      "tags": ["матанализ", "интегралы", "производные"],
+      "description": "Связывает понятия интеграла и производной, показывая их взаимную обратность.",
+      "sections": {
+        "statement": {
+          "title": "Формулировка",
+          "content": "Если функция F является первообразной для f на [a,b], то ∫[a,b] f(x)dx = F(b) - F(a).",
+          "formula": "\\int_a^b f(x)dx = F(b) - F(a)",
+          "conditions": [
+            "f непрерывна на [a,b]",
+            "F'(x) = f(x) на [a,b]"
+          ]
+        },
+        "proof": {
+          "title": "Доказательство",
+          "content": "Доказательство использует определение интеграла как предела интегральных сумм.",
+          "steps": [
+            "Рассмотрим функцию G(x) = ∫[a,x] f(t)dt",
+            "По определению производной G'(x) = f(x)",
+            "Следовательно, G(x) является первообразной для f",
+            "Так как первообразные отличаются на константу, F(x) = G(x) + C",
+            "Подставляя x = a и x = b, получаем искомую формулу"
+          ]
+        },
+        "examples": [
+          {
+            "title": "Пример 1",
+            "content": "Вычислить ∫[0,1] x²dx",
+            "solution": "F(x) = x³/3, поэтому ∫[0,1] x²dx = 1³/3 - 0³/3 = 1/3"
+          },
+          {
+            "title": "Пример 2",
+            "content": "Вычислить ∫[0,π] sin(x)dx",
+            "solution": "F(x) = -cos(x), поэтому ∫[0,π] sin(x)dx = -cos(π) + cos(0) = 1 + 1 = 2"
+          }
+        ],
+        "exercises": ["ex-ftc-001", "ex-ftc-002", "ex-ftc-003"]
+      }
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "lastUpdated": "2024-01-15",
+    "totalTheorems": 3,
+    "categories": ["geometry", "analysis"],
+    "courses": ["1", "2"],
+    "difficultyLevels": ["basic", "intermediate"]
+  }
+}

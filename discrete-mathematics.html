@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Дискретная математика: графы, комбинаторика, теория кодирования, булевы функции.">
+  <title>MathLab — Дискретная математика</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links" aria-label="Главная навигация">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="discrete-mathematics.html" aria-current="page">Дискретная математика</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
+        <button type="button" data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Дискретная математика</span>
+    <h1>Дискретная математика и её приложения</h1>
+    <p>Основы дискретной математики: теория графов, комбинаторика, теория кодирования, булевы функции и их применение в информатике.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid triple">
+      <a class="glass-card card" href="#graphs">
+        <h3>Теория графов</h3>
+        <p>Основные понятия, типы графов, алгоритмы на графах, приложения.</p>
+      </a>
+      <a class="glass-card card" href="#combinatorics">
+        <h3>Комбинаторика</h3>
+        <p>Перестановки, сочетания, размещения, рекуррентные соотношения.</p>
+      </a>
+      <a class="glass-card card" href="#coding">
+        <h3>Теория кодирования</h3>
+        <p>Коды с исправлением ошибок, линейные коды, криптография.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="graphs">
+    <h2>Теория графов</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Основные понятия</h3>
+      <p><strong>Граф:</strong> $G = (V, E)$, где $V$ - множество вершин, $E$ - множество рёбер.</p>
+      <p><strong>Степень вершины:</strong> $\deg(v)$ - число рёбер, инцидентных вершине $v$.</p>
+      <p><strong>Теорема о рукопожатиях:</strong> $\sum_{v \in V} \deg(v) = 2|E|$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Типы графов</h3>
+      <p><strong>Полный граф:</strong> $K_n$ - граф с $n$ вершинами, где каждая пара вершин соединена ребром.</p>
+      <p><strong>Двудольный граф:</strong> $G = (V_1 \cup V_2, E)$, где каждое ребро соединяет вершины из разных долей.</p>
+      <p><strong>Дерево:</strong> связный граф без циклов.</p>
+      <p><strong>Теорема:</strong> Граф с $n$ вершинами является деревом тогда и только тогда, когда он имеет $n-1$ рёбер.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Матрицы графов</h3>
+      <p><strong>Матрица смежности:</strong> $A_{ij} = 1$, если между вершинами $i$ и $j$ есть ребро.</p>
+      <p><strong>Матрица инцидентности:</strong> $B_{ij} = 1$, если вершина $i$ инцидентна ребру $j$.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Алгоритмы на графах</h3>
+      <p><strong>Поиск в глубину (DFS):</strong> рекурсивный обход графа.</p>
+      <p><strong>Поиск в ширину (BFS):</strong> итеративный обход по уровням.</p>
+      <p><strong>Алгоритм Дейкстры:</strong> поиск кратчайшего пути во взвешенном графе.</p>
+      <p><strong>Алгоритм Прима/Краскала:</strong> построение минимального остовного дерева.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Эйлеровы и гамильтоновы графы</h3>
+      <p><strong>Эйлеров цикл:</strong> цикл, проходящий через каждое ребро ровно один раз.</p>
+      <p><strong>Теорема Эйлера:</strong> Связный граф имеет эйлеров цикл тогда и только тогда, когда все его вершины имеют чётную степень.</p>
+      <p><strong>Гамильтонов цикл:</strong> цикл, проходящий через каждую вершину ровно один раз.</p>
+    </article>
+  </section>
+
+  <section class="section" id="combinatorics">
+    <h2>Комбинаторика</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Основные правила</h3>
+      <p><strong>Правило суммы:</strong> Если объект $A$ можно выбрать $m$ способами, а объект $B$ - $n$ способами, то выбрать либо $A$, либо $B$ можно $m + n$ способами.</p>
+      <p><strong>Правило произведения:</strong> Если объект $A$ можно выбрать $m$ способами, а после этого объект $B$ - $n$ способами, то упорядоченную пару $(A, B)$ можно выбрать $m \cdot n$ способами.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Перестановки</h3>
+      <p><strong>Перестановки без повторений:</strong></p>
+      <div class="math-box">
+        \[P_n = n! = 1 \cdot 2 \cdot 3 \cdot \ldots \cdot n\]
+      </div>
+      <p><strong>Перестановки с повторениями:</strong></p>
+      <div class="math-box">
+        \[P_n(k_1, k_2, \ldots, k_m) = \frac{n!}{k_1! \cdot k_2! \cdot \ldots \cdot k_m!}\]
+      </div>
+      <p>где $k_1 + k_2 + \ldots + k_m = n$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Сочетания и размещения</h3>
+      <p><strong>Сочетания без повторений:</strong></p>
+      <div class="math-box">
+        \[C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!}\]
+      </div>
+      <p><strong>Размещения без повторений:</strong></p>
+      <div class="math-box">
+        \[A_n^k = \frac{n!}{(n-k)!}\]
+      </div>
+      <p><strong>Сочетания с повторениями:</strong></p>
+      <div class="math-box">
+        \[\bar{C}_n^k = \binom{n+k-1}{k}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Бином Ньютона</h3>
+      <div class="math-box">
+        \[(a + b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k\]
+      </div>
+      <p><strong>Треугольник Паскаля:</strong> $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Рекуррентные соотношения</h3>
+      <p><strong>Числа Фибоначчи:</strong></p>
+      <div class="math-box">
+        \[F_n = F_{n-1} + F_{n-2}, \quad F_0 = 0, F_1 = 1\]
+      </div>
+      <p><strong>Формула Бине:</strong></p>
+      <div class="math-box">
+        \[F_n = \frac{\varphi^n - \psi^n}{\sqrt{5}}\]
+      </div>
+      <p>где $\varphi = \frac{1 + \sqrt{5}}{2}$, $\psi = \frac{1 - \sqrt{5}}{2}$</p>
+    </article>
+  </section>
+
+  <section class="section" id="coding">
+    <h2>Теория кодирования</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Основные понятия</h3>
+      <p><strong>Код:</strong> множество кодовых слов с фиксированной длиной.</p>
+      <p><strong>Расстояние Хэмминга:</strong> $d(x, y)$ - число позиций, в которых кодовые слова $x$ и $y$ различаются.</p>
+      <p><strong>Кодовое расстояние:</strong> $d = \min_{x \neq y} d(x, y)$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Линейные коды</h3>
+      <p><strong>Порождающая матрица:</strong> $G$ - матрица, строки которой образуют базис кода.</p>
+      <p><strong>Кодирование:</strong> $c = mG$, где $m$ - информационное сообщение.</p>
+      <p><strong>Проверочная матрица:</strong> $H$ - матрица такая, что $GH^T = 0$.</p>
+      <p><strong>Синдром:</strong> $s = rH^T$, где $r$ - принятое слово.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Коды Хэмминга</h3>
+      <p>Параметры кода Хэмминга: $[n, k, d] = [2^r - 1, 2^r - r - 1, 3]$</p>
+      <p>Способен исправлять одну ошибку в блоке.</p>
+      <p><strong>Пример:</strong> код $[7,4,3]$ Хэмминга.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Циклические коды</h3>
+      <p>Код, замкнутый относительно циклического сдвига.</p>
+      <p>Представляются многочленами по модулю порождающего многочлена $g(x)$.</p>
+      <p><strong>Коды БЧХ (BCH):</strong> класс циклических кодов с исправлением множественных ошибок.</p>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Булевы функции</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Основные операции</h3>
+      <p><strong>Конъюнкция:</strong> $x \land y$ (AND)</p>
+      <p><strong>Дизъюнкция:</strong> $x \lor y$ (OR)</p>
+      <p><strong>Отрицание:</strong> $\neg x$ (NOT)</p>
+      <p><strong>Исключающее ИЛИ:</strong> $x \oplus y$ (XOR)</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Нормальные формы</h3>
+      <p><strong>ДНФ (дизъюнктивная нормальная форма):</strong></p>
+      <div class="math-box">
+        \[f(x_1, \ldots, x_n) = \bigvee_{i=1}^{k} \bigwedge_{j=1}^{n_i} x_{ij}^{\sigma_{ij}}\]
+      </div>
+      <p><strong>КНФ (конъюнктивная нормальная форма):</strong></p>
+      <div class="math-box">
+        \[f(x_1, \ldots, x_n) = \bigwedge_{i=1}^{k} \bigvee_{j=1}^{n_i} x_{ij}^{\sigma_{ij}}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Полином Жегалкина</h3>
+      <div class="math-box">
+        \[f(x_1, \ldots, x_n) = c_0 \oplus \bigoplus_{i=1}^{n} c_i x_i \oplus \bigoplus_{i<j} c_{ij} x_i x_j \oplus \ldots \oplus c_{12\ldots n} x_1 x_2 \ldots x_n\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Практические применения</h2>
+    <div class="card-grid">
+      <article class="glass-card card">
+        <h3>Компьютерные сети</h3>
+        <p>Маршрутизация, топология сетей, протоколы передачи данных.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Базы данных</h3>
+        <p>Оптимизация запросов, индексация, реляционная алгебра.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Криптография</h3>
+        <p>Шифрование, цифровая подпись, протоколы безопасности.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Искусственный интеллект</h3>
+        <p>Поиск решений, оптимизация, машинное обучение.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

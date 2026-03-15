@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Дифференциальные уравнения: ОДУ, системы, методы решения, краевые задачи.">
+  <title>MathLab — Дифференциальные уравнения</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links" aria-label="Главная навигация">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="differential-equations.html" aria-current="page">Дифференциальные уравнения</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
+        <button type="button" data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Дифференциальные уравнения</span>
+    <h1>Дифференциальные уравнения и методы их решения</h1>
+    <p>Теория и практика решения дифференциальных уравнений: от простых ОДУ первого порядка до систем и уравнений в частных производных.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid triple">
+      <a class="glass-card card" href="#first-order">
+        <h3>ОДУ первого порядка</h3>
+        <p>Уравнения с разделяющимися переменными, однородные, линейные, в полных дифференциалах.</p>
+      </a>
+      <a class="glass-card card" href="#higher-order">
+        <h3>ОДУ высших порядков</h3>
+        <p>Линейные уравнения с постоянными коэффициентами, метод вариации произвольных постоянных.</p>
+      </a>
+      <a class="glass-card card" href="#systems">
+        <h3>Системы ОДУ</h3>
+        <p>Линейные системы, фазовые портреты, устойчивость, теория устойчивости Ляпунова.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="first-order">
+    <h2>Дифференциальные уравнения первого порядка</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Уравнения с разделяющимися переменными</h3>
+      <p>Общий вид:</p>
+      <div class="math-box">
+        \[M(x)dx + N(y)dy = 0\]
+      </div>
+      <p>Решение:</p>
+      <div class="math-box">
+        \[\int M(x)dx + \int N(y)dy = C\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Однородные уравнения</h3>
+      <p>Уравнение вида $y' = f\left(\frac{y}{x}\right)$</p>
+      <p>Замена: $y = ux$, где $u = \frac{y}{x}$</p>
+      <div class="math-box">
+        \[\frac{dy}{dx} = u + x\frac{du}{dx}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Линейные уравнения первого порядка</h3>
+      <p>Общий вид:</p>
+      <div class="math-box">
+        \[y' + P(x)y = Q(x)\]
+      </div>
+      <p>Интегрирующий множитель:</p>
+      <div class="math-box">
+        \[\mu(x) = e^{\int P(x)dx}\]
+      </div>
+      <p>Решение:</p>
+      <div class="math-box">
+        \[y = \frac{1}{\mu(x)}\left(\int \mu(x)Q(x)dx + C\right)\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Уравнение Бернулли</h3>
+      <p>Вид:</p>
+      <div class="math-box">
+        \[y' + P(x)y = Q(x)y^n\]
+      </div>
+      <p>При $n \neq 0, 1$ заменой $z = y^{1-n}$ сводится к линейному уравнению.</p>
+    </article>
+  </section>
+
+  <section class="section" id="higher-order">
+    <h2>Дифференциальные уравнения высших порядков</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Линейные однородные уравнения с постоянными коэффициентами</h3>
+      <p>Общий вид:</p>
+      <div class="math-box">
+        \[y^{(n)} + a_{n-1}y^{(n-1)} + \ldots + a_1y' + a_0y = 0\]
+      </div>
+      <p>Характеристическое уравнение:</p>
+      <div class="math-box">
+        \[r^n + a_{n-1}r^{n-1} + \ldots + a_1r + a_0 = 0\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Метод неопределённых коэффициентов</h3>
+      <p>Для неоднородного уравнения $Ly = f(x)$</p>
+      <p>Если $f(x) = P_m(x)e^{\alpha x}\cos(\beta x) + Q_m(x)e^{\alpha x}\sin(\beta x)$</p>
+      <p>Тогда частное решение ищется в виде:</p>
+      <div class="math-box">
+        \[y_p = x^s \cdot R_m(x)e^{\alpha x}\cos(\beta x) + x^s \cdot S_m(x)e^{\alpha x}\sin(\beta x)\]
+      </div>
+      <p>где $s$ - кратность корня $\alpha + i\beta$ характеристического уравнения.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Метод вариации произвольных постоянных</h3>
+      <p>Для уравнения $Ly = f(x)$ с известным фундаментальным решением $y_1, y_2, \ldots, y_n$</p>
+      <p>Ищем решение в виде:</p>
+      <div class="math-box">
+        \[y = \sum_{i=1}^{n} C_i(x)y_i\]
+      </div>
+      <p>С условиями:</p>
+      <div class="math-box">
+        \[\sum_{i=1}^{n} C_i'(x)y_i^{(k)} = 0, \quad k = 0, 1, \ldots, n-2\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section" id="systems">
+    <h2>Системы дифференциальных уравнений</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Линейные системы с постоянными коэффициентами</h3>
+      <p>В матричной форме:</p>
+      <div class="math-box">
+        \[\frac{d\vec{x}}{dt} = A\vec{x}\]
+      </div>
+      <p>Решение через экспоненту матрицы:</p>
+      <div class="math-box">
+        \[\vec{x}(t) = e^{At}\vec{x}_0\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Фазовые портреты</h3>
+      <p>Типы особых точек в зависимости от собственных значений:</p>
+      <ul>
+        <li><strong>Узел:</strong> действительные собственные значения одного знака</li>
+        <li><strong>Седло:</strong> действительные собственные значения разных знаков</li>
+        <li><strong>Фокус:</strong> комплексные сопряжённые с ненулевой действительной частью</li>
+        <li><strong>Центр:</strong> чисто мнимые собственные значения</li>
+      </ul>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Теория устойчивости</h3>
+      <p><strong>Устойчивость по Ляпунову:</strong></p>
+      <p>Решение $\vec{x}_0(t)$ устойчиво, если для любого $\varepsilon > 0$ существует $\delta > 0$ такое, что</p>
+      <div class="math-box">
+        \[\|\vec{x}(0) - \vec{x}_0(0)\| < \delta \Rightarrow \|\vec{x}(t) - \vec{x}_0(t)\| < \varepsilon\]
+      </div>
+      <p><strong>Асимптотическая устойчивость:</strong> устойчивость + сходимость при $t \to \infty$</p>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Краевые задачи</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Задача Штурма-Лиувилля</h3>
+      <p>Общий вид:</p>
+      <div class="math-box">
+        \[\frac{d}{dx}\left[p(x)\frac{dy}{dx}\right] + [\lambda w(x) - q(x)]y = 0\]
+      </div>
+      <p>с граничными условиями:</p>
+      <div class="math-box">
+        \[\alpha_1 y(a) + \alpha_2 y'(a) = 0\]
+        \[\beta_1 y(b) + \beta_2 y'(b) = 0\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Метод Фурье</h3>
+      <p>Для уравнения теплопроводности:</p>
+      <div class="math-box">
+        \[\frac{\partial u}{\partial t} = a^2 \frac{\partial^2 u}{\partial x^2}\]
+      </div>
+      <p>Решение в виде ряда Фурье:</p>
+      <div class="math-box">
+        \[u(x,t) = \sum_{n=1}^{\infty} C_n e^{-a^2\lambda_n t} X_n(x)\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Связанные теоремы</h2>
+    <div class="card-grid triple">
+      <a class="glass-card card" href="theorem-picard-lindelof.html">
+        <h3>Теорема Пикара-Линделёфа</h3>
+        <p>Существование и единственность решения задачи Коши.</p>
+      </a>
+      <a class="glass-card card" href="theorem-existence-linear-ode-system.html">
+        <h3>Теорема о линейной системе ОДУ</h3>
+        <p>Структура общего решения линейных систем.</p>
+      </a>
+      <a class="glass-card card" href="theorem-gronwall.html">
+        <h3>Неравенство Гронуолла</h3>
+        <p>Оценки решений дифференциальных уравнений.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Практические применения</h2>
+    <div class="card-grid">
+      <article class="glass-card card">
+        <h3>Физика</h3>
+        <p>Движение тел, колебания, теплопроводность, электромагнетизм, квантовая механика.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Биология</h3>
+        <p>Популяционная динамика, эпидемиология, биохимические реакции, нейронные сети.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Экономика</h3>
+        <p>Экономический рост, финансовые модели, оптимизация, теория игр.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Инженерия</h3>
+        <p>Автоматическое управление, обработка сигналов, конструкционная механика, гидродинамика.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

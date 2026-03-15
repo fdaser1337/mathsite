@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Комплексный анализ: функции комплексного переменного, конформные отображения, вычеты.">
+  <title>MathLab — Комплексный анализ</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links" aria-label="Главная навигация">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="complex-analysis.html" aria-current="page">Комплексный анализ</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск по материалам" aria-label="Поиск по сайту" data-search-input>
+        <button type="button" data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Комплексный анализ</span>
+    <h1>Комплексный анализ и функции комплексного переменного</h1>
+    <p>Теория функций комплексного переменного: от основ комплексных чисел до конформных отображений и теории вычетов.</p>
+  </section>
+
+  <section class="section">
+    <div class="card-grid triple">
+      <a class="glass-card card" href="#complex-numbers">
+        <h3>Комплексные числа</h3>
+        <p>Алгебраическая и тригонометрическая формы, операции, геометрическая интерпретация.</p>
+      </a>
+      <a class="glass-card card" href="#analytic-functions">
+        <h3>Аналитические функции</h3>
+        <p>Условия Коши-Римана, голоморфные функции, степенные ряды.</p>
+      </a>
+      <a class="glass-card card" href="#integration">
+        <h3>Интегрирование</h3>
+        <p>Интеграл Коши, теорема Коши, вычеты, применение к вычислению интегралов.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section" id="complex-numbers">
+    <h2>Комплексные числа и их свойства</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Алгебраическая форма</h3>
+      <p>Комплексное число в алгебраической форме:</p>
+      <div class="math-box">
+        \[z = x + iy\]
+      </div>
+      <p>где $x = \text{Re}(z)$ - действительная часть, $y = \text{Im}(z)$ - мнимая часть.</p>
+      <p>Операции:</p>
+      <div class="math-box">
+        \[z_1 + z_2 = (x_1 + x_2) + i(y_1 + y_2)\]
+        \[z_1 \cdot z_2 = (x_1x_2 - y_1y_2) + i(x_1y_2 + x_2y_1)\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Тригонометрическая форма</h3>
+      <div class="math-box">
+        \[z = r(\cos\varphi + i\sin\varphi) = re^{i\varphi}\]
+      </div>
+      <p>где $r = |z| = \sqrt{x^2 + y^2}$ - модуль, $\varphi = \arg(z) = \arctan\frac{y}{x}$ - аргумент.</p>
+      <p>Формула Муавра:</p>
+      <div class="math-box">
+        \[z^n = r^n(\cos n\varphi + i\sin n\varphi)\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Корни из комплексных чисел</h3>
+      <div class="math-box">
+        \[\sqrt[n]{z} = \sqrt[n]{r}\left[\cos\left(\frac{\varphi + 2k\pi}{n}\right) + i\sin\left(\frac{\varphi + 2k\pi}{n}\right)\right]\]
+      </div>
+      <p>где $k = 0, 1, 2, \ldots, n-1$</p>
+    </article>
+  </section>
+
+  <section class="section" id="analytic-functions">
+    <h2>Аналитические функции</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Условия Коши-Римана</h3>
+      <p>Для функции $f(z) = u(x,y) + iv(x,y)$ условия Коши-Римана:</p>
+      <div class="math-box">
+        \[\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \quad \frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}\]
+      </div>
+      <p>В полярных координатах:</p>
+      <div class="math-box">
+        \[\frac{\partial u}{\partial r} = \frac{1}{r}\frac{\partial v}{\partial\varphi}, \quad \frac{\partial v}{\partial r} = -\frac{1}{r}\frac{\partial u}{\partial\varphi}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Голоморфные функции</h3>
+      <p>Функция $f(z)$ называется голоморфной в области $D$, если она дифференцируема в каждой точке этой области.</p>
+      <p>Производная функции комплексного переменного:</p>
+      <div class="math-box">
+        \[f'(z) = \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Степенные ряды</h3>
+      <p>Ряд Тейлора для аналитической функции:</p>
+      <div class="math-box">
+        \[f(z) = \sum_{n=0}^{\infty} \frac{f^{(n)}(z_0)}{n!}(z - z_0)^n\]
+      </div>
+      <p>Радиус сходимости:</p>
+      <div class="math-box">
+        \[R = \frac{1}{\limsup_{n \to \infty} \sqrt[n]{|a_n|}}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Ряд Лорана</h3>
+      <div class="math-box">
+        \[f(z) = \sum_{n=-\infty}^{\infty} a_n(z - z_0)^n = \sum_{n=0}^{\infty} a_n(z - z_0)^n + \sum_{n=1}^{\infty} a_{-n}(z - z_0)^{-n}\]
+      </div>
+      <p>где первая сумма - правильная часть, вторая - главная часть.</p>
+    </article>
+  </section>
+
+  <section class="section" id="integration">
+    <h2>Интегрирование функций комплексного переменного</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Интеграл Коши</h3>
+      <div class="math-box">
+        \[\int_\gamma f(z)dz = \int_a^b f(\gamma(t))\gamma'(t)dt\]
+      </div>
+      <p>где $\gamma: [a,b] \to \mathbb{C}$ - параметризация контура.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Интегральная теорема Коши</h3>
+      <p>Если $f(z)$ аналитична в односвязной области $D$ и $\gamma \subset D$ - замкнутый контур, то:</p>
+      <div class="math-box">
+        \[\oint_\gamma f(z)dz = 0\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Интегральная формула Коши</h3>
+      <div class="math-box">
+        \[f(z_0) = \frac{1}{2\pi i}\oint_\gamma \frac{f(z)}{z - z_0}dz\]
+      </div>
+      <p>Производные:</p>
+      <div class="math-box">
+        \[f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_\gamma \frac{f(z)}{(z - z_0)^{n+1}}dz\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Вычеты</h3>
+      <p>Вычет функции $f(z)$ в точке $z_0$:</p>
+      <div class="math-box">
+        \[\text{Res}(f, z_0) = \frac{1}{2\pi i}\oint_{|z-z_0|=\rho} f(z)dz\]
+      </div>
+      <p>Для простого полюса:</p>
+      <div class="math-box">
+        \[\text{Res}(f, z_0) = \lim_{z \to z_0} (z - z_0)f(z)\]
+      </div>
+      <p>Основная теорема о вычетах:</p>
+      <div class="math-box">
+        \[\oint_\gamma f(z)dz = 2\pi i \sum_{k} \text{Res}(f, z_k)\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Конформные отображения</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Определение конформного отображения</h3>
+      <p>Отображение $w = f(z)$ называется конформным в точке $z_0$, если:</p>
+      <ul>
+        <li>$f$ голоморфна в окрестности $z_0$</li>
+        <li>$f'(z_0) \neq 0$</li>
+      </ul>
+      <p>Свойства: сохранение углов и локальное подобие.</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Основные конформные отображения</h3>
+      <p><strong>Линейная функция:</strong> $w = az + b$</p>
+      <p><strong>Обратная функция:</strong> $w = \frac{1}{z}$</p>
+      <p><strong>Дробно-линейная функция:</strong> $w = \frac{az + b}{cz + d}$, $ad - bc \neq 0$</p>
+      <p><strong>Степенная функция:</strong> $w = z^n$</p>
+      <p><strong>Экспонента:</strong> $w = e^z$</p>
+      <p><strong>Логарифм:</strong> $w = \ln z$</p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Принцип симметрии</h3>
+      <p>Если $f(z)$ аналитична в области, симметричной относительно действительной оси, и принимает действительные значения на этой оси, то:</p>
+      <div class="math-box">
+        \[f(\bar{z}) = \overline{f(z)}\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Специальные функции</h2>
+    
+    <article class="glass-card content-block">
+      <h3>Экспонента и логарифм</h3>
+      <div class="math-box">
+        \[e^z = e^x(\cos y + i\sin y)\]
+        \[\ln z = \ln|z| + i\arg(z)\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Тригонометрические функции</h3>
+      <div class="math-box">
+        \[\sin z = \frac{e^{iz} - e^{-iz}}{2i}\]
+        \[\cos z = \frac{e^{iz} + e^{-iz}}{2}\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Гиперболические функции</h3>
+      <div class="math-box">
+        \[\sinh z = \frac{e^z - e^{-z}}{2}\]
+        \[\cosh z = \frac{e^z + e^{-z}}{2}\]
+      </div>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Связанные теоремы</h2>
+    <div class="card-grid triple">
+      <a class="glass-card card" href="theorem-cauchy-integral-formula.html">
+        <h3>Интегральная формула Коши</h3>
+        <p>Фундаментальная формула для вычисления значений аналитических функций.</p>
+      </a>
+      <a class="glass-card card" href="theorem-liouville.html">
+        <h3>Теорема Лиувилля</h3>
+        <p>Ограниченная целая функция является константой.</p>
+      </a>
+      <a class="glass-card card" href="theorem-maximum-modulus.html">
+        <h3>Принцип максимума модуля</h3>
+        <p>Модуль аналитической функции достигает максимума на границе.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Практические применения</h2>
+    <div class="card-grid">
+      <article class="glass-card card">
+        <h3>Электротехника</h3>
+        <p>Расчёт электрических цепей, теория фильтров, обработка сигналов.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Гидродинамика</h3>
+        <p>Потенциальное течение жидкости, теория крыла, обтекание тел.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Квантовая механика</h3>
+        <p>Комплексные амплитуды вероятности, квантовые состояния.</p>
+      </article>
+      <article class="glass-card card">
+        <h3>Обработка сигналов</h3>
+        <p>Преобразование Фурье, фильтрация, анализ частотных характеристик.</p>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
