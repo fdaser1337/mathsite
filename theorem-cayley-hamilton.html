@@ -3,6 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема Гамильтона-Кэли: матрицы удовлетворяют своему характеристическому уравнению.">
+  <title>MathLab — Теорема Гамильтона-Кэли</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Линейная алгебра</span>
+    <h1>Теорема Гамильтона-Кэли</h1>
+    <p>Любая квадратная матрица удовлетворяет своему характеристическому уравнению.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть A - квадратная матрица размера n×n с характеристическим многочленом:</p>
+      <div class="math-box">
+        \[p_A(\lambda) = \det(A - \lambda I) = \lambda^n + c_{n-1}\lambda^{n-1} + \cdots + c_1\lambda + c_0\]
+      </div>
+      <p>Тогда матрица A удовлетворяет уравнению:</p>
+      <div class="math-box">
+        \[p_A(A) = A^n + c_{n-1}A^{n-1} + \cdots + c_1A + c_0I = 0\]
+      </div>
+      <p>где 0 - нулевая матрица, I - единичная матрица.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Интуитивное объяснение</h3>
+      <p>Характеристический многочлен описывает «поведение» матрицы относительно собственных значений. Теорема Гамильтона-Кэли говорит, что матрица «ведёт себя» так же, как её собственные значения.</p>
+      <p><strong>Аналогия:</strong> Если у человека есть определённый характер (собственные значения), то его поступки (матричные операции) следуют этому характеру.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Матрица 2×2</h4>
+      <p>Пусть A = [[2, 1], [1, 2]].</p>
+      <p>Характеристический многочлен:</p>
+      <div class="math-box">
+        \[\det\begin{pmatrix} 2-\lambda & 1 \\ 1 & 2-\lambda \end{pmatrix} = (2-\lambda)^2 - 1 = \lambda^2 - 4\lambda + 3\]
+      </div>
+      <p>По теореме Гамильтона-Кэли:</p>
+      <div class="math-box">
+        \[A^2 - 4A + 3I = 0\]
+        \[\begin{pmatrix} 5 & 4 \\ 4 & 5 \end{pmatrix} - 4\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} + 3\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}\]
+      </div>
+      
+      <h4>Пример 2: Диагональная матрица</h4>
+      <p>Для диагональной матрицы D = diag(λ₁, λ₂, ..., λₙ):</p>
+      <div class="math-box">
+        \[p_D(D) = \prod_{i=1}^n (D - \lambda_i I) = 0\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Следствия</h3>
+      <h4>1. Минимальный многочлен</h3>
+      <p>Существует минимальный многочлен m_A(λ) который делит характеристический многочлен.</p>
+      
+      <h4>2. Вычисление обратной матрицы</h4>
+      <p>Если A обратима, то из p_A(A) = 0 можно выразить A⁻¹ через степени A.</p>
+      
+      <h4>3. Степени матрицы</h4>
+      <p>Любая степень Aᵏ при k ≥ n можно выразить через I, A, ..., Aⁿ⁻¹.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Вычисление функций от матриц</h4>
+      <p>Определение eᴬ, sin(A), cos(A) через степенные ряды.</p>
+      
+      <h4>2. Решение систем дифференциальных уравнений</h4>
+      <p>Системы вида x' = Ax с постоянными коэффициентами.</p>
+      
+      <h4>3. Теория управления</h4>
+      <p>Анализ устойчивости систем, управляемость.</p>
+      
+      <h4>4. Квантовая механика</h4>
+      <p>Эволюция квантовых систем, операторы.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Вычисление обратной матрицы</h3>
+      <p>Для матрицы 2×2: A² - tr(A)·A + det(A)·I = 0</p>
+      <p>Если det(A) ≠ 0, то:</p>
+      <div class="math-box">
+        \[A^{-1} = \frac{1}{\det(A)}(tr(A) \cdot I - A)\]
+      </div>
+      <p>Для нашего примера: tr(A) = 4, det(A) = 3</p>
+      <div class="math-box">
+        \[A^{-1} = \frac{1}{3}\begin{pmatrix} 4 & 0 \\ 0 & 4 \end{pmatrix} - \frac{1}{3}\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix} = \frac{1}{3}\begin{pmatrix} 2 & -1 \\ -1 & 2 \end{pmatrix}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
   <meta name="description" content="<main class="container"><section class="hero"><span class="tag">Новая теорема</span>Теорема Кэли–Гамильтона<p>Любая квадратная матрица удовлетворяет собственному характеристическому многочлену.</p></section>: формулировка, доказательство, применения и видео.">
   <title>MathLab — <main class="container"><section class="hero"><span class="tag">Новая теорема</span>Теорема Кэли–Гамильтона<p>Любая квадратная матрица удовлетворяет собственному характеристическому многочлену.</p></section></title>
   <link rel="stylesheet" href="css/styles.css">

@@ -3,6 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Закон квадратичного взаимности: связь символов Лежандра, теория чисел.">
+  <title>MathLab — Закон квадратичного взаимности</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html" aria-current="page">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория чисел</span>
+    <h1>Закон квадратичного взаимности</h1>
+    <p>Элегантная связь между квадратичными вычетами по разным простым модулям.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Для различных нечётных простых чисел p и q:</p>
+      <div class="math-box">
+        \[\left(\frac{p}{q}\right) \left(\frac{q}{p}\right) = (-1)^{\frac{(p-1)(q-1)}{4}}\]
+      </div>
+      <p>где (a/p) - символ Лежандра, равный 1, если a является квадратичным вычетом по модулю p, и -1 в противном случае.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Символ Лежандра</h3>
+      <p>Для простого p и a не делящегося на p:</p>
+      <div class="math-box">
+        \[\left(\frac{a}{p}\right) = \begin{cases}
+          1, & \text{если } x^2 \equiv a \pmod p \text{ имеет решение} \\
+          -1, & \text{если } x^2 \equiv a \pmod p \text{ не имеет решения}
+        \end{cases}\]
+      </div>
+      <p><strong>Примеры:</strong></p>
+      <div class="math-box">
+        \[\left(\frac{2}{7}\right) = 1 \quad \text{поскольку } 3^2 = 9 \equiv 2 \pmod 7\]
+        \[\left(\frac{3}{7}\right) = -1 \quad \text{поскольку нет } x \text{ с } x^2 \equiv 3 \pmod 7\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Упрощённая формулировка</h3>
+      <p>Закон можно записать в виде:</p>
+      <div class="math-box">
+        \[\left(\frac{q}{p}\right) = \begin{cases}
+          \left(\frac{p}{q}\right), & \text{если } p \equiv 1 \pmod 4 \text{ или } q \equiv 1 \pmod 4 \\
+          -\left(\frac{p}{q}\right), & \text{если } p \equiv q \equiv 3 \pmod 4
+        \end{cases}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая значимость</h3>
+      <p>Открыт Гауссом в 1796 году. Назван «золотой теоремой» за красоту и важность.</p>
+      <p>Гаусс дал 6 различных доказательств, включая геометрическое с помощью восьмиугольника.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры вычислений</h3>
+      <h4>Пример 1: Вычислить (3/7)</h4>
+      <p>Так как 3 ≡ 3 (mod 4) и 7 ≡ 3 (mod 4):</p>
+      <div class="math-box">
+        \[\left(\frac{3}{7}\right) = -\left(\frac{7}{3}\right) = -\left(\frac{1}{3}\right) = -1\]
+      </div>
+      
+      <h4>Пример 2: Вычислить (5/13)</h4>
+      <p>Так как 5 ≡ 1 (mod 4):</p>
+      <div class="math-box">
+        \[\left(\frac{5}{13}\right) = \left(\frac{13}{5}\right) = \left(\frac{3}{5}\right) = -\left(\frac{5}{3}\right) = -\left(\frac{2}{3}\right) = -1\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Дополнительные формулы</h3>
+      <h4>Первый дополнительный закон Гаусса</h4>
+      <div class="math-box">
+        \[\left(\frac{-1}{p}\right) = (-1)^{\frac{p-1}{2}} = \begin{cases}
+          1, & p \equiv 1 \pmod 4 \\
+          -1, & p \equiv 3 \pmod 4
+        \end{cases}\]
+      </div>
+      
+      <h4>Второй дополнительный закон Гаусса</h4>
+      <div class="math-box">
+        \[\left(\frac{2}{p}\right) = (-1)^{\frac{p^2-1}{8}} = \begin{cases}
+          1, & p \equiv \pm 1 \pmod 8 \\
+          -1, & p \equiv \pm 3 \pmod 8
+        \end{cases}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Решение квадратичных сравнений</h4>
+      <p>Определение разрешимости x² ≡ a (mod p).</p>
+      
+      <h4>2. Теория чисел</h4>
+      <p>Изучение простых чисел, распределение квадратичных вычетов.</p>
+      
+      <h4>3. Криптография</h4>
+      <p>Тесты простоты, алгоритмы факторизации.</p>
+      
+      <h4>4. Алгебраическая теория чисел</h4>
+      <p>Поля Галуа, расширения полей.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Вычислительный алгоритм</h3>
+      <p>Для вычисления (a/p) используется алгоритм Евклида и закон взаимности:</p>
+      <ol>
+        <li>Если a > p, заменяем a на a mod p</li>
+        <li>Если a = 0, то (a/p) = 0</li>
+        <li>Если a = 1, то (a/p) = 1</li>
+        <li>Если a = 2, используем второй закон Гаусса</li>
+        <li>Если a нечётное, применяем закон взаимности</li>
+        <li>Повторяем процесс</li>
+      </ol>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
   <meta name="description" content="    Закон квадратичной взаимности: формулировка, доказательство, применения и видео.">
   <title>MathLab —     Закон квадратичной взаимности</title>
   <link rel="stylesheet" href="css/styles.css">
