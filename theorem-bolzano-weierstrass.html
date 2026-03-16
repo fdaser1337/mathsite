@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="<main class="container"><section class="hero"><span class="tag">Отдельная теорема</span>Теорема Больцано–Вейерштрасса<p>Фундаментальное утверждение о том, что ограниченная последовательность имеет сходящуюся подпоследовательность.</p></section>: формулировка, доказательство, применения и видео.">
-  <title>MathLab — <main class="container"><section class="hero"><span class="tag">Отдельная теорема</span>Теорема Больцано–Вейерштрасса<p>Фундаментальное утверждение о том, что ограниченная последовательность имеет сходящуюся подпоследовательность.</p></section></title>
+  <meta name="description" content="Теорема Больцано-Вейерштрасса: формулировка, доказательство, применения.">
+  <title>MathLab — Теорема Больцано-Вейерштрасса</title>
   <link rel="stylesheet" href="css/styles.css">
   <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -18,6 +18,121 @@
       <a href="theorems.html" aria-current="page">Теоремы</a>
       <a href="integrals.html">Интегралы</a>
       <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Отдельная теорема</span>
+    <h1>Теорема Больцано-Вейерштрасса</h1>
+    <p>Фундаментальное утверждение о том, что ограниченная последовательность имеет сходящуюся подпоследовательность.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Всякая ограниченная последовательность действительных чисел содержит сходящуюся подпоследовательность.</p>
+      <div class="math-box">
+        \[\text{Если } \{x_n\} \text{ ограничена, то } \exists \text{ подпоследовательность } \{x_{n_k}\} \text{ такая, что } x_{n_k} \to L\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство (метод деления отрезка пополам)</h3>
+      <p>Пусть последовательность {x_n} ограничена: m ≤ x_n ≤ M для всех n.</p>
+      <p><strong>Шаг 1:</strong> Разделим отрезок [m, M] пополам. Хотя бы одна половина содержит бесконечно много членов последовательности. Выберем эту половину.</p>
+      <p><strong>Шаг 2:</strong> Повторяем процесс, каждый раз деля отрезок пополам и выбирая половину с бесконечным числом членов.</p>
+      <p><strong>Шаг 3:</strong> Получаем стягивающуюся систему отрезков. По лемме о вложенных отрезках существует общая точка L.</p>
+      <p><strong>Шаг 4:</strong> Из каждого отрезка выбираем член последовательности с большим номером. Полученная подпоследовательность сходится к L. ■</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Варианты теоремы</h3>
+      <h4>Для последовательностей в ℝⁿ</h4>
+      <p>Всякая ограниченная последовательность в ℝⁿ имеет сходящуюся подпоследовательность.</p>
+      
+      <h4>Для функций</h4>
+      <p>Всякая непрерывная функция на компактном множестве ограничена и достигает своих экстремумов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <ul>
+        <li><strong>Доказательство существования пределов</strong> - если последовательность монотонна и ограничена, она сходится</li>
+        <li><strong>Теория компактности</strong> - характеризует компактные множества в ℝ</li>
+        <li><strong>Численные методы</strong> - гарантия сходимости итерационных процессов</li>
+        <li><strong>Оптимизация</strong> - существование минимума и максимума</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Пример</h3>
+      <p>Последовательность x_n = (-1)ⁿ ограничена (-1 ≤ x_n ≤ 1), но не сходится. Однако она имеет сходящиеся подпоследовательности:</p>
+      <div class="math-box">
+        \[x_{2k} = 1 \to 1, \quad x_{2k-1} = -1 \to -1\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="theorems.html">Теоремы</a></li>
+          <li><a href="integrals.html">Интегралы</a></li>
+          <li><a href="derivatives.html">Производные</a></li>
+          <li><a href="algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
       <a href="algebra.html">Линейная алгебра</a>
       <a href="geometry-space.html">Геометрия</a>
       <a href="about.html">О проекте</a>
