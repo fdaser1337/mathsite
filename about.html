@@ -1,9 +1,96 @@
-<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="О проекте MathLab: открытый образовательный проект с документацией и учебным маршрутом по курсам."><title>MathLab — О проекте</title><link rel="stylesheet" href="css/styles.css"></head><body>
-<header class="site-header"><div class="container header-inner search-host"><a class="brand" href="index.html">Math<span>Lab</span></a><nav class="nav-links"><a href="index.html">Главная</a><a href="theorems.html">Теоремы</a><a href="integrals.html">Интегралы</a><a href="derivatives.html">Производные</a><a href="algebra.html">Линейная алгебра</a><a href="geometry-space.html">Геометрия</a><a href="about.html" aria-current="page">О проекте</a></nav><div class="controls"><div class="search-wrap"><input type="search" placeholder="Поиск" data-search-input><button data-search-btn>Найти</button></div><button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button></div><div class="search-results glass-card" data-search-results></div></div></header>
-<main class="container"><section class="hero"><span class="tag">Открытый образовательный проект</span><h1>О проекте MathLab</h1><p>MathLab развивается как бесплатная цифровая платформа для систематизации математических знаний с удобной навигацией по теории и практике.</p></section>
-<section class="section" id="docs"><article class="glass-card content-block"><h3>Документация проекта</h3><p>MathLab хранит материалы в виде тематических HTML-страниц. У каждого раздела есть обзорная страница и детальные страницы с формулировками, доказательствами, таблицами и примерами. На уровне интерфейса поддерживаются глобальный поиск, светлая/тёмная тема и единый футер с быстрыми ссылками.</p><ul><li><strong>Структура:</strong> разделы «Теоремы», «Интегралы», «Производные», «Линейная алгебра», «Геометрия».</li><li><strong>Формулы:</strong> рендеринг через MathJax на страницах со строгой математической записью.</li><li><strong>Визуализация:</strong> встроенные SVG-иллюстрации и Plotly-графики для интерпретации теорем.</li><li><strong>Источник видео:</strong> переходы на разборы с канала МФТИ Study.</li></ul></article>
-<article class="glass-card content-block" id="courses"><h3>Маршрут по курсам 1–4</h3><div class="course-grid"><a class="course-item course-link" href="theorems.html#course-1"><h4>1 курс</h4><p>Производные, базовые интегралы, геометрическая интерпретация теорем.</p></a><a class="course-item course-link" href="theorems.html#course-2"><h4>2 курс</h4><p>Ряды и последовательности, теоремы анализа, интегралы с приложениями.</p></a><a class="course-item course-link" href="theorems.html#course-3"><h4>3 курс</h4><p>Матрицы, линейные отображения, операторные теоремы и вычислительные методы.</p></a><a class="course-item course-link" href="theorems.html#course-4"><h4>4 курс</h4><p>Продвинутые разделы: теория чисел, функциональный анализ, межпредметные кейсы.</p></a></div></article>
-<article class="glass-card content-block" id="contrib"><h3>Как улучшать MathLab</h3><ol><li>Предложите новую тему, теорему или задачу с решением.</li><li>Добавьте качественную визуализацию (график, матричная схема, геометрическая иллюстрация).</li><li>Прикрепите ссылки на проверенные лекции, например МФТИ Study.</li><li>Соблюдайте академичный стиль и единый формат оформления.</li></ol></article></section></main>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="О проекте MathLab: открытый образовательный проект с документацией, учебным маршрутом и источниками теорем.">
+  <title>MathLab — О проекте</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="index.html">Главная</a>
+      <a href="theorems.html">Теоремы</a>
+      <a href="integrals.html">Интегралы</a>
+      <a href="derivatives.html">Производные</a>
+      <a href="algebra.html">Линейная алгебра</a>
+      <a href="geometry-space.html">Геометрия</a>
+      <a href="about.html" aria-current="page">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Открытый образовательный проект</span>
+    <h1>О проекте MathLab</h1>
+    <p>MathLab развивается как бесплатная цифровая платформа для систематизации математических знаний с удобной навигацией по теории и практике.</p>
+  </section>
+
+  <section class="section" id="docs">
+    <article class="glass-card content-block">
+      <h3>Документация проекта</h3>
+      <p>MathLab хранит материалы в виде тематических HTML-страниц. У каждого раздела есть обзорная страница и детальные страницы с формулировками, доказательствами, таблицами и примерами. На уровне интерфейса поддерживаются глобальный поиск, светлая/тёмная тема и единый футер с быстрыми ссылками.</p>
+      <ul>
+        <li><strong>Структура:</strong> разделы «Теоремы», «Интегралы», «Производные», «Линейная алгебра», «Геометрия».</li>
+        <li><strong>Формулы:</strong> рендеринг через MathJax на страницах со строгой математической записью.</li>
+        <li><strong>Визуализация:</strong> встроенные SVG-иллюстрации и Plotly-графики для интерпретации теорем.</li>
+        <li><strong>Источник видео:</strong> переходы на разборы с канала МФТИ Study.</li>
+        <li><strong>Источники теорем:</strong> <a href="theorem-sources.html">российская библиография и учебные издания</a>.</li>
+      </ul>
+    </article>
+
+    <article class="glass-card content-block" id="courses">
+      <h3>Маршрут по курсам 1–4</h3>
+      <div class="course-grid">
+        <a class="course-item course-link" href="theorems.html#course-1">
+          <h4>1 курс</h4>
+          <p>Производные, базовые интегралы, геометрическая интерпретация теорем.</p>
+        </a>
+        <a class="course-item course-link" href="theorems.html#course-2">
+          <h4>2 курс</h4>
+          <p>Ряды и последовательности, теоремы анализа, интегралы с приложениями.</p>
+        </a>
+        <a class="course-item course-link" href="theorems.html#course-3">
+          <h4>3 курс</h4>
+          <p>Матрицы, линейные отображения, операторные теоремы и вычислительные методы.</p>
+        </a>
+        <a class="course-item course-link" href="theorems.html#course-4">
+          <h4>4 курс</h4>
+          <p>Продвинутые разделы: теория чисел, функциональный анализ, межпредметные кейсы.</p>
+        </a>
+      </div>
+    </article>
+
+    <article class="glass-card content-block" id="contrib">
+      <h3>Как улучшать MathLab</h3>
+      <ol>
+        <li>Предложите новую тему, теорему или задачу с решением.</li>
+        <li>Добавьте качественную визуализацию (график, матричная схема, геометрическая иллюстрация).</li>
+        <li>Прикрепите ссылки на проверенные лекции, например МФТИ Study.</li>
+        <li>Соблюдайте академичный стиль и единый формат оформления.</li>
+      </ol>
+    </article>
+
+    <article class="glass-card content-block" id="sources-link">
+      <h3>Где смотреть источники теорем</h3>
+      <p>Мы вынесли библиотеку источников в отдельную страницу, чтобы было проще проверять происхождение формулировок и углубляться в оригинальные курсы.</p>
+      <p><a class="btn" href="theorem-sources.html">Открыть страницу источников теорем</a></p>
+    </article>
+  </section>
+</main>
+
 <footer class="footer">
   <div class="footer-panel container">
     <div class="footer-grid">
@@ -26,6 +113,7 @@
           <li><a href="about.html#docs">Официальная документация проекта</a></li>
           <li><a href="about.html#courses">Маршрут по курсам 1–4</a></li>
           <li><a href="about.html#contrib">Как предложить улучшение</a></li>
+          <li><a href="theorem-sources.html">Источники теорем (РФ)</a></li>
         </ul>
       </div>
       <div>
@@ -38,4 +126,8 @@
     </div>
     <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
   </div>
-</footer><script src="js/main.js" defer></script></body></html>
+</footer>
+
+<script src="js/main.js" defer></script>
+</body>
+</html>
