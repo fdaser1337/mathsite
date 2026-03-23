@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема Лиувилля: ограниченная аналитическая функция постоянна, комплексный анализ.">
+  <title>MathLab — Теорема Лиувилля</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Комплексный анализ</span>
+    <h1>Теорема Лиувилля</h1>
+    <p>Всякая ограниченная аналитическая функция на всей комплексной плоскости является постоянной.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Если функция f аналитична на всей комплексной плоскости ℂ (целая функция) и существует константа M такая, что |f(z)| ≤ M для всех z ∈ ℂ, то f(z) ≡ const.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство</h3>
+      <p>Используем формулу Коши для производных:</p>
+      <div class="math-box">
+        \[f'(z) = \frac{1}{2\pi i} \oint_{|\zeta-z|=R} \frac{f(\zeta)}{(\zeta-z)^2} d\zeta\]
+      </div>
+      <p>Оценим модуль производной:</p>
+      <div class="math-box">
+        \[|f'(z)| \leq \frac{1}{2\pi} \oint_{|\zeta-z|=R} \frac{|f(\zeta)|}{|\zeta-z|^2} |d\zeta| \leq \frac{1}{2\pi} \cdot \frac{M}{R^2} \cdot 2\pi R = \frac{M}{R}\]
+      </div>
+      <p>Так как это верно для любого R > 0, устремим R → ∞:</p>
+      <div class="math-box">
+        \[|f'(z)| \leq \lim_{R \to \infty} \frac{M}{R} = 0\]
+      </div>
+      <p>Следовательно, f'(z) = 0 для всех z, поэтому f(z) ≡ const.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения</h3>
+      <h4>Обобщённая теорема Лиувилля</h4>
+      <p>Если |f(z)| ≤ C|z|ⁿ для достаточно больших |z|, то f - многочлен степени не выше n.</p>
+      
+      <h4>Теорема Лиувилля для гармонических функций</h4>
+      <p>Ограниченная гармоническая функция на ℝⁿ постоянна.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Константы</h4>
+      <p>f(z) = 5 - ограниченная аналитическая функция, постоянна по теореме.</p>
+      
+      <h4>Пример 2: Экспонента не ограничена</h4>
+      <p>f(z) = eᶻ аналитична на ℂ, но |eᶻ| → ∞ при Re(z) → ∞, поэтому теорема неприменима.</p>
+      
+      <h4>Пример 3: Синус не ограничен</h4>
+      <p>f(z) = sin(z) аналитична на ℂ, но |sin(iy)| = |sh(y)| → ∞ при y → ∞.</p>
+      
+      <h4>Пример 4: Функция с бесконечным числом нулей</h4>
+      <p>Если f(z) = 0 для всех целых z, то f ≡ 0 (частный случай теоремы о единственности).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Следствия</h3>
+      <h4>1. Фундаментальная теорема алгебры</h4>
+      <p>Из теоремы Лиувилля следует, что любой многочлен степени n ≥ 1 имеет корень.</p>
+      
+      <h4>2. Теорема о единственности</h4>
+      <p>Если целая функция имеет бесконечно много нулев с предельной точкой, она тождественно равна нулю.</p>
+      
+      <h4>3. Принцип максимума</h4>
+      <p>Модуль не константной аналитической функции не может достигать максимума внутри области.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Теория функций</h4>
+      <p>Классификация целых функций, изучение их роста.</p>
+      
+      <h4>2. Дифференциальные уравнения</h4>
+      <p>Анализ решений линейных дифференциальных уравнений.</p>
+      
+      <h4>3. Комплексная динамика</h4>
+      <p>Изучение итераций аналитических функций.</p>
+      
+      <h4>4. Квантовая механика</h4>
+      <p>Анализ волновых функций, рассеяние.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Пикара</h4>
+      <p>Целая нелинейная функция принимает все комплексные значения, возможно, за исключением одного.</p>
+      
+      <h4>Теорема Римана об отображении</h4>
+      <p>Любая односвязная область, отличная от всей плоскости, конформно эквивалентна единичному кругу.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Теорема доказана Жозефом Лиувиллем в 1844 году. Является одним из фундаментальных результатов комплексного анализа.</p>
+      <p>Имеет многочисленные обобщения и применения в различных разделах математики.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

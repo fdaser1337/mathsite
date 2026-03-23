@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости PCA: сингулярное разложение, оптимальная проекция, скорость сходимости.">
+  <title>MathLab — Теорема о сходимости PCA</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Линейная алгебра</span>
+    <h1>Теорема о сходимости PCA</h1>
+    <p>Сходимость метода главных компонент и оптимальные свойства проекции.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная постановка PCA</h3>
+      <p>Пусть X ∈ ℝ^{n×d} - матрица данных, где n - число наблюдений, d - число признаков.</p>
+      
+      <h4>Цель PCA</h4>
+      <p>Найти ортогональную проекцию на k-мерное подпространство, минимизирующую ошибку реконструкции:</p>
+      <div class="math-box">
+        \[\min_{U \in \mathbb{R}^{d \times k}, U^T U = I} \frac{1}{n}\|X - XUU^T\|_F^2\]
+      </div>
+      
+      <h4>Эквивалентная формулировка</h4>
+      <p>Максимизация сохраненной дисперсии:</p>
+      <div class="math-box">
+        \[\max_{U \in \mathbb{R}^{d \times k}, U^T U = I} \frac{1}{n}\|XUU^T\|_F^2\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема об оптимальности PCA</h3>
+      <h4>Формулировка</h4>
+      <p>Решением задачи PCA являются собственные векторы ковариационной матрицы Σ = (1/n)X^T X, соответствующие k наибольшим собственным значениям.</p>
+      
+      <h4>Доказательство</h4>
+      <p>Используем разложение по собственным векторам:</p>
+      <div class="math-box">
+        \[X = U\Lambda V^T\]
+      </div>
+      
+      <p>где U ∈ ℝ^{n×n}, V ∈ ℝ^{d×d} - ортогональные матрицы, Λ - диагональная матрица сингулярных чисел.</p>
+      
+      <p>Оптимальная проекция выбирается по первым k столбцам V.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости эмпирического PCA</h3>
+      <h4>Формулировка</h4>
+      <p>Пусть X₁, ..., Xₙ - независимые выборки из распределения с ковариационной матрицей Σ. Тогда эмпирические главные компоненты сходятся к истинным.</p>
+      
+      <h4>Скорость сходимости</h4>
+      <div class="math-box">
+        \[\|\hat{v}_j - v_j\| = O_p\left(\frac{1}{\sqrt{n}}\right)\]
+      </div>
+      
+      <p>где \hat{v}_j - эмпирический собственный вектор, v_j - истинный собственный вектор.</p>
+      
+      <h4>Условия</h4>
+      <ul>
+        <li>Собственные значения λ₁ > λ₂ > ... > λ_k (разделённость)</li>
+        <li>Конечные четвёртые моменты</li>
+        <li>Подчинённость распределения (subgaussian)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о концентрации собственных значений</h3>
+      <h4>Неравенство Дэвиса-Кахана</h4>
+      <p>Для случайной матрицы X с независимыми строками:</p>
+      <div class="math-box">
+        \[P(\|\hat{\Sigma} - \Sigma\| \geq t) \leq 2d \exp\left(-cn t^2\right)\]
+      </div>
+      
+      <p>где \hat{Σ} = (1/n)X^T X - эмпирическая ковариация, c - константа.</p>
+      
+      <h4>Следствие для собственных значений</h4>
+      <div class="math-box">
+        \[|\hat{\lambda}_j - \lambda_j| \leq \|\hat{\Sigma} - \Sigma\|\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Итерационные методы PCA</h3>
+      <h4>Метод степеней</h4>
+      <p>Для нахождения главного собственного вектора:</p>
+      <div class="math-box">
+        \[v^{(t+1)} = \frac{\Sigma v^{(t)}}{\|\Sigma v^{(t)}\|}\]
+      </div>
+      
+      <h4>Сходимость метода степеней</h4>
+      <div class="math-box">
+        \[\|v^{(t)} - v_1\| \leq C\left(\frac{\lambda_2}{\lambda_1}\right)^t\]
+      </div>
+      
+      <p>где λ₁ > λ₂ - два наибольших собственных значения.</p>
+      
+      <h4>Дефляционный метод</h4>
+      <p>Последовательное нахождение собственных векторов с вычитанием проекций.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Случайный PCA</h3>
+      <h4>Идея</h4>
+      <p>Использование случайных проекций для ускорения вычислений.</p>
+      
+      <h4>Алгоритм</h4>
+      <ol>
+        <li>Генерируем случайную матрицу Ω ∈ ℝ^{d×k}</li>
+        <li>Вычисляем Y = XΩ</li>
+        <li>QR-разложение Y = QR</li>
+        <li>Проектируем B = Q^T X</li>
+        <li>SVD разложение B = U_B Σ_B V_B^T</li>
+        <li>Искомые компоненты: U = QV_B</li>
+      </ol>
+      
+      <h4>Теорема о точности</h4>
+      <div class="math-box">
+        \[\|X - UU^T X\|_F \leq (1 + \varepsilon)\|X - X_k\|_F\]
+      </div>
+      
+      <p>с вероятностью ≥ 1-δ при k ≥ O(log(1/δ)/ε²).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Ядровой PCA</h3>
+      <h4>Отображение в пространство признаков</h4>
+      <div class="math-box">
+        \[\phi: \mathbb{R}^d \to \mathcal{H}\]
+      </div>
+      
+      <h4>Ядровая матрица</h4>
+      <div class="math-box">
+        \[K_{ij} = \langle \phi(x_i), \phi(x_j) \rangle = k(x_i, x_j)\]
+      </div>
+      
+      <h4>Собственные векторы в пространстве признаков</h4>
+      <div class="math-box">
+        \[v_j = \sum_{i=1}^{n} \alpha_{ij} \phi(x_i)\]
+      </div>
+      
+      <p>где α_{ij} - собственные векторы центрированной матрицы K.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Разложение ошибки</h3>
+      <h4>Теорема о разложении</h4>
+      <div class="math-box">
+        \[\frac{1}{n}\|X - X_k\|_F^2 = \sum_{j=k+1}^{d} \lambda_j\]
+      </div>
+      
+      <p>где X_k = XU_kU_k^T - проекция на первые k главных компонент.</p>
+      
+      <h4>Объяснённая дисперсия</h4>
+      <div class="math-box">
+        \[\text{Объяснённая дисперсия} = \frac{\sum_{j=1}^{k} \lambda_j}{\sum_{j=1}^{d} \lambda_j}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Выбор числа компонент</h3>
+      <h4>Правило Кайзера</h4>
+      <p>Выбирать компоненты с λ_j > 1 (для стандартизированных данных).</p>
+      
+      <h4>Метод локтя</h4>
+      <p>Выбор точки изгиба на графике собственных значений.</p>
+      
+      <h4>Критерий накопленной дисперсии</h4>
+      <p>Выбор минимального k такого, что:</p>
+      <div class="math-box">
+        \[\frac{\sum_{j=1}^{k} \lambda_j}{\sum_{j=1}^{d} \lambda_j} \geq \tau\]
+      </div>
+      
+      <p>где τ ∈ [0.8, 0.95] - порог объяснённой дисперсии.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Свойства PCA</h3>
+      <h4>Оптимальность</h4>
+      <ul>
+        <li>Минимизация ошибки реконструкции</li>
+        <li>Максимизация сохранённой дисперсии</li>
+        <li>Декоррелированность компонент</li>
+      </ul>
+      
+      <h4>Ограничения</h4>
+      <ul>
+        <li>Линейность преобразования</li>
+        <li>Чувствительность к масштабированию</li>
+        <li>Интерпретируемость компонент</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими методами</h3>
+      <h4>Факторный анализ</h4>
+      <p>PCA - частный случай факторного анализа с единичными уникальностями.</p>
+      
+      <h4>SVD</h4>
+      <p>PCA через SVD центрированной матрицы данных.</p>
+      
+      <h4>ICA</h4>
+      <p>ICA ищет независимые компоненты, PCA - некоррелированные.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Предобработка</h4>
+      <ul>
+        <li>Центрирование данных</li>
+        <li>Стандартизация признаков</li>
+        <li>Обработка выбросов</li>
+      </ul>
+      
+      <h4>Вычислительная сложность</h4>
+      <ul>
+        <li>Полный PCA: O(min(nd², n²d))</li>
+        <li>Случайный PCA: O(ndk)</li>
+        <li>Итерационные методы: O(ndk) на итерацию</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Снижение размерности</h4>
+      <p>Визуализация данных, ускорение алгоритмов.</p>
+      
+      <h4>2. Сжатие данных</h4>
+      <p>Хранение изображений, аудио.</p>
+      
+      <h4>3. Обработка сигналов</h4>
+      <p>Удаление шума, выделение признаков.</p>
+      
+      <h4>4. Биоинформатика</h4>
+      <p>Анализ экспрессии генов, ДНК-микрочипы.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h4>
+      <p>Метод разработан Карлом Пирсоном в 1901 году.</p>
+      <p>Гарольд Хотеллинг развил теорию в 1930-х годах.</p>
+      <p>Современные вычислительные методы развиты с 1960-х годов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

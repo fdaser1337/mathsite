@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Принцип максимума модуля: аналитические функции достигают максимума на границе.">
+  <title>MathLab — Принцип максимума модуля</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Комплексный анализ</span>
+    <h1>Принцип максимума модуля</h1>
+    <p>Модуль аналитической функции достигает своего максимума на границе области.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть f - непостоянная аналитическая функция в ограниченной области D с непрерывным продолжением на границу ∂D. Тогда:</p>
+      <div class="math-box">
+        \[\max_{z \in \overline{D}} |f(z)| = \max_{z \in \partial D} |f(z)|\]
+      </div>
+      <p>Более того, если |f(z₀)| = max|f(z)| для некоторой внутренней точки z₀ ∈ D, то f ≡ const.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Геометрическая интерпретация</h3>
+      <p>График модуля аналитической функции похож на «гору» - самая высокая точка всегда на границе области.</p>
+      <p><strong>Аналогия:</strong> Если вы находитесь в долине и поднимаетесь в гору, то самая высокая вершина всегда будет на границе долины, а не внутри.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство</h3>
+      <p>Используем принцип максимума для гармонических функций.</p>
+      <p>Пусть u(z) = |f(z)|² = f(z)\overline{f(z)}. Если f(z) ≠ 0, то:</p>
+      <div class="math-box">
+        \[\Delta u = 4|f'(z)|^2 \geq 0\]
+      </div>
+      <p>Таким образом, u - субгармоническая функция. По принципу максимума для субгармонических функций, максимум достигается на границе.</p>
+      <p>Если максимум достигается внутри, то u ≡ const, следовательно, f'(z) ≡ 0, и f ≡ const.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Константа</h4>
+      <p>f(z) = 5. Модуль постоянен, принцип выполняется тривиально.</p>
+      
+      <h4>Пример 2: Линейная функция</h4>
+      <p>f(z) = z в единичном круге |z| ≤ 1.</p>
+      <div class="math-box">
+        \[\max_{|z| \leq 1} |z| = 1 = \max_{|z| = 1} |z|\]
+      </div>
+      
+      <h4>Пример 3: Квадратичная функция</h4>
+      <p>f(z) = z² в круге |z| ≤ 2.</p>
+      <div class="math-box">
+        \[\max_{|z| \leq 2} |z^2| = 4 = \max_{|z| = 2} |z^2|\]
+      </div>
+      
+      <h4>Пример 4: Экспонента</h4>
+      <p>f(z) = eᶻ в прямоугольнике 0 ≤ Re(z) ≤ 1, 0 ≤ Im(z) ≤ π.</p>
+      <div class="math-box">
+        \[\max |e^z| = e^1\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Следствия</h3>
+      <h4>1. Принцип минимума модуля</h4>
+      <p>Если f(z) ≠ 0 в D, то |f(z)| достигает минимума на границе.</p>
+      
+      <h4>2. Лемма Шварца</h4>
+      <p>Если f аналитична в единичном круге, |f(z)| ≤ 1 и f(0) = 0, то |f(z)| ≤ |z|.</p>
+      
+      <h4>3. Теорема о среднем значении</h4>
+      <p>Значение аналитической функции в центре круга равно среднему значению на границе.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения</h3>
+      <h4>Принцип максимума для гармонических функций</h4>
+      <p>Гармоническая функция достигает максимума на границе области.</p>
+      
+      <h4>Принцип Фрагмена-Линделёфа</h4>
+      <p>Обобщение на неограниченные области.</p>
+      
+      <h4>Принцип максимума для субгармонических функций</h4>
+      <p>Максимум субгармонической функции также достигается на границе.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Теория приближений</h4>
+      <p>Оценка погрешности приближения аналитических функций.</p>
+      
+      <h4>2. Комплексный анализ</h4>
+      <p>Доказательство других теорем, изучение свойств аналитических функций.</p>
+      
+      <h4>3. Уравнения математической физики</h4>
+      <p>Решение уравнений Лапласа, гармонический анализ.</p>
+      
+      <h4>4. Теория потенциала</h4>
+      <p>Изучение электростатических полей, гравитационного потенциала.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Лиувилля</h4>
+      <p>Ограниченная аналитическая функция постоянна (следствие принципа максимума).</p>
+      
+      <h4>Принцип аргумента</h4>
+      <p>Связывает изменение аргумента функции с числом нулей и полюсов.</p>
+      
+      <h4>Теорема Римана об отображении</h4>
+      <p>Конформные отображения сохраняют принцип максимума.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

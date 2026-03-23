@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости случайных лесов: бэггинг, декоррелированность, обобщающая способность.">
+  <title>MathLab — Теорема о сходимости случайных лесов</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Машинное обучение</span>
+    <h1>Теорема о сходимости случайных лесов</h1>
+    <p>Обобщающая способность ансамблей деревьев решений и декоррелирующий эффект.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная идея случайных лесов</h3>
+      <p>Случайный лес - ансамбль деревьев решений, обученных с бэггингом и случайным выбором признаков.</p>
+      
+      <h4>Бэггинг (Bootstrap Aggregating)</h4>
+      <p>Для каждого дерева t = 1, ..., B:</p>
+      <ol>
+        <li>Создаём бутстрап-выборку {(x_i^t, y_i^t)}_{i=1}^n из исходных данных</li>
+        <li>Обучаем дерево h_t на этой выборке</li>
+      </ol>
+      
+      <h4>Случайный выбор признаков</h4>
+      <p>При каждом расщеплении выбираем случайное подмножество из m признаков.</p>
+      
+      <h4>Ансамбль</h4>
+      <div class="math-box">
+        \[H(x) = \frac{1}{B}\sum_{t=1}^{B} h_t(x)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о декоррелированности</h3>
+      <h4>Формулировка</h4>
+      <p>Пусть деревья h₁, ..., h_B имеют среднюю корреляцию ρ и дисперсию σ². Тогда дисперсия ансамбля:</p>
+      <div class="math-box">
+        \[\text{Var}\left(\frac{1}{B}\sum_{t=1}^{B} h_t\right) = \frac{1 - \rho}{B}\sigma^2 + \rho\sigma^2\]
+      </div>
+      
+      <h4>Следствие</h4>
+      <p>При B → ∞:</p>
+      <div class="math-box">
+        \[\text{Var}(H) \to \rho\sigma^2\]
+      </div>
+      
+      <p>Случайный выбор признаков уменьшает ρ, тем самым уменьшая дисперсию ансамбля.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости бэггинга</h3>
+      <h4>Условия</h4>
+      <p>Пусть:</p>
+      <ul>
+        <li>Данные (X, Y) независимы и одинаково распределены</li>
+        <li>Базовые алгоритмы h_t обучаются на независимых выборках</li>
+        <li>E[h_t(X)] = f*(X) для некоторой функции f*</li>
+      </ul>
+      
+      <h4>Результат</h4>
+      <div class="math-box">
+        \[E[(H(X) - f^*(X))^2] \leq \frac{1}{B}E[(h_1(X) - f^*(X))^2]\]
+      </div>
+      
+      <p>Бэггинг уменьшает дисперсию в B раз при независимых базовых алгоритмах.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщающая способность</h3>
+      <h4>Разложение ошибки</h4>
+      <div class="math-box">
+        \[E[(H(X) - Y)^2] = \text{Bias}^2 + \text{Variance} + \text{Noise}\]
+      </div>
+      
+      <h4>Эффект случайного леса</h4>
+      <ul>
+        <li><strong>Уменьшение дисперсии:</strong> за счёт усреднения деревьев</li>
+        <li><strong>Уменьшение корреляции:</strong> за счёт случайного выбора признаков</li>
+        <li><strong>Сохранение смещения:</strong> смещение отдельного дерева</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о количестве признаков</h3>
+      <h4>Оптимальное m</h4>
+      <p>Для p признаков рекомендуется:</p>
+      <ul>
+        <li>Классификация: m = √p</li>
+        <li>Регрессия: m = p/3</li>
+      </ul>
+      
+      <h4>Теоретическое обоснование</h4>
+      <p>Баланс между:</p>
+      <ul>
+        <li>Силой отдельных деревьев (больше m → сильнее деревья)</li>
+        <li>Декоррелированностью деревьев (меньше m → меньше корреляция)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Сходимость по числу деревьев</h3>
+      <h4>Теорема</h4>
+      <p>При B → ∞ ошибка случайного леса сходится к пределу:</p>
+      <div class="math-box">
+        \[\lim_{B \to \infty} E[(H_B(X) - Y)^2] = \rho\sigma^2 + \text{Bias}^2 + \text{Noise}\]
+      </div>
+      
+      <h4>Практические рекомендации</h4>
+      <ul>
+        <li>Ошибка стабилизируется при B ≈ 100-500</li>
+        <li>Дальнейшее увеличение даёт незначительное улучшение</li>
+        <li>Вычислительные затраты растут линейно с B</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Out-of-Bag оценка</h3>
+      <h4>Идея</h4>
+      <p>Каждая точка данных используется в обучении примерно 63% деревьев.</p>
+      
+      <h4>OOB ошибка</h4>
+      <div class="math-box">
+        \[\text{OOB error} = \frac{1}{n}\sum_{i=1}^{n} \frac{1}{|B_i|}\sum_{t \in B_i} L(y_i, h_t(x_i))\]
+      </div>
+      
+      <p>где B_i - множество деревьев, не использующих x_i в обучении.</p>
+      
+      <h4>Свойства</h4>
+      <p>OOB оценка является несмещённой оценкой ошибки обобщения.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Важность признаков</h3>
+      <h4>Перемешивание (Permutation Importance)</h4>
+      <div class="math-box">
+        \[I_j = \frac{1}{B}\sum_{t=1}^{B} \left(L(y, h_t(X_{\text{perm}_j})) - L(y, h_t(X))\right)\]
+      </div>
+      
+      <h4>Уменьшение примеси (Mean Decrease Impurity)</h4>
+      <div class="math-box">
+        \[I_j = \frac{1}{B}\sum_{t=1}^{B}\sum_{\text{nodes } n \text{ with feature } j} p_n \Delta_n\]
+      </div>
+      
+      <p>где p_n - доля точек в узле, Δ_n - уменьшение нечистоты.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теоретические границы</h3>
+      <h4>Граница обобщения</h4>
+      <div class="math-box">
+        \[R(H) \leq R_{\text{emp}}(H) + \sqrt{\frac{c \log(B) + \log(1/\delta)}{n}}\]
+      </div>
+      
+      <h4>Концентрация</h4>
+      <p>С вероятностью 1-δ:</p>
+      <div class="math-box">
+        \[|R(H) - R_{\text{emp}}(H)| \leq O\left(\sqrt{\frac{\log(B) + \log(1/\delta)}{n}}\right)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Сравнение с другими методами</h3>
+      <h4>Случайный лес vs Бэггинг</h4>
+      <ul>
+        <li>Случайный лес добавляет случайный выбор признаков</li>
+        <li>Уменьшает корреляцию между деревьями</li>
+        <li>Лучше работает на высокоразмерных данных</li>
+      </ul>
+      
+      <h4>Случайный лес vs Бустинг</h4>
+      <ul>
+        <li>Случайный лес: параллельное обучение, уменьшение дисперсии</li>
+        <li>Бустинг: последовательное обучение, уменьшение смещения</li>
+        <li>Случайный лес более устойчив к выбросам</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Параметры</h4>
+      <ul>
+        <li><strong>n_estimators:</strong> количество деревьев B</li>
+        <li><strong>max_features:</strong> количество признаков m</li>
+        <li><strong>max_depth:</strong> максимальная глубина деревьев</li>
+        <li><strong>min_samples_split:</strong> минимальное число образцов для расщепления</li>
+      </ul>
+      
+      <h4>Вычислительная сложность</h4>
+      <ul>
+        <li>Обучение: O(B × n × log n × m)</li>
+        <li>Предсказание: O(B × log n)</li>
+        <li>Параллелизация: деревья можно обучать независимо</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Расширения</h3>
+      <h4>Extra-Trees</h4>
+      <p>Дополнительная рандомизация: случайный выбор порогов расщепления.</p>
+      
+      <h4>Изолирующий лес</h4>
+      <p>Использование для детекции аномалий.</p>
+      
+      <h4>Случайные леса для кластеризации</h4>
+      <p>Непараметрическая кластеризация на основе случайных лесов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Биоинформатика</h4>
+      <p>Классификация генов, анализ белковых структур.</p>
+      
+      <h4>2. Финансы</h4>
+      <p>Кредитный скоринг, оценка рисков.</p>
+      
+      <h4>3. Медицина</h4>
+      <p>Диагностика заболеваний, анализ медицинских изображений.</p>
+      
+      <h4>4. Экология</h4>
+      <p>Классификация видов, анализ экологических данных.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Бэггинг предложен Лео Брейманом в 1996 году.</p>
+      <p>Случайные леса разработаны Лео Брейманом и Адель Катлер в 2001 году.</p>
+      <p>Стали одним из самых популярных методов машинного обучения.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема Лакса о сходимости разностных схем: эквивалентность устойчивости и сходимости.">
+  <title>MathLab — Теорема о сходимости разностных схем</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Вычислительная математика</span>
+    <h1>Теорема о сходимости разностных схем</h1>
+    <p>Эквивалентность устойчивости и сходимости для линейных разностных схем.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная постановка</h3>
+      <p>Рассмотрим линейную начально-краевую задачу:</p>
+      <div class="math-box">
+        \[\frac{\partial u}{\partial t} = \mathcal{L}u + f, \quad x \in \Omega, \quad t > 0\]
+        \[Bu = g, \quad x \in \partial\Omega\]
+        \[u(x,0) = u_0(x), \quad x \in \Omega\]
+      </div>
+      <p>где ℒ - линейный дифференциальный оператор.</p>
+      <p>Разностная схема аппроксимирует эту задачу на сетке с шагом h по пространству и τ по времени.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема Лакса</h3>
+      <h4>Формулировка</h4>
+      <p>Для корректно поставленной линейной задачи и консистентной разностной схемы:</p>
+      <div class="math-box">
+        \[\text{Устойчивость} \iff \text{Сходимость}\]
+      </div>
+      <p>Более точно: если разностная схема устойчива и аппроксимирует исходную задачу с порядком O(h^p + τ^q), то она сходится с тем же порядком.</p>
+      
+      <h4>Определения</h4>
+      <ul>
+        <li><strong>Корректность:</strong> решение существует, единственно, непрерывно зависит от данных</li>
+        <li><strong>Консистентность:</strong> погрешность аппроксимации → 0 при h,τ → 0</li>
+        <li><strong>Устойчивость:</strong> решение разностной задачи ограничено равномерно по h,τ</li>
+        <li><strong>Сходимость:</strong> разностное решение → точное решение</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство теоремы Лакса</h3>
+      <h4>Основная идея</h4>
+      <p>Пусть u - точное решение, u_h - разностное решение.</p>
+      <p>Разложим ошибку e_h = u_h - u:</p>
+      <div class="math-box">
+        \[e_h = (u_h - P_h u) + (P_h u - u)\]
+      </div>
+      <p>где P_h - оператор проектирования на сетку.</p>
+      
+      <h4>Оценка ошибки</h4>
+      <p>Используем треугольное неравенство:</p>
+      <div class="math-box">
+        \[\|e_h\| \leq \|u_h - P_h u\| + \|P_h u - u\|\]
+      </div>
+      <p>Первый член оценивается через устойчивость, второй - через консистентность.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры разностных схем</h3>
+      <h4>Пример 1: Уравнение теплопроводности</h4>
+      <p>∂u/∂t = ∂²u/∂x², u(0,t) = u(1,t) = 0, u(x,0) = f(x).</p>
+      
+      <p><strong>Явная схема:</strong></p>
+      <div class="math-box">
+        \[\frac{u_i^{n+1} - u_i^n}{\tau} = \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{h^2}\]
+      </div>
+      
+      <p>Условие устойчивости: τ ≤ h²/2 (условие Куранта).</p>
+      
+      <p><strong>Неявная схема:</strong></p>
+      <div class="math-box">
+        \[\frac{u_i^{n+1} - u_i^n}{\tau} = \frac{u_{i+1}^{n+1} - 2u_i^{n+1} + u_{i-1}^{n+1}}{h^2}\]
+      </div>
+      
+      <p>Безусловно устойчива.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Метод Фурье анализа устойчивости</h3>
+      <h4>Идея</h4>
+      <p>Для линейных схем с постоянными коэффициентами ищем решение в виде:</p>
+      <div class="math-box">
+        \[u_i^n = \xi^n e^{ikih}\]
+      </div>
+      
+      <h4>Коэффициент усиления</h4>
+      <p>Подставляем в разностную схему, получаем:</p>
+      <div class="math-box">
+        \[\xi = G(kh, \tau/h)\]
+      </div>
+      
+      <h4>Условие фон Неймана</h4>
+      <p>Схема устойчива, если |ξ| ≤ 1 + O(τ) для всех k.</p>
+      
+      <p>Для явной схемы теплопроводности:</p>
+      <div class="math-box">
+        \[\xi = 1 - 4\frac{\tau}{h^2}\sin^2\left(\frac{kh}{2}\right)\]
+      </div>
+      
+      <p>Условие |ξ| ≤ 1 даёт τ ≤ h²/2.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема Лакса-Рихтмайера</h3>
+      <h4>Обобщение на эволюционные задачи</h4>
+      <p>Для начальной задачи u' = Au, где A - оператор, разностная схема:</p>
+      <div class="math-box">
+        \[u^{n+1} = R(\tau A)u^n + \tau Q(\tau A)f^n\]
+      </div>
+      
+      <p>Схема сходится, если:</p>
+      <ol>
+        <li>‖R(τA)‖ ≤ C для τA в области устойчивости</li>
+        <li>R(0) = I, Q(0) = I (консистентность)</li>
+      </ol>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Порядок аппроксимации</h3>
+      <h4>Определение</h4>
+      <p>Схема имеет порядок (p,q), если погрешность аппроксимации:</p>
+      <div class="math-box">
+        \[\|\tau_h\| = O(h^p + \tau^q)\]
+      </div>
+      
+      <h4>Примеры порядков</h4>
+      <ul>
+        <li>Явная схема теплопроводности: O(τ + h²)</li>
+        <li>Неявная схема теплопроводности: O(τ + h²)</li>
+        <li>Схема Кранка-Николсон: O(τ² + h²)</li>
+        <li>Схема Лакса-Вендроффа: O(τ² + h²)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Метод энергетических оценок</h3>
+      <h4>Идея</h4>
+      <p>Используем энергетические неравенства для доказательства устойчивости.</p>
+      
+      <h4>Пример для волнового уравнения</h4>
+      <p>u_tt = c²u_xx, разностная схема:</p>
+      <div class="math-box">
+        \[\frac{u_i^{n+1} - 2u_i^n + u_i^{n-1}}{\tau^2} = c^2\frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{h^2}\]
+      </div>
+      
+      <p>Дискретная энергия:</p>
+      <div class="math-box">
+        \[E^n = h\sum_i \left(\frac{u_i^{n+1} - u_i^{n-1}}{2\tau}\right)^2 + c^2 h\sum_i \left(\frac{u_{i+1}^n - u_{i-1}^n}{2h}\right)^2\]
+      </div>
+      
+      <p>Условие устойчивости: τ ≤ h/c.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Нелинейные схемы</h3>
+      <h4>Сложности</h4>
+      <p>Для нелинейных задач теорема Лакса не применима напрямую.</p>
+      
+      <h4>Линеаризация</h4>
+      <p>Анализ устойчивости линеаризованной схемы.</p>
+      
+      <h4>Метод энергии</h4>
+      <p>Построение дискретных энергетических неравенств.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Многомерные задачи</h3>
+      <h4>Схемы расщепления</h4>
+      <p>Разделение по пространственным направлениям.</p>
+      
+      <h4>Аддитивные схемы</h4>
+      <p>Суммирование одномерных операторов.</p>
+      
+      <h4>Условия устойчивости</h4>
+      <p>Более строгие, чем в одномерном случае.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Выбор шага</h4>
+      <ul>
+        <li>Явные схемы: ограничение по условию Куранта</li>
+        <li>Неявные схемы: неограничены по шагу, но требуют решения СЛАУ</li>
+        <li>Компромисс: неявно-явные схемы</li>
+      </ul>
+      
+      <h4>Численная реализация</h4>
+      <ul>
+        <li>Эффективные алгоритмы решения СЛАУ</li>
+        <li>Параллельные вычисления</li>
+        <li>Адаптивные сетки</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Банаха о неподвижной точке</h4>
+      <p>Используется для доказательства существования решения.</p>
+      
+      <h4>Теорема Пикара-Линделёфа</h4>
+      <p>Гарантирует существование решения дифференциальных уравнений.</p>
+      
+      <h4>Принцип максимума</h4>
+      <p>Используется для получения априорных оценок.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Гидродинамика</h4>
+      <p>Уравнения Навье-Стокса, турбулентные течения.</p>
+      
+      <h4>2. Акустика</h4>
+      <p>Волновые уравнения, распространение звука.</p>
+      
+      <h4>3. Теплофизика</h4>
+      <p>Уравнения теплопроводности, фазовые переходы.</p>
+      
+      <h4>4. Электромагнетизм</h4>
+      <p>Уравнения Максвелла, распространение волн.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Теорема Лакса сформулирована в 1950-х годах.</p>
+      <p>Петер Лакс, Роберт Рихтмейер - основоположники теории разностных схем.</p>
+      <p>Современное развитие включает адаптивные и многомерные схемы.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

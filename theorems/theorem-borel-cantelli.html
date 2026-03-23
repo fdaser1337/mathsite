@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Лемма Бореля-Кантелли: формулировка, доказательство, применения в теории вероятностей.">
+  <title>MathLab — Лемма Бореля-Кантелли</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория вероятностей</span>
+    <h1>Лемма Бореля-Кантелли</h1>
+    <p>Фундаментальный результат о вероятности бесконечного числа событий в последовательности.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть {Aₙ} - последовательность событий. Если ряд вероятностей сходится:</p>
+      <div class="math-box">
+        \[\sum_{n=1}^{\infty} P(A_n) < \infty\]
+      </div>
+      <p>то вероятность того, что бесконечно много событий Aₙ произойдут, равна нулю:</p>
+      <div class="math-box">
+        \[P\left(\limsup_{n \to \infty} A_n\right) = 0\]
+      </div>
+      <p>где lim sup Aₙ - события, происходящие бесконечно часто.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Интуитивное объяснение</h3>
+      <p>Если сумма вероятностей конечна, то «в среднем» события происходят редко. Вероятность того, что они будут происходить бесконечно часто, равна нулю.</p>
+      <p><strong>Аналогия:</strong> Если у вас есть монета с вероятностью выпадения орла 1/10², то вероятность бесконечного числа орлов равна нулю.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство</h3>
+      <p>Используем неравенство Буля:</p>
+      <div class="math-box">
+        \[P\left(\limsup A_n\right) = P\left(\bigcap_{n=1}^{\infty} \bigcup_{k=n}^{\infty} A_k\right) \leq P\left(\bigcup_{k=n}^{\infty} A_k\right) \leq \sum_{k=n}^{\infty} P(A_k)\]
+      </div>
+      <p>Так как ряд сходится, остаток ряда стремится к нулю при n → ∞:</p>
+      <div class="math-box">
+        \[\lim_{n \to \infty} \sum_{k=n}^{\infty} P(A_k) = 0\]
+      </div>
+      <p>Следовательно, P(lim sup Aₙ) = 0. ■</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обратная лемма (независимые события)</h3>
+      <p>Если события независимы и ряд вероятностей расходится:</p>
+      <div class="math-box">
+        \[\sum_{n=1}^{\infty} P(A_n) = \infty\]
+      </div>
+      <p>то вероятность бесконечного числа событий равна единице:</p>
+      <div class="math-box">
+        \[P\left(\limsup_{n \to \infty} A_n\right) = 1\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Сходимость последовательностей</h4>
+      <p>Доказательство почти наверное сходимости случайных величин.</p>
+      
+      <h4>2. Закон больших чисел</h4>
+      <p>Усиленный закон больших чисел доказывается с помощью леммы Бореля-Кантелли.</p>
+      
+      <h4>3. Эргодическая теория</h4>
+      <p>Изучение рекуррентности и возвращаемости систем.</p>
+      
+      <h4>4. Теория меры</h4>
+      <p>Анализ множеств меры ноль и полных мер.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Пример</h3>
+      <p>Пусть P(Aₙ) = 1/n². Тогда:</p>
+      <div class="math-box">
+        \[\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6} < \infty\]
+      </div>
+      <p>Следовательно, P(lim sup Aₙ) = 0. С вероятностью 1 только конечное число событий произойдёт.</p>
+      
+      <p>Если же P(Aₙ) = 1/n и события независимы:</p>
+      <div class="math-box">
+        \[\sum_{n=1}^{\infty} \frac{1}{n} = \infty\]
+      </div>
+      <p>то P(lim sup Aₙ) = 1. Бесконечно много событий произойдёт с вероятностью 1.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

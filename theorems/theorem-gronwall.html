@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема Гронуолла: оценка решений дифференциальных неравенств.">
+  <title>MathLab — Теорема Гронуолла</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Дифференциальные уравнения</span>
+    <h1>Теорема Гронуолла</h1>
+    <p>Оценка функций, удовлетворяющих интегральным или дифференциальным неравенствам.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка (дифференциальная версия)</h3>
+      <p>Пусть u: [a,b] → [0,∞) - непрерывная функция, удовлетворяющая неравенству:</p>
+      <div class="math-box">
+        \[u'(t) \leq \beta(t) u(t) + \alpha(t)\]
+      </div>
+      <p>для всех t ∈ [a,b], где α, β - непрерывные функции. Тогда:</p>
+      <div class="math-box">
+        \[u(t) \leq u(a) e^{\int_a^t \beta(s) ds} + \int_a^t \alpha(s) e^{\int_s^t \beta(\tau) d\tau} ds\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Формулировка (интегральная версия)</h3>
+      <p>Пусть u: [a,b] → [0,∞) - непрерывная функция, удовлетворяющая неравенству:</p>
+      <div class="math-box">
+        \[u(t) \leq c + \int_a^t [\alpha(s) u(s) + \beta(s)] ds\]
+      </div>
+      <p>где c ≥ 0, α, β - непрерывные функции, α(t) ≥ 0. Тогда:</p>
+      <div class="math-box">
+        \[u(t) \leq c e^{\int_a^t \alpha(s) ds} + \int_a^t \beta(s) e^{\int_s^t \alpha(\tau) d\tau} ds\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Частный случай (классическая теорема Гронуолла)</h3>
+      <p>Если u(t) ≥ 0 и u(t) ≤ c + k∫ₐᵗ u(s) ds, где c, k ≥ 0 - константы, то:</p>
+      <div class="math-box">
+        \[u(t) \leq c e^{k(t-a)}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство (интегральной версии)</h3>
+      <p>Определим функцию:</p>
+      <div class="math-box">
+        \[v(t) = \int_a^t \alpha(s) u(s) ds\]
+      </div>
+      <p>Тогда v'(t) = α(t)u(t) и из неравенства следует:</p>
+      <div class="math-box">
+        \[u(t) \leq c + v(t) + \int_a^t \beta(s) ds\]
+      </div>
+      <p>Следовательно:</p>
+      <div class="math-box">
+        \[v'(t) = \alpha(t) u(t) \leq \alpha(t) [c + v(t) + \int_a^t \beta(s) ds]\]
+      </div>
+      <p>Решая это линейное дифференциальное неравенство, получаем искомую оценку.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Оценка решения ОДУ</h4>
+      <p>Пусть y' = y + 1, y(0) = 0. Решение: y(t) = eᵗ - 1.</p>
+      <p>Из теоремы Гронуолла: |y(t)| ≤ |y(0)|eᵗ + ∫₀ᵗ e^{t-s} ds = eᵗ - 1.</p>
+      
+      <h4>Пример 2: Устойчивость</h4>
+      <p>Если |y'(t)| ≤ 2|y(t)| и y(0) = 1, то |y(t)| ≤ e^{2t}.</p>
+      
+      <h4>Пример 3: Системы уравнений</h4>
+      <p>Для системы y' = Ay(t) + f(t) с ||A|| ≤ k:</p>
+      <div class="math-box">
+        \[\|y(t)\| \leq \|y(0)\| e^{kt} + \int_0^t \|f(s)\| e^{k(t-s)} ds\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Единственность решений ОДУ</h4>
+      <p>Используется в доказательстве теоремы Пикара-Линделёфа.</p>
+      
+      <h4>2. Устойчивость решений</h4>
+      <p>Оценка роста решений и их чувствительности к начальным данным.</p>
+      
+      <h4>3. Теория управления</h4>
+      <p>Оценка переходных процессов в системах управления.</p>
+      
+      <h4>4. Численные методы</h4>
+      <p>Оценка погрешности численных методов решения ОДУ.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения</h3>
+      <h4>Неравенство Гронуолла-Беллмана</h4>
+      <p>Для вектор-функций: ||u(t)|| ≤ c + ∫ₐᵗ α(s)||u(s)|| ds.</p>
+      
+      <h4>Неравенство Бихари</h4>
+      <p>Обобщение на нелинейные функции: u(t) ≤ c + ∫ₐᵗ f(s,u(s)) ds.</p>
+      
+      <h4>Дискретная версия</h4>
+      <p>Для последовательностей: uₙ ≤ c + k∑ᵢ₌₁ⁿ⁻¹ uᵢ.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Пикара-Линделёфа</h4>
+      <p>Теорема Гронуолла используется для доказательства единственности.</p>
+      
+      <h4>Принцип сравнения</h4>
+      <p>Позволяет сравнивать решения различных дифференциальных уравнений.</p>
+      
+      <h4>Теорема существования и единственности</h4>
+      <p>Входит в стандартный набор инструментов теории ОДУ.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практическое значение</h3>
+      <h4>1. Инженерные расчёты</h4>
+      <p>Оценка максимальных значений в динамических системах.</p>
+      
+      <h4>2. Физика</h4>
+      <p>Оценка энергии в колебательных системах.</p>
+      
+      <h4>3. Экономика</h4>
+      <p>Оценка роста экономических моделей.</p>
+      
+      <h4>4. Биология</h4>
+      <p>Оценка популяционной динамики.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Теорема названа в честь Томаса Гронуолла (1877-1932), шведского математика. Первоначально доказана в 1919 году.</p>
+      <p>Ричард Беллман обобщил теорему в 1950-х годах, что привело к неравенству Гронуолла-Беллмана.</p>
+      <p>Является одним из фундаментальных инструментов в теории дифференциальных уравнений и их приложениях.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

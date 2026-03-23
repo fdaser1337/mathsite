@@ -21,7 +21,7 @@ const BASE_SEARCH_INDEX = [
 const THEOREM_CATALOG = [
   {
     "title": "Теорема Больцано-Коши о промежуточном значении",
-    "url": "theorem-bolzano-cauchy-intermediate.html",
+    "url": "theorems/theorem-bolzano-cauchy-intermediate.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -31,7 +31,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Больцано–Вейерштрасса",
-    "url": "theorem-bolzano-weierstrass.html",
+    "url": "theorems/theorem-bolzano-weierstrass.html",
     "course": "2",
     "tags": [
       "многомерный-анализ",
@@ -41,7 +41,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Лемма Бореля—Кантелли",
-    "url": "theorem-borel-cantelli.html",
+    "url": "theorems/theorem-borel-cantelli.html",
     "course": "3",
     "tags": [
       "вероятность",
@@ -51,7 +51,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Критерий Коши для сходимости последовательности",
-    "url": "theorem-cauchy-criterion-sequence.html",
+    "url": "theorems/theorem-cauchy-criterion-sequence.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -61,7 +61,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Интегральная формула Коши",
-    "url": "theorem-cauchy-integral-formula.html",
+    "url": "theorems/theorem-cauchy-integral-formula.html",
     "course": "3",
     "tags": [
       "комплексный-анализ",
@@ -71,7 +71,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Кэли–Гамильтона",
-    "url": "theorem-cayley-hamilton.html",
+    "url": "theorems/theorem-cayley-hamilton.html",
     "course": "3",
     "tags": [
       "линейная-алгебра",
@@ -81,7 +81,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Центральная предельная теорема",
-    "url": "theorem-central-limit.html",
+    "url": "theorems/theorem-central-limit.html",
     "course": "3",
     "tags": [
       "вероятность",
@@ -91,7 +91,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о замене переменных в кратном интеграле",
-    "url": "theorem-change-of-variables-multiple-integral.html",
+    "url": "theorems/theorem-change-of-variables-multiple-integral.html",
     "course": "2",
     "tags": [
       "кратные-интегралы",
@@ -101,7 +101,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Шевалле—Уорнинга",
-    "url": "theorem-chevalley-warning.html",
+    "url": "theorems/theorem-chevalley-warning.html",
     "course": "4",
     "tags": [
       "алгебра",
@@ -111,7 +111,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Китайская теорема об остатках",
-    "url": "theorem-chinese-remainder.html",
+    "url": "theorems/theorem-chinese-remainder.html",
     "course": "4",
     "tags": [
       "абстрактная-алгебра",
@@ -121,7 +121,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Компакт Хаусдорфа нормален",
-    "url": "theorem-compact-hausdorff-normal.html",
+    "url": "theorems/theorem-compact-hausdorff-normal.html",
     "course": "4",
     "tags": [
       "топология",
@@ -131,7 +131,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Дирихле о простых в арифметических прогрессиях",
-    "url": "theorem-dirichlet-arithmetic-progressions.html",
+    "url": "theorems/theorem-dirichlet-arithmetic-progressions.html",
     "course": "4",
     "tags": [
       "теория-чисел",
@@ -141,7 +141,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Лебега о мажорируемой сходимости",
-    "url": "theorem-dominated-convergence.html",
+    "url": "theorems/theorem-dominated-convergence.html",
     "course": "3",
     "tags": [
       "теория-меры",
@@ -151,7 +151,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Критерий Эйлера",
-    "url": "theorem-euler-criterion.html",
+    "url": "theorems/theorem-euler-criterion.html",
     "course": "4",
     "tags": [
       "теория-чисел",
@@ -161,7 +161,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о линейной системе ОДУ",
-    "url": "theorem-existence-linear-ode-system.html",
+    "url": "theorems/theorem-existence-linear-ode-system.html",
     "course": "2",
     "tags": [
       "диффуры",
@@ -171,7 +171,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Лемма Фату",
-    "url": "theorem-fatou-lemma.html",
+    "url": "theorems/theorem-fatou-lemma.html",
     "course": "3",
     "tags": [
       "теория-меры",
@@ -181,7 +181,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Великая теорема Ферма",
-    "url": "theorem-fermat.html",
+    "url": "theorems/theorem-fermat.html",
     "course": "4",
     "tags": [
       "теория-чисел",
@@ -191,7 +191,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Первая теорема об изоморфизме групп",
-    "url": "theorem-first-isomorphism-group.html",
+    "url": "theorems/theorem-first-isomorphism-group.html",
     "course": "4",
     "tags": [
       "абстрактная-алгебра",
@@ -201,7 +201,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Тонелли",
-    "url": "theorem-fubini-tonelli.html",
+    "url": "theorems/theorem-fubini-tonelli.html",
     "course": "3",
     "tags": [
       "теория-меры",
@@ -211,7 +211,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Фубини",
-    "url": "theorem-fubini.html",
+    "url": "theorems/theorem-fubini.html",
     "course": "2",
     "tags": [
       "кратные-интегралы",
@@ -221,7 +221,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Основная теорема теории Галуа",
-    "url": "theorem-fundamental-galois-theory.html",
+    "url": "theorems/theorem-fundamental-galois-theory.html",
     "course": "4",
     "tags": [
       "теория-галуа",
@@ -231,7 +231,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Основная теорема теории пространственных кривых",
-    "url": "theorem-fundamental-theorem-space-curves.html",
+    "url": "theorems/theorem-fundamental-theorem-space-curves.html",
     "course": "4",
     "tags": [
       "диффгеометрия",
@@ -241,7 +241,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Критерий разрешимости в радикалах",
-    "url": "theorem-galois-solvability.html",
+    "url": "theorems/theorem-galois-solvability.html",
     "course": "4",
     "tags": [
       "теория-галуа",
@@ -251,7 +251,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Гаусса—Бонне",
-    "url": "theorem-gauss-bonnet.html",
+    "url": "theorems/theorem-gauss-bonnet.html",
     "course": "4",
     "tags": [
       "диффгеометрия",
@@ -261,7 +261,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Гаусса–Остроградского",
-    "url": "theorem-gauss-divergence.html",
+    "url": "theorems/theorem-gauss-divergence.html",
     "course": "2",
     "tags": [
       "векторный-анализ",
@@ -271,7 +271,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Грина",
-    "url": "theorem-green.html",
+    "url": "theorems/theorem-green.html",
     "course": "2",
     "tags": [
       "векторный-анализ",
@@ -281,7 +281,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Неравенство Гронуолла",
-    "url": "theorem-gronwall.html",
+    "url": "theorems/theorem-gronwall.html",
     "course": "2",
     "tags": [
       "диффуры",
@@ -291,7 +291,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Хана—Банаха",
-    "url": "theorem-hahn-banach.html",
+    "url": "theorems/theorem-hahn-banach.html",
     "course": "3",
     "tags": [
       "функциональный-анализ",
@@ -301,7 +301,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Гейне—Кантора",
-    "url": "theorem-heine-cantor.html",
+    "url": "theorems/theorem-heine-cantor.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -311,7 +311,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о проекции в гильбертовом пространстве",
-    "url": "theorem-hilbert-projection.html",
+    "url": "theorems/theorem-hilbert-projection.html",
     "course": "3",
     "tags": [
       "функциональный-анализ",
@@ -321,7 +321,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Хопфа—Ринова",
-    "url": "theorem-hopf-rinow.html",
+    "url": "theorems/theorem-hopf-rinow.html",
     "course": "4",
     "tags": [
       "диффгеометрия",
@@ -331,7 +331,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о неявной функции",
-    "url": "theorem-implicit-function.html",
+    "url": "theorems/theorem-implicit-function.html",
     "course": "2",
     "tags": [
       "многомерный-анализ",
@@ -341,7 +341,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема об обратной функции",
-    "url": "theorem-inverse-function.html",
+    "url": "theorems/theorem-inverse-function.html",
     "course": "2",
     "tags": [
       "многомерный-анализ",
@@ -351,7 +351,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Критерий обратимости матрицы",
-    "url": "theorem-invertible-matrix.html",
+    "url": "theorems/theorem-invertible-matrix.html",
     "course": "1",
     "tags": [
       "линейная-алгебра",
@@ -361,7 +361,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Жордана—Гёльдера",
-    "url": "theorem-jordan-holder.html",
+    "url": "theorems/theorem-jordan-holder.html",
     "course": "4",
     "tags": [
       "абстрактная-алгебра",
@@ -371,7 +371,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Лагранжа (группы)",
-    "url": "theorem-lagrange-group.html",
+    "url": "theorems/theorem-lagrange-group.html",
     "course": "4",
     "tags": [
       "абстрактная-алгебра",
@@ -381,7 +381,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Закон больших чисел",
-    "url": "theorem-law-large-numbers.html",
+    "url": "theorems/theorem-law-large-numbers.html",
     "course": "3",
     "tags": [
       "вероятность",
@@ -391,7 +391,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Правило Лопиталя",
-    "url": "theorem-lhopital.html",
+    "url": "theorems/theorem-lhopital.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -401,7 +401,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Лиувилля",
-    "url": "theorem-liouville.html",
+    "url": "theorems/theorem-liouville.html",
     "course": "3",
     "tags": [
       "комплексный-анализ",
@@ -411,7 +411,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Принцип максимума модуля",
-    "url": "theorem-maximum-modulus.html",
+    "url": "theorems/theorem-maximum-modulus.html",
     "course": "3",
     "tags": [
       "комплексный-анализ",
@@ -421,7 +421,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Лагранжа о среднем",
-    "url": "theorem-mean-value.html",
+    "url": "theorems/theorem-mean-value.html",
     "course": "2",
     "tags": [
       "многомерный-анализ",
@@ -431,7 +431,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Беппо Леви",
-    "url": "theorem-monotone-convergence-beppo-levi.html",
+    "url": "theorems/theorem-monotone-convergence-beppo-levi.html",
     "course": "3",
     "tags": [
       "теория-меры",
@@ -441,7 +441,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о монотонной сходимости последовательности",
-    "url": "theorem-monotone-convergence-sequence.html",
+    "url": "theorems/theorem-monotone-convergence-sequence.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -451,7 +451,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема об открытом отображении",
-    "url": "theorem-open-mapping.html",
+    "url": "theorems/theorem-open-mapping.html",
     "course": "3",
     "tags": [
       "функциональный-анализ",
@@ -461,7 +461,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Пикара—Линделёфа",
-    "url": "theorem-picard-lindelof.html",
+    "url": "theorems/theorem-picard-lindelof.html",
     "course": "2",
     "tags": [
       "диффуры",
@@ -471,7 +471,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Критерий потенциальности поля",
-    "url": "theorem-potential-field-criterion.html",
+    "url": "theorems/theorem-potential-field-criterion.html",
     "course": "2",
     "tags": [
       "многомерный-анализ",
@@ -481,7 +481,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Пифагора",
-    "url": "theorem-pythagoras.html",
+    "url": "theorems/theorem-pythagoras.html",
     "course": "1",
     "tags": [
       "геометрия",
@@ -491,7 +491,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Закон квадратичной взаимности",
-    "url": "theorem-quadratic-reciprocity.html",
+    "url": "theorems/theorem-quadratic-reciprocity.html",
     "course": "4",
     "tags": [
       "теория-чисел",
@@ -501,7 +501,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Радона—Никодима",
-    "url": "theorem-radon-nikodym.html",
+    "url": "theorems/theorem-radon-nikodym.html",
     "course": "3",
     "tags": [
       "теория-меры",
@@ -511,7 +511,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о ранге и дефекте",
-    "url": "theorem-rank-nullity.html",
+    "url": "theorems/theorem-rank-nullity.html",
     "course": "1",
     "tags": [
       "линейная-алгебра",
@@ -521,7 +521,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема о вычетах",
-    "url": "theorem-residue.html",
+    "url": "theorems/theorem-residue.html",
     "course": "3",
     "tags": [
       "комплексный-анализ",
@@ -531,7 +531,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Критерий интегрируемости Римана",
-    "url": "theorem-riemann-criterion-integrability.html",
+    "url": "theorems/theorem-riemann-criterion-integrability.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -541,7 +541,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Спектральная теорема для симметрических матриц",
-    "url": "theorem-spectral-symmetric-matrix.html",
+    "url": "theorems/theorem-spectral-symmetric-matrix.html",
     "course": "1",
     "tags": [
       "линейная-алгебра",
@@ -551,7 +551,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Стокса",
-    "url": "theorem-stokes.html",
+    "url": "theorems/theorem-stokes.html",
     "course": "2",
     "tags": [
       "векторный-анализ",
@@ -561,7 +561,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теоремы Силова",
-    "url": "theorem-sylow.html",
+    "url": "theorems/theorem-sylow.html",
     "course": "4",
     "tags": [
       "абстрактная-алгебра",
@@ -571,7 +571,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Формула Тейлора с остатком Лагранжа",
-    "url": "theorem-taylor-with-remainder-lagrange.html",
+    "url": "theorems/theorem-taylor-with-remainder-lagrange.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -581,7 +581,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Тихонова",
-    "url": "theorem-tychonoff.html",
+    "url": "theorems/theorem-tychonoff.html",
     "course": "4",
     "tags": [
       "топология",
@@ -591,7 +591,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Единственность разложения в PID",
-    "url": "theorem-uft-pid.html",
+    "url": "theorems/theorem-uft-pid.html",
     "course": "4",
     "tags": [
       "абстрактная-алгебра",
@@ -601,7 +601,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Принцип равномерной ограниченности",
-    "url": "theorem-uniform-boundedness.html",
+    "url": "theorems/theorem-uniform-boundedness.html",
     "course": "3",
     "tags": [
       "функциональный-анализ",
@@ -611,7 +611,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Лемма Урысона",
-    "url": "theorem-urysohn-lemma.html",
+    "url": "theorems/theorem-urysohn-lemma.html",
     "course": "4",
     "tags": [
       "топология",
@@ -621,7 +621,7 @@ const THEOREM_CATALOG = [
   },
   {
     "title": "Теорема Вейерштрасса о достижении экстремумов",
-    "url": "theorem-weierstrass-extreme-value.html",
+    "url": "theorems/theorem-weierstrass-extreme-value.html",
     "course": "1",
     "tags": [
       "матанализ",
@@ -641,6 +641,14 @@ const SEARCH_INDEX = [
 ];
 
 
+function resolveInternalUrl(url) {
+  if (!url || /^(?:[a-z][a-z0-9+.-]*:|#)/i.test(url)) return url;
+  const inTheoremDir = window.location.pathname.includes('/theorems/');
+  if (!inTheoremDir) return url;
+  if (url.startsWith('../') || url.startsWith('./')) return url;
+  return `../${url}`;
+}
+
 function renderTheoremCatalog() {
   const grid = document.querySelector('[data-theorem-grid]');
   if (!grid) return;
@@ -648,7 +656,7 @@ function renderTheoremCatalog() {
   const sorted = [...THEOREM_CATALOG].sort((a, b) => Number(a.course) - Number(b.course) || a.title.localeCompare(b.title, 'ru'));
   grid.innerHTML = sorted.map((item) => {
     const tags = item.tags.map((tag) => `<span class="hash-tag">#${tag}</span>`).join('');
-    return `<a class="glass-card card theorem-card" data-theorem-card data-courses="${item.course}" href="${item.url}"><h3>${item.title}</h3><p>${item.description}</p><div class="theorem-tags">${tags}<span class="hash-tag hash-tag-course" data-hash-course="${item.course}">#курс-${item.course}</span></div></a>`;
+    return `<a class="glass-card card theorem-card" data-theorem-card data-courses="${item.course}" href="${resolveInternalUrl(item.url)}"><h3>${item.title}</h3><p>${item.description}</p><div class="theorem-tags">${tags}<span class="hash-tag hash-tag-course" data-hash-course="${item.course}">#курс-${item.course}</span></div></a>`;
   }).join('');
 }
 
@@ -687,7 +695,7 @@ function renderResults(results, query) {
 
   const list = results.map((result) => `
     <li>
-      <a href="${result.url}">
+      <a href="${resolveInternalUrl(result.url)}">
         <strong>${result.title}</strong><br>
         <small>${result.text}</small>
       </a>

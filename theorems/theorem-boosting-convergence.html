@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости бустинга: AdaBoost, градиентный бустинг, теорема об обучаемости.">
+  <title>MathLab — Теорема о сходимости бустинга</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Машинное обучение</span>
+    <h1>Теорема о сходимости бустинга</h1>
+    <p>Сходимость ансамблевых методов и теорема об обучаемости Шапире.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная идея бустинга</h3>
+      <p>Бустинг строит сильный классификатор как комбинацию слабых классификаторов.</p>
+      
+      <h4>Ансамбль</h4>
+      <div class="math-box">
+        \[F(x) = \sum_{t=1}^{T} \alpha_t h_t(x)\]
+      </div>
+      
+      <p>где h_t(x) - слабые классификаторы, α_t - их веса.</p>
+      
+      <h4>Финальная классификация</h4>
+      <div class="math-box">
+        \[H(x) = \text{sign}(F(x))\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>AdaBoost алгоритм</h3>
+      <h4>Описание</h4>
+      <p>Адаптивный бустинг, который последовательно добавляет классификаторы, фокусируясь на ошибочных примерах.</p>
+      
+      <h4>Веса примеров</h4>
+      <div class="math-box">
+        \[w_i^{(t+1)} = w_i^{(t)} \exp(-\alpha_t y_i h_t(x_i))\]
+      </div>
+      
+      <h4>Вес классификатора</h4>
+      <div class="math-box">
+        \[\alpha_t = \frac{1}{2}\ln\left(\frac{1 - \varepsilon_t}{\varepsilon_t}\right)\]
+      </div>
+      
+      <p>где ε_t - взвешенная ошибка t-го классификатора.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема об обучаемости (Schapire, 1990)</h3>
+      <h4>Формулировка</h4>
+      <p>Если слабые классификаторы немного лучше случайных (ε_t < 1/2 - γ), то ансамбль достигает произвольно малой ошибки.</p>
+      
+      <h4>Граница ошибки ансамбля</h4>
+      <div class="math-box">
+        \[\varepsilon \leq \exp\left(-2\sum_{t=1}^{T} \gamma_t^2\right)\]
+      </div>
+      
+      <p>где γ_t = 1/2 - ε_t - преимущество слабого классификатора.</p>
+      
+      <h4>Следствие</h4>
+      <p>Если все γ_t ≥ γ > 0, то:</p>
+      <div class="math-box">
+        \[\varepsilon \leq \exp(-2T\gamma^2)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости AdaBoost</h3>
+      <h4>Экспоненциальная сходимость</h4>
+      <p>AdaBoost минимизирует экспоненциальную потерю:</p>
+      <div class="math-box">
+        \[L(F) = \frac{1}{n}\sum_{i=1}^{n} \exp(-y_i F(x_i))\]
+      </div>
+      
+      <h4>Граница ошибки обучения</h4>
+      <div class="math-box">
+        \[L_{train}(H) \leq \exp\left(-2\sum_{t=1}^{T} \gamma_t^2\right)\]
+      </div>
+      
+      <h4>Обобщающая способность</h4>
+      <p>При определённых условиях ошибка на тестовых данных также экспоненциально убывает.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Градиентный бустинг</h3>
+      <h4>Основная идея</h4>
+      <p>Минимизация произвольной дифференцируемой функции потерь с помощью градиентного спуска в функциональном пространстве.</p>
+      
+      <h4>Алгоритм</h4>
+      <div class="math-box">
+        \[F_{t+1}(x) = F_t(x) - \eta \nabla_F L(y, F(x))|_{F=F_t}\]
+      </div>
+      
+      <h4>Псевдо-остатки</h4>
+      <div class="math-box">
+        \[r_{it} = -\left[\frac{\partial L(y_i, F(x_i))}{\partial F(x_i)}\right]_{F=F_t}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема о сходимости градиентного бустинга</h3>
+      <h4>Условия сходимости</h4>
+      <p>Пусть выполнены:</p>
+      <ol>
+        <li>Функция потерь L выпукла и дифференцируема</li>
+        <li>Слабые классификаторы ограничены: ||h_t|| ≤ C</li>
+        <li>Шаг обучения η достаточно мал</li>
+      </ol>
+      
+      <h4>Результат</h4>
+      <div class="math-box">
+        \[L(F_T) - L(F^*) \leq O\left(\frac{1}{T}\right)\]
+      </div>
+      
+      <p>где F* - оптимальный ансамбль.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с оптимизацией</h3>
+      <h4>Аддитивная модель</h4>
+      <div class="math-box">
+        \[\min_{F} \sum_{i=1}^{n} L(y_i, F(x_i)) + \Omega(F)\]
+      </div>
+      
+      <h4>Жадная оптимизация</h4>
+      <p>Бустинг выполняет жадную пошаговую оптимизацию.</p>
+      
+      <h4>Степенной алгоритм</h4>
+      <p>Обобщение градиентного бустинга с адаптивным выбором шага.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Переобучение бустинга</h3>
+      <h4>Ранняя остановка</h4>
+      <p>Остановка обучения при достижении минимума на валидационной выборке.</p>
+      
+      <h4>Регуляризация</h4>
+      <ul>
+        <li>Ограничение глубины деревьев</li>
+        <li>Уменьшение шага обучения</li>
+        <li>Субдискретизация признаков</li>
+      </ul>
+      
+      <h4>Теорема о двойном спуске</h4>
+      <p>При определённых условиях бустинг сначала переобучается, затем улучшает обобщение.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Слабые классификаторы</h3>
+      <h4>Пни решений</h4>
+      <p>Наиболее популярные слабые классификаторы в бустинге.</p>
+      
+      <h4>Стамбы решений</h4>
+      <p>Деревья ограниченной глубины.</p>
+      
+      <h4>Другие варианты</h4>
+      <ul>
+        <li>Линейные классификаторы</li>
+        <li>Правила одного уровня</li>
+        <li>Случайные подпространства</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теоретические свойства</h3>
+      <h4>Маржинальность</h4>
+      <div class="math-box">
+        \[\rho = \min_i y_i F(x_i)\]
+      </div>
+      
+      <p>Большая маржинальность соответствует хорошей обобщающей способности.</p>
+      
+      <h4>Граница обобщения</h4>
+      <div class="math-box">
+        \[R(H) \leq \tilde{O}\left(\sqrt{\frac{d}{n\rho^2}}\right)\]
+      </div>
+      
+      <p>где d - VC-размерность слабых классификаторов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Варианты бустинга</h3>
+      <h4>LogitBoost</h4>
+      <p>Бустинг с логистической функцией потерь.</p>
+      
+      <h4>Gentle AdaBoost</h4>
+      <p>Модификация AdaBoost с лучшей устойчивостью к шуму.</p>
+      
+      <h4>LPBoost</h4>
+      <p>Линейное программирование формулировка бустинга.</p>
+      
+      <h4>TotalBoost</h4>
+      <p>Регуляризация через ограничение маржинальности.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими методами</h3>
+      <h4>Случайный лес</h4>
+      <p>Бэггинг деревьев решений vs последовательное обучение в бустинге.</p>
+      
+      <h4>Нейронные сети</h4>
+      <p>Бустинг можно рассматривать как особый случай обучения нейронных сетей.</p>
+      
+      <h4>SVM</h4>
+      <p>AdaBoost эквивалентен максимизации маржинальности.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Выбор параметров</h4>
+      <ul>
+        <li>Количество итераций T</li>
+        <li>Глубина деревьев</li>
+        <li>Шаг обучения η</li>
+        <li>Доля подвыборки</li>
+      </ul>
+      
+      <h4>Вычислительная сложность</h4>
+      <ul>
+        <li>Обучение: O(T × cost(слабый классификатор))</li>
+        <li>Предсказание: O(T × cost(слабый классификатор))</li>
+      </ul>
+      
+      <h4>Параллелизация</h4>
+      <p>Возможна параллелизация обучения слабых классификаторов.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Классификация</h4>
+      <p>Кредитный скоринг, детекция мошенничества.</p>
+      
+      <h4>2. Ранжирование</h4>
+      <p>Поисковые системы, рекомендательные системы.</p>
+      
+      <h4>3. Регрессия</h4>
+      <p>Предсказание временных рядов, оценка недвижимости.</p>
+      
+      <h4>4. Обработка естественного языка</h4>
+      <p>Классификация текстов, анализ тональности.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Теорема об обучаемости доказана Робертом Шапире в 1990 году.</p>
+      <p>AdaBoost разработан Фройндом и Шапире в 1997 году.</p>
+      <p>Градиентный бустинг предложен Фридманом в 2001 году.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

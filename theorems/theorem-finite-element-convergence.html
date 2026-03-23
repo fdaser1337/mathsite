@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости метода конечных элементов: аппроксимация, теорема Лакса-Мильграма, теорема Сеза.">
+  <title>MathLab — Теорема о сходимости метода конечных элементов</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Вычислительная математика</span>
+    <h1>Теорема о сходимости метода конечных элементов</h1>
+    <p>Сходимость приближённых решений к точному решению дифференциальных уравнений.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная постановка</h3>
+      <p>Рассмотрим эллиптическую краевую задачу:</p>
+      <div class="math-box">
+        \[-\nabla \cdot (A(x)\nabla u) + c(x)u = f(x) \text{ в } \Omega\]
+        \[u = 0 \text{ на } \partial\Omega\]
+      </div>
+      <p>где Ω ⊂ ℝⁿ - ограниченная область, A(x) - симметричная положительно определённая матрица.</p>
+      <p>Слабая формулировка: найти u ∈ H₀¹(Ω) такое, что:</p>
+      <div class="math-box">
+        \[a(u,v) = (f,v) \quad \forall v \in H_0^1(\Omega)\]
+      </div>
+      <p>где a(u,v) = ∫Ω (A∇u·∇v + cuv) dx, (f,v) = ∫Ω fv dx.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема Лакса-Мильграма</h3>
+      <h4>Формулировка</h4>
+      <p>Пусть a(·,·) - билинейная форма на гильбертовом пространстве H, удовлетворяющая:</p>
+      <ol>
+        <li><strong>Ограниченность:</strong> |a(u,v)| ≤ M‖u‖‖v‖</li>
+        <li><strong>Коэрцитивность:</strong> a(u,u) ≥ α‖u‖²</li>
+      </ol>
+      <p>Тогда для любого линейного функционала F ∈ H* существует единственное решение u ∈ H уравнения a(u,v) = F(v) для всех v ∈ H.</p>
+      
+      <h4>Применение к МКЭ</h4>
+      <p>Для нашей задачи a(u,v) ограничена и коэрцитивна, поэтому существует единственное решение.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Метод конечных элементов</h3>
+      <h4>Приближённая задача</h4>
+      <p>Выбираем конечномерное подпространство Vₕ ⊂ H₀¹(Ω). Находим uₕ ∈ Vₕ такое, что:</p>
+      <div class="math-box">
+        \[a(u_h,v_h) = (f,v_h) \quad \forall v_h \in V_h\]
+      </div>
+      
+      <h4>Примеры конечных элементов</h4>
+      <ul>
+        <li><strong>Линейные элементы (P1):</strong> кусочно-линейные функции</li>
+        <li><strong>Квадратичные элементы (P2):</strong> кусочно-квадратичные функции</li>
+        <li><strong>Элементы Лагранжа:</strong> полиномы степени k</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема Сеза (Céa's Lemma)</h3>
+      <h4>Формулировка</h4>
+      <p>Пусть u - точное решение, uₕ - приближённое решение МКЭ. Тогда:</p>
+      <div class="math-box">
+        \[\|u - u_h\|_H \leq \frac{M}{\alpha} \inf_{v_h \in V_h} \|u - v_h\|_H\]
+      </div>
+      <p>где M - константа ограниченности, α - константа коэрцитивности.</p>
+      
+      <h4>Следствие</h4>
+      <p>Ошибка МКЭ не более чем в M/α раз превосходит ошибку наилучшего приближения.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Аппроксимационные свойства</h3>
+      <h4>Теорема аппроксимации</h4>
+      <p>Пусть u ∈ H^{k+1}(Ω), Vₕ состоит из полиномов степени k. Тогда:</p>
+      <div class="math-box">
+        \[\inf_{v_h \in V_h} \|u - v_h\|_{H^1} \leq Ch^k |u|_{H^{k+1}}\]
+      </div>
+      <p>где h - максимальный размер элемента, C - константа, зависящая от формы элементов.</p>
+      
+      <h4>Скорость сходимости</h4>
+      <p>Из теоремы Сеза и теоремы аппроксимации:</p>
+      <div class="math-box">
+        \[\|u - u_h\|_{H^1} \leq Ch^k |u|_{H^{k+1}}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры сходимости</h3>
+      <h4>Пример 1: Уравнение Пуассона</h4>
+      <p>-Δu = f в Ω, u = 0 на ∂Ω.</p>
+      <p>Для линейных элементов (k=1):</p>
+      <div class="math-box">
+        \[\|u - u_h\|_{H^1} \leq Ch \|u\|_{H^2}\]
+      </div>
+      
+      <h4>Пример 2: Стационарное уравнение теплопроводности</h4>
+      <p>-∇·(k∇u) = f, k > 0.</p>
+      <p>Для квадратичных элементов (k=2):</p>
+      <div class="math-box">
+        \[\|u - u_h\|_{H^1} \leq Ch^2 \|u\|_{H^3}\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Сходимость в L²-норме</h3>
+      <h4>Теорема Обенжа-Ничче</h4>
+      <p>Если a(·,·) симметрична, то:</p>
+      <div class="math-box">
+        \[\|u - u_h\|_{L^2} \leq Ch^{k+1} \|u\|_{H^{k+1}}\]
+      </div>
+      <p>Сходимость в L² на порядок выше, чем в H¹.</p>
+      
+      <h4>Метод двойственности Обенжа</h4>
+      <p>Позволяет получать оценки в L² для несимметричных задач.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Адаптивные методы</h3>
+      <h4>Идея адаптации</h4>
+      <p>Измельчаем сетку там, где ошибка велика.</p>
+      
+      <h4>Апостериорные оценки ошибки</h4>
+      <div class="math-box">
+        \[\|u - u_h\|_{H^1}^2 \leq C \sum_{K \in \mathcal{T}_h} h_K^2 \|R_K\|_{L^2(K)}^2 + \sum_{e \in \mathcal{E}_h} h_e \|J_e\|_{L^2(e)}^2\]
+      </div>
+      <p>где R_K - остаток в элементе K, J_e - скачок производной на грани e.</p>
+      
+      <h4>Оптимальная сходимость</h4>
+      <p>Адаптивные методы достигают оптимальной скорости сходимости.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Высокие порядки сходимости</h3>
+      <h4>p-метод МКЭ</h4>
+      <p>Фиксированная сетка, увеличиваем степень полиномов p.</p>
+      
+      <h4>hp-метод МКЭ</h4>
+      <p>Одновременно измельчаем сетку (h) и увеличиваем степень (p).</p>
+      
+      <h4>Экспоненциальная сходимость</h4>
+      <p>Для гладких решений hp-метод даёт экспоненциальную сходимость.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Численные аспекты</h3>
+      <h4>Условия на сетку</h4>
+      <ul>
+        <li>Регулярность: соотношение размеров соседних элементов</li>
+        <li>Квази-однородность: ограничение на форму элементов</li>
+      </ul>
+      
+      <h4>Вычислительная сложность</h4>
+      <ul>
+        <li>Сборка матрицы жёсткости: O(N)</li>
+        <li>Решение СЛАУ: O(N^1.5) для 2D, O(N²) для 3D</li>
+        <li>Многосеточные методы: O(N)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Теорема Лакса</h4>
+      <p>Условия устойчивости и сходимости разностных схем.</p>
+      
+      <h4>Теорема Лакса-Рихтмайера</h4>
+      <p>Эквивалентность устойчивости и сходимости.</p>
+      
+      <h4>Теорема Бабушки-Бреззи</h4>
+      <p>Условия сходимости для смешанных формулировок.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Инженерный анализ</h4>
+      <p>Прочностные расчёты, анализ напряжений.</p>
+      
+      <h4>2. Гидродинамика</h4>
+      <p>Уравнения Навье-Стокса, турбулентные течения.</p>
+      
+      <h4>3. Электромагнетизм</h4>
+      <p>Уравнения Максвелла, расчёт полей.</p>
+      
+      <h4>4. Геофизика</h4>
+      <p>Уравнения теплопроводности, фильтрации.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Метод разработан в 1950-х годах (Ричард Курант, Джон Аргирис).</p>
+      <p>Теоретические основы заложены в 1960-1970-х годах.</p>
+      <p>Современная теория сходимости развита Ивом Бабушкой, Жаном-Клодом Нечче.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

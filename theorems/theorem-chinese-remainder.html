@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Китайская теорема об остатках: формулировка, доказательство, следствия и применения.">
+  <title>MathLab — Китайская теорема об остатках</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[["$","$"],["\(","\)"]]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Теория чисел</span>
+    <h1>Китайская теорема об остатках</h1>
+    <p>Склеивает систему сравнений по взаимно простым модулям в одно сравнение.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Для попарно взаимно простых модулей система сравнений имеет единственное решение по модулю произведения модулей.</p>
+      <div class="math-box">
+        \[x\equiv a_i\pmod{m_i},\ i=1,\dots,k\ \Longrightarrow\ x\equiv \sum_{i=1}^k a_i M_i N_i\pmod M,\ \ M_i=\frac{M}{m_i}.\]
+      </div>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Идея доказательства</h3>
+      <ol><li>Для каждого модуля строится специальный базисный элемент.</li><li>Каждый базисный элемент дает единицу в своем модуле и ноль в остальных.</li><li>Сумма таких элементов дает решение системы; единственность следует из сравнения по произведению модулей.</li></ol>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Следствия и примеры</h3>
+      <ul><li>Изоморфизм кольца по произведению попарно взаимно простых модулей.</li><li>Быстрое восстановление числа из набора остатков.</li><li>Удобная декомпозиция вычислений по малым модулям.</li></ul>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <ul><li>Криптография и ускорение RSA.</li><li>Алгоритмы теории чисел.</li><li>Параллельные вычисления в остаточных классах.</li></ul>
+      <p><a href="REFERENCES.md">Список литературы по теоремам</a></p>
+    </article>
+
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости метода максимального правдоподобия: состоятельность, асимптотическая нормальность, эффективность.">
+  <title>MathLab — Теорема о сходимости метода максимального правдоподобия</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Математическая статистика</span>
+    <h1>Теорема о сходимости метода максимального правдоподобия</h1>
+    <p>Состоятельность и асимптотическая нормальность оценок максимального правдоподобия.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Основная постановка</h3>
+      <p>Пусть X₁, X₂, ..., Xₙ - независимые одинаково распределённые случайные величины с плотностью p(x|θ), где θ ∈ Θ ⊂ ℝ^k - неизвестный параметр.</p>
+      <p>Функция правдоподобия:</p>
+      <div class="math-box">
+        \[L_n(\theta) = \prod_{i=1}^{n} p(X_i|\theta)\]
+      </div>
+      <p>Логарифмическая функция правдоподобия:</p>
+      <div class="math-box">
+        \[\ell_n(\theta) = \log L_n(\theta) = \sum_{i=1}^{n} \log p(X_i|\theta)\]
+      </div>
+      <p>Оценка максимального правдоподобия:</p>
+      <div class="math-box">
+        \[\hat{\theta}_n = \arg\max_{\theta \in \Theta} L_n(\theta) = \arg\max_{\theta \in \Theta} \ell_n(\theta)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Условия регулярности</h3>
+      <p>Для сходимости ММП-оценок требуются следующие условия:</p>
+      <ol>
+        <li><strong>Идентифицируемость:</strong> если θ₁ ≠ θ₂, то p(x|θ₁) ≠ p(x|θ₂) на множестве положительной меры</li>
+        <li><strong>Компактность:</strong> Θ - компактное множество</li>
+        <li><strong>Непрерывность:</strong> p(x|θ) непрерывна по θ для почти всех x</li>
+        <li><strong>Интегрируемость:</strong> E[|log p(X|θ)|] < ∞ для всех θ ∈ Θ</li>
+        <li><strong>Дифференцируемость:</strong> p(x|θ) дважды дифференцируема по θ</li>
+        <li><strong>Неособенность информационной матрицы:</strong> I(θ₀) положительно определена</li>
+      </ol>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема состоятельности</h3>
+      <h4>Формулировка</h4>
+      <p>При выполнении условий регулярности оценка максимального правдоподобия состоятельна:</p>
+      <div class="math-box">
+        \[\hat{\theta}_n \xrightarrow{P} \theta_0\]
+      </div>
+      <p>где θ₀ - истинное значение параметра.</p>
+      
+      <h4>Основная идея доказательства</h4>
+      <p>Используем закон больших чисел:</p>
+      <div class="math-box">
+        \[\frac{1}{n}\ell_n(\theta) = \frac{1}{n}\sum_{i=1}^{n} \log p(X_i|\theta) \xrightarrow{P} E[\log p(X|\theta)] = \ell(\theta)\]
+      </div>
+      
+      <p>По неравенству Йенсена:</p>
+      <div class="math-box">
+        \[\ell(\theta) = E[\log p(X|\theta)] < \log E[p(X|\theta)] = \log p(X|\theta_0) = \ell(\theta_0)\]
+      </div>
+      
+      <p>для θ ≠ θ₀. Следовательно, максимум эмпирической функции сходится к максимуму теоретической.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема асимптотической нормальности</h3>
+      <h4>Формулировка</h4>
+      <p>При дополнительных условиях дифференцируемости:</p>
+      <div class="math-box">
+        \[\sqrt{n}(\hat{\theta}_n - \theta_0) \xrightarrow{d} \mathcal{N}(0, I^{-1}(\theta_0))\]
+      </div>
+      <p>где I(θ) - информационная матрица Фишера:</p>
+      <div class="math-box">
+        \[I(\theta) = -E\left[\frac{\partial^2 \log p(X|\theta)}{\partial \theta \partial \theta^T}\right]\]
+      </div>
+      
+      <h4>Доказательство</h4>
+      <p>Разлагаем score-функцию в ряд Тейлора:</p>
+      <div class="math-box">
+        \[S_n(\theta) = \frac{\partial \ell_n(\theta)}{\partial \theta} = S_n(\theta_0) + H_n(\theta^*)(\theta - \theta_0)\]
+      </div>
+      
+      <p>где H_n(θ) - матрица вторых производных, θ* между θ и θ₀.</p>
+      
+      <p>Так как S_n(\hat{θ}_n) = 0, получаем:</p>
+      <div class="math-box">
+        \[\hat{\theta}_n - \theta_0 = -H_n^{-1}(\theta^*) S_n(\theta_0)\]
+      </div>
+      
+      <p>По ЦПТ: S_n(θ₀)/√n → N(0, I(θ₀)), а H_n(θ*) → -I(θ₀).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Теорема эффективности</h3>
+      <h4>Формулировка</h4>
+      <p>Оценка максимального правдоподобия асимптотически эффективна:</p>
+      <div class="math-box">
+        \[\lim_{n \to \infty} n \cdot \text{Var}(\hat{\theta}_n) = I^{-1}(\theta_0)\]
+      </div>
+      
+      <p>Это означает, что ММП-оценка достигает границы Крамера-Рао.</p>
+      
+      <h4>Следствие</h4>
+      <p>Любая другая состоятельная оценка не может иметь меньшую асимптотическую дисперсию.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Нормальное распределение</h4>
+      <p>X₁, ..., Xₙ ~ N(μ, σ²), θ = (μ, σ²).</p>
+      <p>Логарифмическое правдоподобие:</p>
+      <div class="math-box">
+        \[\ell_n(\mu, \sigma^2) = -\frac{n}{2}\log(2\pi) - \frac{n}{2}\log(\sigma^2) - \frac{1}{2\sigma^2}\sum_{i=1}^{n}(X_i - \mu)^2\]
+      </div>
+      
+      <p>ММП-оценки: \hat{μ} = \bar{X}, \hat{σ}² = (1/n)∑(X_i - \bar{X})².</p>
+      
+      <h4>Пример 2: Экспоненциальное распределение</h4>
+      <p>X₁, ..., Xₙ ~ Exp(λ).</p>
+      <p>ММП-оценка: \hat{λ} = 1/\bar{X}.</p>
+      
+      <h4>Пример 3: Распределение Пуассона</h4>
+      <p>X₁, ..., Xₙ ~ Poisson(λ).</p>
+      <p>ММП-оценка: \hat{λ} = \bar{X}.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Информационная матрица Фишера</h3>
+      <h4>Определения</h4>
+      <p>Три эквивалентных определения:</p>
+      <ol>
+        <li>Через вторые производные логарифма правдоподобия</li>
+        <li>Через вариацию score-функции</li>
+        <li>Через ковариацию градиента логарифма правдоподобия</li>
+      </ol>
+      
+      <h4>Свойства</h4>
+      <ul>
+        <li>I(θ) симметрична и положительно определена</li>
+        <li>I(θ) = E[S(θ)S(θ)ᵀ], где S(θ) - score-функция</li>
+        <li>Для независимых наблюдений: I_n(θ) = nI₁(θ)</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Граница Крамера-Рао</h3>
+      <h4>Формулировка</h4>
+      <p>Для любой несмещённой оценки \tilde{θ} параметра θ:</p>
+      <div class="math-box">
+        \[\text{Var}(\tilde{\theta}) \geq I^{-1}(\theta)\]
+      </div>
+      
+      <h4>Асимптотическая версия</h4>
+      <p>Для любой состоятельной оценки:</p>
+      <div class="math-box">
+        \[\liminf_{n \to \infty} n \cdot \text{Var}(\tilde{\theta}_n) \geq I^{-1}(\theta_0)\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Численная оптимизация</h4>
+      <ul>
+        <li>Метод Ньютона-Рафсона</li>
+        <li>Метод градиентного подъёма</li>
+        <li>Алгоритмы EM для скрытых переменных</li>
+      </ul>
+      
+      <h4>Проблемы</h4>
+      <ul>
+        <li>Множественные локальные максимумы</li>
+        <li>Граничные значения параметров</li>
+        <li>Численная неустойчивость</li>
+      </ul>
+      
+      <h4>Диагностика</h4>
+      <ul>
+        <li>Проверка условий регулярности</li>
+        <li>Анализ информационной матрицы</li>
+        <li>Бутстреп-оценки дисперсии</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Обобщения</h3>
+      <h4>Условные ММП-оценки</h4>
+      <p>Оценивание параметров при наличии ограничений.</p>
+      
+      <h4>Метод моментов</h4>
+      <p>Обобщение ММП на случаи, когда плотность неизвестна.</p>
+      
+      <h4>Байесовский подход</h4>
+      <p>ММП как частный случай MAP (maximum a posteriori) при равномерном априорном распределении.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими теоремами</h3>
+      <h4>Центральная предельная теорема</h4>
+      <p>Используется для доказательства асимптотической нормальности.</p>
+      
+      <h4>Закон больших чисел</h4>
+      <p>Используется для доказательства состоятельности.</p>
+      
+      <h4>Неравенство Йенсена</h4>
+      <p>Ключевое для доказательства состоятельности.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Применения</h3>
+      <h4>1. Эконометрика</h4>
+      <p>Оценивание эконометрических моделей.</p>
+      
+      <h4>2. Биостатистика</h4>
+      <p>Анализ выживаемости, эпидемиологические исследования.</p>
+      
+      <h4>3. Машинное обучение</h4>
+      <p>Параметрические модели, логистическая регрессия.</p>
+      
+      <h4>4. Инженерия</h4>
+      <p>Обработка сигналов, теория информации.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Метод предложен Рональдом Фишером в 1922 году.</p>
+      <p>Теоретические основы разработаны в первой половине XX века.</p>
+      <p>Современная теория асимптотики развита во второй половине XX века.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

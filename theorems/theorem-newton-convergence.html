@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Теорема о сходимости метода Ньютона: условия сходимости, квадратичная сходимость.">
+  <title>MathLab — Теорема о сходимости метода Ньютона</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <script>window.MathJax={tex:{inlineMath:[['$','$'],['\(','\)']]}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner search-host">
+    <a class="brand" href="../index.html">Math<span>Lab</span></a>
+    <nav class="nav-links">
+      <a href="../index.html">Главная</a>
+      <a href="../theorems.html" aria-current="page">Теоремы</a>
+      <a href="../integrals.html">Интегралы</a>
+      <a href="../derivatives.html">Производные</a>
+      <a href="../algebra.html">Линейная алгебра</a>
+      <a href="../geometry-space.html">Геометрия</a>
+      <a href="../about.html">О проекте</a>
+    </nav>
+    <div class="controls">
+      <div class="search-wrap">
+        <input type="search" placeholder="Поиск" data-search-input>
+        <button data-search-btn>Найти</button>
+      </div>
+      <button class="theme-toggle" data-theme-toggle>🌙 Тёмная</button>
+    </div>
+    <div class="search-results glass-card" data-search-results></div>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <span class="tag">Численные методы</span>
+    <h1>Теорема о сходимости метода Ньютона</h1>
+    <p>Условия сходимости и скорость сходимости итерационного метода Ньютона для решения уравнений.</p>
+  </section>
+
+  <section class="section">
+    <article class="glass-card content-block">
+      <h3>Формулировка</h3>
+      <p>Пусть f: [a,b] → ℝ - дважды непрерывно дифференцируемая функция. Предположим:</p>
+      <ol>
+        <li>Существует корень α ∈ [a,b] такой, что f(α) = 0</li>
+        <li>f'(x) ≠ 0 для всех x ∈ [a,b]</li>
+        <li>Начальное приближение x₀ достаточно близко к α</li>
+        <li>Выполнено условие |f(x)f''(x)|/f'(x)² ≤ M < 1 в окрестности α</li>
+      </ol>
+      <p>Тогда итерационная последовательность:</p>
+      <div class="math-box">
+        \[x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\]
+      </div>
+      <p>сходится к α и сходимость квадратичная:</p>
+      <div class="math-box">
+        \[|x_{n+1} - \alpha| \leq C|x_n - \alpha|^2\]
+      </div>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Квадратичная сходимость</h3>
+      <p>Ключевое свойство метода Ньютона - квадратичная сходимость:</p>
+      <div class="math-box">
+        \[\lim_{n \to \infty} \frac{|x_{n+1} - \alpha|}{|x_n - \alpha|^2} = \frac{|f''(\alpha)|}{2|f'(\alpha)|}\]
+      </div>
+      <p>Это означает, что на каждой итерации количество верных цифр примерно удваивается.</p>
+      <p>Сравнение с другими методами:</p>
+      <ul>
+        <li>Метод Ньютона: квадратичная сходимость</li>
+        <li>Метод секущих: порядок сходимости φ ≈ 1.618</li>
+        <li>Метод простой итерации: линейная сходимость</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Достаточные условия сходимости</h3>
+      <h4>Условие Канторовича</h4>
+      <p>Пусть выполнено:</p>
+      <div class="math-box">
+        \[\|f'(x_0)^{-1}f(x_0)\| \cdot h \leq \frac{1}{2}\]
+      </div>
+      <p>где h - константа Липшица для f'(x). Тогда метод сходится.</p>
+      
+      <h4>Условие остойчивости</h4>
+      <p>Если f'(α) ≠ 0 и f''(x) непрерывна в окрестности α, то существует δ > 0 такое, что для любого x₀ ∈ (α-δ, α+δ) метод сходится.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Доказательство сходимости</h3>
+      <h4>Разложение в ряд Тейлора</h4>
+      <p>Используем разложение f(xₙ) в окрестности α:</p>
+      <div class="math-box">
+        \[f(x_n) = f(\alpha) + f'(\alpha)(x_n - \alpha) + \frac{f''(\xi_n)}{2}(x_n - \alpha)^2\]
+      </div>
+      <p>Так как f(α) = 0, получаем:</p>
+      <div class="math-box">
+        \[x_{n+1} - \alpha = x_n - \alpha - \frac{f(x_n)}{f'(x_n)}\]
+      </div>
+      
+      <h4>Оценка погрешности</h4>
+      <p>После преобразований получаем:</p>
+      <div class="math-box">
+        \[|x_{n+1} - \alpha| \leq \frac{M}{2m}|x_n - \alpha|^2\]
+      </div>
+      <p>где M = max|f''(x)|, m = min|f'(x)| в окрестности α.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Примеры</h3>
+      <h4>Пример 1: Вычисление квадратного корня</h4>
+      <p>Для f(x) = x² - a, метод Ньютона даёт:</p>
+      <div class="math-box">
+        \[x_{n+1} = \frac{1}{2}\left(x_n + \frac{a}{x_n}\right)\]
+      </div>
+      <p>Это классический метод вычисления √a с квадратичной сходимостью.</p>
+      
+      <h4>Пример 2: Решение x³ - 2 = 0</h4>
+      <p>f(x) = x³ - 2, f'(x) = 3x². Итерации:</p>
+      <div class="math-box">
+        \[x_{n+1} = x_n - \frac{x_n^3 - 2}{3x_n^2} = \frac{2x_n^3 + 2}{3x_n^2}\]
+      </div>
+      <p>Сходимость к ∛2 ≈ 1.259921.</p>
+      
+      <h4>Пример 3: Расходимость при плохом начальном приближении</h4>
+      <p>Для f(x) = arctan(x), начальное x₀ = 10 приводит к расходимости.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Многомерный случай</h3>
+      <p>Для системы F(x) = 0, где F: ℝⁿ → ℝⁿ:</p>
+      <div class="math-box">
+        \[x_{k+1} = x_k - J_F(x_k)^{-1}F(x_k)\]
+      </div>
+      <p>где J_F(x) - матрица Якоби.</p>
+      <p>Условия сходимости:</p>
+      <ul>
+        <li>J_F(α) - невырожденная матрица</li>
+        <li>F дважды непрерывно дифференцируема</li>
+        <li>Начальное приближение достаточно близко к решению</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Модификации метода</h3>
+      <h4>Метод Ньютона с демпфированием</h4>
+      <div class="math-box">
+        \[x_{n+1} = x_n - \lambda_n \frac{f(x_n)}{f'(x_n)}\]
+      </div>
+      <p>где 0 < λₙ ≤ 1 - параметр демпфирования.</p>
+      
+      <h4>Квази-ньютоновские методы</h4>
+      <p>Приближённое вычисление обратной матрицы Якоби.</p>
+      
+      <h4>Метод секущих</h4>
+      <p>Замена производной на разностное отношение.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Практические аспекты</h3>
+      <h4>Критерий остановки</h4>
+      <ul>
+        <li>|x_{n+1} - xₙ| < ε</li>
+        <li>|f(xₙ)| < ε</li>
+        <li>Относительная погрешность < ε</li>
+      </ul>
+      
+      <h4>Проблемы</h4>
+      <ul>
+        <li>Выбор начального приближения</li>
+        <li>Вычисление производной</li>
+        <li>Расходимость при f'(xₙ) ≈ 0</li>
+      </ul>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Области сходимости</h3>
+      <h4>Бассейны притяжения</h4>
+      <p>Множество начальных точек, сходящихся к данному корню.</p>
+      <p>Границы бассейнов могут иметь фрактальную структуру.</p>
+      
+      <h4>Глобальная сходимость</h4>
+      <p>Для выпуклых функций метод сходится из любой начальной точки.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Связь с другими методами</h3>
+      <h4>Метод простой итерации</h4>
+      <p>x_{n+1} = xₙ - λf(xₙ) - линейная сходимость.</p>
+      
+      <h4>Метод градиентного спуска</h4>
+      <p>Для минимизации функций - линейная сходимость.</p>
+      
+      <h4>Метод Ньютона для оптимизации</h4>
+      <p>x_{n+1} = xₙ - H_f(xₙ)⁻¹∇f(xₙ) для минимизации f(x).</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Историческая справка</h3>
+      <p>Исаак Ньютон (1643-1727) предложил метод в «Методе флюксий».</p>
+      <p>Джозеф Рафсон (1648-1715) опубликовал современную формулировку.</p>
+      <p>Строгая теория сходимости развита в XIX-XX веках.</p>
+    </article>
+    
+    <article class="glass-card content-block">
+      <h3>Видео</h3>
+      <ul class="media-links">
+        <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+      </ul>
+    </article>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-panel container">
+    <div class="footer-grid">
+      <div>
+        <h3>MathLab</h3>
+        <p>Структурированный математический справочник: теоремы, анализ, алгебра и геометрия для студентов 1–4 курсов.</p>
+      </div>
+      <div>
+        <h4>Разделы</h4>
+        <ul>
+          <li><a href="../theorems.html">Теоремы</a></li>
+          <li><a href="../integrals.html">Интегралы</a></li>
+          <li><a href="../derivatives.html">Производные</a></li>
+          <li><a href="../algebra.html">Линейная алгебра</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Документация</h4>
+        <ul>
+          <li><a href="../about.html#docs">Официальная документация проекта</a></li>
+          <li><a href="../about.html#courses">Маршрут по курсам 1–4</a></li>
+          <li><a href="../about.html#contrib">Как предложить улучшение</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Видео</h4>
+        <ul>
+          <li><a href="https://www.youtube.com/@mipt_study" target="_blank" rel="noopener noreferrer">Канал МФТИ Study</a></li>
+          <li><a href="https://www.youtube.com/@mipt_study/videos" target="_blank" rel="noopener noreferrer">Плейлист лекций</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-copy">© <span data-current-year></span> MathLab. Учись системно и удобно.</p>
+  </div>
+</footer>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>
