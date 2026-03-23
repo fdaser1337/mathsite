@@ -667,14 +667,30 @@ const searchBtn = document.querySelector('[data-search-btn]');
 const searchResults = document.querySelector('[data-search-results]');
 const currentYear = document.querySelector('[data-current-year]');
 
+function readStoredTheme() {
+  try {
+    return localStorage.getItem('mathlab-theme');
+  } catch (_) {
+    return null;
+  }
+}
+
+function persistTheme(theme) {
+  try {
+    localStorage.setItem('mathlab-theme', theme);
+  } catch (_) {
+    // Ignore storage failures (for example, restricted file:// contexts).
+  }
+}
+
 function setTheme(theme) {
   body.setAttribute('data-theme', theme);
-  localStorage.setItem('mathlab-theme', theme);
+  persistTheme(theme);
   if (toggleBtn) toggleBtn.textContent = theme === 'dark' ? '☀️ Светлая' : '🌙 Тёмная';
 }
 
 function initTheme() {
-  const saved = localStorage.getItem('mathlab-theme');
+  const saved = readStoredTheme();
   const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   setTheme(saved || (systemDark ? 'dark' : 'light'));
 }
