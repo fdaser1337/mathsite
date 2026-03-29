@@ -2,6 +2,7 @@ const BASE_SEARCH_INDEX = [
   { title: 'Главная: MathLab', text: 'Онлайн-справочник по математике для студентов', url: 'index.html' },
   { title: 'О проекте MathLab', text: 'Документация проекта и маршрут по курсам 1–4', url: 'about.html' },
   { title: 'Источники теорем (РФ)', text: 'Российские учебники и академические источники по теоремам', url: 'theorem-sources.html' },
+  { title: 'Документация MathLab (.docx)', text: 'Word-версия документации проекта и библиографии по ГОСТ', url: 'docs/mathlab-documentation-gost.docx' },
 
   { title: 'Теоремы: обзор', text: 'Каталог теорем с фильтрами, хэштегами и поиском', url: 'theorems.html' },
 
